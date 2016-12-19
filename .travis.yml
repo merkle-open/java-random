@@ -11,7 +11,7 @@ env:
     - secure: "Pt6V8z9yKzxczmwZc8Fq9gVFjUAHIuFldbS06uyyHNa2Wc2p74bTUnvNhyvQFNB7CdFjh/Gizl2S71f58LRDrCOE47uB0xP5nVQ/svgfrd8RxbDNTz6lrfDBvUxJlFN2qvPMzgNNYzD3Oqe7UHMCJVRAPwc5EK/K6uXkvltbiQqBpr810KbheTUeMjKGoLH4E9nWOWubDI74MJDgoz+ZawKkkB0F6ViVuoKQ62OyFEMsrYxMeZg/ac/H1tl36xeeLWFWmuHWzNk6EYmJFx575QIAjKDOIYP03L9CvnwWijCL1eWS8O/bP0Th1BdRY5uoKnkN5OmzFxVvOc1uKCe3gbQUCNQiy+ficKtCqznz4fopDIR/ILOgQGowEhDdJ8N2Wo+Mk1qj6efAnQ0I9izDzdrIjpFjM1LN6YvlJ8Q9MacyPym5OrW0Sz5RxsU5MqNyTtyjclXvX4RFOAKdqYPRLWfi65Vnn4TpVQ8/W8TZkkzhrxgOmhzt5BFsVUCLCaalgomBbzxgcb0oB2AtdwW8us3eYjFIAssz/SAphE3vMkt42Ww5YeGgilHwXCruo36N5ZPqb924PVrCANknW3AW8lX9QTnxBW68VU9nDoOHQ+ltizqB2u1C/HMQcyTpqhXtZg0COmXXYZYtiSOWrOjD6CBuETaZ79V792n8bemlmsk="
 before_install:
   - openssl aes-256-cbc -K $encrypted_2eb65b09d7e0_key -iv $encrypted_2eb65b09d7e0_iv -in codesigning.asc.enc -out codesigning.asc -d
-  - gpg --yes --batch --enable-large-rsa --import codesigning.asc
+  - gpg --yes --batch --import codesigning.asc
 jdk:
   - oraclejdk8
 install: mvn install -P !ossrh -DskipTests=true -Dmaven.javadoc.skip=true -B -V -U
