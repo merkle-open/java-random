@@ -14,9 +14,9 @@ before_install:
   - gpg --yes --batch --import codesigning.asc
 jdk:
   - oraclejdk8
-install: mvn install -P !ossrh -DskipTests=true -Dmaven.javadoc.skip=true -B -V -U
+install: mvn clean install -P !ossrh -DskipTests=true -Dmaven.javadoc.skip=true -B -V -U
 script:
-- mvn clean deploy -P ossrh --settings mvnsettings.xml
+- mvn cdeploy -P ossrh --settings mvnsettings.xml
 cache:
   directories:
     - ~/.m2/repository
