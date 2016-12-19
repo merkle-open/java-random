@@ -6,6 +6,25 @@
     <artifactId>java-random</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
+	<description>This modules aims to provide a universal mechanism to create random test dummies of java objects.</description>
+
+	<licenses>
+		<license>
+			<name>MIT License 2.0</name>
+			<url>https://opensource.org/licenses/MIT</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>André Schäfer</name>
+			<email>andre.schaefer@anmcis.com</email>
+			<organization>Namics AG</organization>
+			<organizationUrl>http://www.namics.com</organizationUrl>
+		</developer>
+	</developers>
+
 	<properties>
 		<java.version>1.8</java.version>
 		<java.source.version>${java.version}</java.source.version>
@@ -197,40 +216,8 @@
     </build>
 
     <scm>
-        <url>https://git.namics.com/namics/namics-random/</url>
-        <connection>scm:git:git@git.namics.com:namics/namics-random.git</connection>
-        <developerConnection>scm:git:git@git.namics.com:namics/namics-random.git</developerConnection>
+        <url>https://github.com/namics/java-random/</url>
+        <connection>scm:git:git@github.com:namics/java-random.git</connection>
+        <developerConnection>scm:git:git@github.com:namics/java-random.git</developerConnection>
     </scm>
-
-    <distributionManagement>
-        <repository>
-            <id>nexus.namics.com</id>
-            <name>Namics Common Repository</name>
-            <url>http://nexus.namics.com/content/repositories/namics-common/</url>
-        </repository>
-        <snapshotRepository>
-            <id>snapshot.namics.nexus.namics.com</id>
-            <name>Namics Projects Repository</name>
-            <url>http://nexus.namics.com/content/repositories/namics-projects-snapshot/</url>
-        </snapshotRepository>
-    </distributionManagement>
-
-    <profiles>
-        <profile>
-            <id>MGB</id>
-            <distributionManagement>
-                <repository>
-                    <id>namics.private.migros</id>
-                    <name>Namics Repository at Migros (for Releases)</name>
-                    <url>https://maven.cwi.migros.net/content/repositories/NamicsPrivate/</url>
-                </repository>
-                <snapshotRepository>
-                    <id>namics.private.migros.snapshots</id>
-                    <name>Namics Repository at Migros (for Snapshots)</name>
-                    <url>https://maven.cwi.migros.net/content/repositories/NamicsPrivateSnapshots/</url>
-                </snapshotRepository>
-            </distributionManagement>
-        </profile>
-    </profiles>
-
 </project>
