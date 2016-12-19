@@ -97,6 +97,5 @@ crashlytics.properties
 crashlytics-build.properties
 
 
-local.*
-
+secret/
 
