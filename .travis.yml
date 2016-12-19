@@ -1,12 +1,12 @@
 language: java
 before_install:
-  - openssl aes-256-cbc -pass pass:$ENCRYPTION_PASSWORD -in secring.gpg.enc -out $HOME/.gnupg/secring.gpg -d
-  - openssl aes-256-cbc -pass pass:$ENCRYPTION_PASSWORD -in pubring.gpg.enc -out $HOME/.gnupg/pubring.gpg -d
-  - openssl aes-256-cbc -pass pass:$ENCRYPTION_PASSWORD -in settings.xml.enc -out $HOME/.gnupg/settings.xml -d
+  - openssl aes-256-cbc -pass pass:$ENCRYPTION_PASSWORD -in secring.gpg.enc -out $HOME/.gnupg/local.secring.gpg -d
+  - openssl aes-256-cbc -pass pass:$ENCRYPTION_PASSWORD -in pubring.gpg.enc -out $HOME/.gnupg/local.pubring.gpg -d
+  - openssl aes-256-cbc -pass pass:$ENCRYPTION_PASSWORD -in settings.xml.enc -out local.settings.xml -d
 jdk:
   - oraclejdk8
 script:
-  - mvn clean deploy --settings local.settings.xml -P ossrh
+  - mvn clean deploy --settings `pwd`/local.settings.xml -P ossrh -Dgpg.publicKeyring=local.pubring.gpg -Dgpg.secretKeyring=local.secring.gpg
 env:
   global:
     secure: FQih1xpT2LHNv9eih3FZFp8/bgCK6c/Xvq8VM7xnhhChX30FU5DppU3LBd+Yp4vIF/jyLf6h3qdlMm02hRGMIuZe1HbEmTZtFGI2aqTGF6IXUKA01F6nYx95XHk/Er0STnvmgYr+2c5+huCJ6yIuqLm7SUJhreJfSbp36J64LwXQqvijA4M9GI2DxbpZ4q2Q7yxdoI+bnxGv/t20NliHUslL4/P0oaIjZT0dYSnFtl2QH6rJij/U10v2pC/r67nG4YmMuemcMQm9cQ1gvVU0xRojsrVMaFzrwvbItc4y1dpJGQ5cKlSJZ7Q6MdV4JoMJ2ouzieNRC3Kqm4NGTikRQXotSnUvAeeAJzYXqebYto1kGwkOjbMnXO1R3JAKlEfsAGTSEb9xMWLlebISmC2FCMCfJmBnoEKF42VqWzn7HJFwbBFIp2H7rOE7bL63jZPmrTuPOJHvZyCrD1VsDUgtd1JIV1bOIEw0kMh7ZHytisQBF+Ifksn8y5k2asQk6c06NFmqJ25v+MgsjAaWhg90355T/gRYEtvALq01K4v1iHlECwxsdUVYJgb2NaielpPmaLptmkJlwmL8ytpf3oSoZF8efHHyFw8NJo4sSF6GMjohX4iGQkXEZ3JuT+mZJ5gWx+iPp1RE+G6+JEtx4h3ZE+QjOOgEMKK153t9mcFC9oY=
