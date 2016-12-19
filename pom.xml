@@ -8,7 +8,7 @@
 
 	<name>${project.artifactId}</name>
 	<description>This modules aims to provide a universal mechanism to create random test dummies of java objects.</description>
-
+	<url>https://github.com/namics/java-random</url>
 	<licenses>
 		<license>
 			<name>MIT License 2.0</name>
@@ -247,7 +247,7 @@
 	</distributionManagement>
 
 	<scm>
-		<url>https://github.com/namics/java-random/</url>
+		<url>https://github.com/namics/java-random</url>
 		<connection>scm:git:git@github.com:namics/java-random.git</connection>
 		<developerConnection>scm:git:git@github.com:namics/java-random.git</developerConnection>
 	</scm>
