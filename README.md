@@ -1,3 +1,5 @@
+[![Build Status][travis-image]][travis-url]
+
 # Advanced Random Test Data Utils
 
 This modules aims to provide a universal mechanism to create random test dummies of java objects.
