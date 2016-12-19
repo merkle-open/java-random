@@ -1,10 +1,12 @@
-[![Build Status][travis-image]][travis-url]
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.namics.oss/java-random/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.namics.oss/java-random)
+System        | Status
+--------------|------------------------------------------------        
+CI master     | [![Build Status][travis-master]][travis-url]
+CI develop    | [![Build Status][travis-develop]][travis-url]
+Dependency    | [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.namics.oss/java-random/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.namics.oss/java-random)
 
 # Advanced Random Test Data Utils
 
 This modules aims to provide a universal mechanism to create random test dummies of java objects.
-
 
 ## Usage
 
@@ -73,5 +75,6 @@ There are several ways to register custom `RandomGenerator<SupportedType>`s:
     - Register generator instance `RandomData.addRandomGenerator(RandomGenerator generator)`
     - Ein zu scannendes Package registrieren: 
 
-[travis-image]: https://travis-ci.org/namics/java-random.svg?branch=master
+[travis-master]: https://travis-ci.org/namics/java-random.svg?branch=master
+[travis-develop]: https://travis-ci.org/namics/java-random.svg?branch=develop
 [travis-url]: https://travis-ci.org/namics/java-random
