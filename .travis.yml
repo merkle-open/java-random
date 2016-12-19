@@ -20,3 +20,15 @@ script:
 cache:
   directories:
     - ~/.m2/repository
+branches:
+  only:
+    - master
+    - develop
+    - /^feature.*/
+    - /^hotfix.*/
+notifications:
+  email:
+    on_success: change
+    on_failure: change
+
+
