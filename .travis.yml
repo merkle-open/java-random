@@ -16,7 +16,7 @@ jdk:
   - oraclejdk8
 install: mvn install -P !ossrh -DskipTests=true -Dmaven.javadoc.skip=true -B -V -U
 script:
-- mvn clean deploy -P ossrh
+- mvn clean deploy -P ossrh --settings mvnsettings.xml
 cache:
   directories:
-    - ~/.m2/repository --settings cd/mvnsettings.xml
+    - ~/.m2/repository
