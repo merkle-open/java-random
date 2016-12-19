@@ -73,5 +73,5 @@ There are several ways to register custom `RandomGenerator<SupportedType>`s:
     - Register generator instance `RandomData.addRandomGenerator(RandomGenerator generator)`
     - Ein zu scannendes Package registrieren: 
 
-[travis-image]: https://travis-ci.org/namics/java-random.svg?branch=develop
+[travis-image]: https://travis-ci.org/namics/java-random.svg?branch=master
 [travis-url]: https://travis-ci.org/namics/java-random
