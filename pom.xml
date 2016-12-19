@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.namics.oss</groupId>
+    <artifactId>java-random</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<java.source.version>${java.version}</java.source.version>
+		<java.target.version>${java.version}</java.target.version>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+
+		<maven.build.timestamp.format>yyyy-MM-dd-z-HH-mm-ss</maven.build.timestamp.format>
+
+		<encoding>UTF-8</encoding>
+		<project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
+
+		<git.build.time>${maven.build.timestamp}</git.build.time>
+		<git.branch>unknown</git.branch>
+		<git.commit.id>unknown</git.commit.id>
+		<git.commit.time>unknown</git.commit.time>
+
+		<sonar.language>java</sonar.language>
+	</properties>
+
+
+	<dependencies>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.7</version>
+            <scope>test</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>0.9.9-RC2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>14.0.1</version>
+        </dependency>
+		<dependency>
+			<groupId>com.googlecode.gentyref</groupId>
+			<artifactId>gentyref</artifactId>
+			<version>1.2.0</version>
+		</dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-core</artifactId>
+			<version>1.3</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-library</artifactId>
+			<version>1.3</version>
+			<scope>test</scope>
+		</dependency>
+
+    </dependencies>
+
+    <build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>META-INF/namics-random.properties</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+				<excludes>
+					<exclude>META-INF/namics-random.properties</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>${project.basedir}</directory>
+				<includes>
+					<include>README.md</include>
+				</includes>
+			</resource>
+		</resources>
+        <plugins>
+			<plugin>
+				<groupId>pl.project13.maven</groupId>
+				<artifactId>git-commit-id-plugin</artifactId>
+				<version>2.1.12</version>
+				<executions>
+					<execution>
+						<phase>validate</phase>
+						<goals>
+							<goal>revision</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<prefix>git</prefix>
+					<dateFormat>${maven.build.timestamp.format}</dateFormat>
+					<verbose>false</verbose>
+					<skipPoms>true</skipPoms>
+					<generateGitPropertiesFile>false</generateGitPropertiesFile>
+					<failOnNoGitDirectory>false</failOnNoGitDirectory>
+					<skip>false</skip>
+					<gitDescribe>
+						<skip>false</skip>
+						<always>false</always>
+						<abbrev>7</abbrev>
+						<dirty>-dirty</dirty>
+						<forceLongFormat>true</forceLongFormat>
+					</gitDescribe>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+						</manifest>
+						<manifestEntries>
+							<Build-Timestamp>${git.build.time}</Build-Timestamp>
+							<Build-SCM-Branch>${git.branch}</Build-SCM-Branch>
+							<Build-SCM-Commit>${git.commit.id}</Build-SCM-Commit>
+							<Build-SCM-Commit-Time>${git.commit.time}</Build-SCM-Commit-Time>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<source>${java.source.version}</source>
+					<target>${java.source.version}</target>
+					<compilerArgument>-proc:none</compilerArgument>
+				</configuration>
+			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
+                <configuration>
+                    <failOnError>false</failOnError>
+                    <additionalparam>-Xdoclint:none</additionalparam>
+                </configuration>
+            </plugin>
+			<plugin>
+				<groupId>external.atlassian.jgitflow</groupId>
+				<artifactId>jgitflow-maven-plugin</artifactId>
+				<version>1.0-m5.1</version>
+				<configuration>
+					<pushReleases>false</pushReleases>
+				</configuration>
+			</plugin>
+        </plugins>
+    </build>
+
+    <scm>
+        <url>https://git.namics.com/namics/namics-random/</url>
+        <connection>scm:git:git@git.namics.com:namics/namics-random.git</connection>
+        <developerConnection>scm:git:git@git.namics.com:namics/namics-random.git</developerConnection>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>nexus.namics.com</id>
+            <name>Namics Common Repository</name>
+            <url>http://nexus.namics.com/content/repositories/namics-common/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshot.namics.nexus.namics.com</id>
+            <name>Namics Projects Repository</name>
+            <url>http://nexus.namics.com/content/repositories/namics-projects-snapshot/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <profiles>
+        <profile>
+            <id>MGB</id>
+            <distributionManagement>
+                <repository>
+                    <id>namics.private.migros</id>
+                    <name>Namics Repository at Migros (for Releases)</name>
+                    <url>https://maven.cwi.migros.net/content/repositories/NamicsPrivate/</url>
+                </repository>
+                <snapshotRepository>
+                    <id>namics.private.migros.snapshots</id>
+                    <name>Namics Repository at Migros (for Snapshots)</name>
+                    <url>https://maven.cwi.migros.net/content/repositories/NamicsPrivateSnapshots/</url>
+                </snapshotRepository>
+            </distributionManagement>
+        </profile>
+    </profiles>
+
+</project>

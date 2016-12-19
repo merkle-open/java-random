@@ -1,0 +1,1200 @@
+CH;it;Svizzera
+SN;it;Senegal
+CS;it;Serbia e Montenegro
+SC;it;Seychelles
+SL;it;Sierra Leone
+ZW;it;Zimbabwe
+SG;it;Singapore
+SK;it;Slovacchia
+SI;it;Slovenia
+SO;it;Somalia
+ES;it;Spagna
+LK;it;Sri Lanka
+SH;it;Sant'Elena
+KN;it;Saint Kitts e Nevis
+LC;it;Santa Lucia
+PM;it;Saint Pierre e Miquelon
+VC;it;Saint Vincent e Grenadine
+ZA;it;Sud Africa
+SD;it;Sudan
+GS;it;Sud Georgia e Isole Sandwich
+KR;it;Corea del Sud
+SR;it;Suriname
+SJ;it;Svalbard e Jan Mayen
+SZ;it;Swaziland
+SY;it;Siria
+TJ;it;Tagikistan
+TW;it;Taiwan
+TZ;it;Tanzania
+TH;it;Tailandia
+TG;it;Togo
+TK;it;Tokelau
+TO;it;Tonga
+TT;it;Trinidad e Tobago
+TD;it;Ciad
+CZ;it;Repubblica Ceca
+TN;it;Tunisia
+TR;it;Turchia
+TM;it;Turkmenistan
+TC;it;Isole Turks e Caicos
+TV;it;Tuvalu
+UG;it;Uganda
+UA;it;Ucraina
+HU;it;Ungheria
+UY;it;Uruguay
+US;it;Stati Uniti d'America
+UZ;it;Uzbekistan
+VU;it;Vanuatu
+VA;it;Città  del Vaticano
+VE;it;Venezuela
+AE;it;Emirati Arabi Uniti
+VN;it;Vietnam
+WF;it;Wallis e Futuna
+CX;it;Isola di Natale
+BY;it;Bielorussia
+EH;it;Sahara Occidentale
+CF;it;Repubblica Centroafricana
+CY;it;Cipro
+AF;en;Afghanistan
+EG;en;Egypt
+AX;en;Aland Islands
+AL;en;Albania
+DZ;en;Algeria
+VI;en;United States Virgin Islands
+UM;en;United States Minor Outlying Islands
+AS;en;American Samoa
+AD;en;Andorra
+AO;en;Angola
+AI;en;Anguilla
+AQ;en;Antarctica
+AG;en;Antigua and Barbuda
+GQ;en;Equatorial Guinea
+AR;en;Argentina
+AM;en;Armenia
+AW;en;Aruba
+AZ;en;Azerbaijan
+ET;en;Ethiopia
+AU;en;Australia
+BS;en;Bahamas
+BH;en;Bahrain
+BD;en;Bangladesh
+BB;en;Barbados
+BE;en;Belgium
+BZ;en;Belize
+BJ;en;Benin
+BM;en;Bermuda
+BT;en;Bhutan
+BO;en;Bolivia
+BA;en;Bosnia and Herzegovina
+BW;en;Botswana
+BV;en;Bouvet Island
+BR;en;Brazil
+VG;en;British Virgin Islands
+IO;en;British Indian Ocean Territory
+BN;en;Brunei Darussalam
+BG;en;Bulgaria
+BF;en;Burkina Faso
+BI;en;Burundi
+CL;en;Chile
+CN;en;China
+CK;en;Cook Islands
+CR;en;Costa Rica
+CI;en;Côte d'Ivoire
+DK;en;Denmark
+DE;en;Germany
+DM;en;Dominica
+DO;en;Dominican Republic
+DJ;en;Djibouti
+EC;en;Ecuador
+SV;en;El Salvador
+ER;en;Eritrea
+EE;en;Estonia
+FK;en;Falkland Islands
+FO;en;Faroe Islands
+FJ;en;Fiji
+FI;en;Finland
+FR;en;France
+TF;en;French Southern Territories
+GF;en;French Guiana
+PF;en;French Polynesia
+GA;en;Gabon
+GM;en;Gambia
+GE;en;Georgia
+GH;en;Ghana
+GI;en;Gibraltar
+GD;en;Grenada
+GR;en;Greece
+GL;en;Greenland
+GB;en;United Kingdom
+GP;en;Guadeloupe
+GU;en;Guam
+GT;en;Guatemala
+GN;en;Guinea
+GW;en;Guinea-Bissau
+GY;en;Guyana
+HT;en;Haiti
+HM;en;Heard Island and McDonald Islands
+HN;en;Honduras
+HK;en;Hong Kong
+IN;en;India
+ID;en;Indonesia
+IQ;en;Iraq
+IR;en;Iran
+IE;en;Ireland
+IS;en;Iceland
+IL;en;Israel
+IT;en;Italy
+JM;en;Jamaica
+JP;en;Japan
+YE;en;Yemen
+JO;en;Jordan
+KY;en;Cayman Islands
+KH;en;Cambodia
+CM;en;Cameroon
+CA;en;Canada
+CV;en;Cape Verde
+KZ;en;Kazakhstan
+QA;en;Qatar
+KE;en;Kenya
+KG;en;Kyrgyzstan
+KI;en;Kiribati
+CC;en;Cocos Islands
+CO;en;Colombia
+KM;en;Comoros
+CD;en;Congo, The Democratic Republic
+CG;en;Congo, Republic
+HR;en;Croatia
+CU;en;Cuba
+KW;en;Kuwait
+LA;en;Lao
+LS;en;Lesotho
+LV;en;Latvia
+LB;en;Lebanon
+LR;en;Liberia
+LY;en;Libyan
+LI;en;Liechtenstein
+LT;en;Lithuania
+LU;en;Luxembourg
+MO;en;Macao
+MG;en;Madagascar
+MW;en;Malawi
+MY;en;Malaysia
+MV;en;Maldives
+ML;en;Mali
+MT;en;Malta
+MA;en;Morocco
+MH;en;Marshall Islands
+MQ;en;Martinique
+MR;en;Mauritania
+MU;en;Mauritius
+YT;en;Mayotte
+MK;en;Macedonia
+MX;en;Mexico
+FM;en;Micronesia
+MD;en;Moldova
+MC;en;Monaco
+MN;en;Mongolia
+MS;en;Montserrat
+MZ;en;Mozambique
+MM;en;Myanmar
+NA;en;Namibia
+NR;en;Nauru
+NP;en;Nepal
+NC;en;New Caledonia
+NZ;en;New Zealand
+NI;en;Nicaragua
+NL;en;Netherlands
+AN;en;Netherlands Antilles
+NE;en;Niger
+NG;en;Nigeria
+NU;en;Niue
+KP;en;Korea, Democratic People's Republic
+MP;en;Northern Mariana Islands
+NF;en;Norfolk Island
+NO;en;Norway
+OM;en;Oman
+AT;en;Austria
+TL;en;Timor Leste
+PK;en;Pakistan
+PS;en;Palestinian Territory
+PW;en;Palau
+PA;en;Panama
+PG;en;Papua New Guinea
+PY;en;Paraguay
+PE;en;Peru
+PH;en;Philippines
+PN;en;Pitcairn
+PL;en;Poland
+PT;en;Portugal
+PR;en;Porto Rico
+RE;en;Réunion
+RW;en;Rwanda
+RO;en;Romania
+RU;en;Russia
+SB;en;Solomon Islands
+ZM;en;Zambia
+WS;en;Samoa
+SM;en;San Marino
+ST;en;Sao Tome and Principe
+SA;en;Saudi Arabia
+SE;en;Sweden
+CH;en;Switzerland
+SN;en;Senegal
+CS;en;Serbia and Montenegro
+SC;en;Seychelles
+SL;en;Sierra Leone
+ZW;en;Zimbabwe
+SG;en;Singapore
+SK;en;Slovakia
+SI;en;Slovenia
+SO;en;Somalia
+ES;en;Spain
+LK;en;Sri Lanka
+SH;en;Saint Helena
+KN;en;Saint Kitts and Nevis
+LC;en;Saint Lucia
+PM;en;Saint-Pierre and Miquelon
+VC;en;Saint Vincent and the Grenadines
+ZA;en;South Africa
+SD;en;Sudan
+GS;en;South Georgia and the South Sandwich Islands
+KR;en;Korea, Republic
+SR;en;Suriname
+SJ;en;Svalbard and Jan Mayen
+SZ;en;Swaziland
+SY;en;Syrian
+TJ;en;Tajikistan
+TW;en;Taiwan
+TZ;en;Tanzania
+TH;en;Thailand
+TG;en;Togo
+TK;en;Tokelau
+TO;en;Tonga
+TT;en;Trinidad and Tobago
+TD;en;Chad
+CZ;en;Czech Republic
+TN;en;Tunisia
+TR;en;Turkey
+TM;en;Turkmenistan
+TC;en;Turks and Caicos Islands
+TV;en;Tuvalu
+UG;en;Uganda
+UA;en;Ukraine
+HU;en;Hungary
+UY;en;Uruguay
+US;en;United States
+UZ;en;Uzbekistan
+VU;en;Vanuatu
+VA;en;Vatican City State
+VE;en;Venezuela
+AE;en;United Arab Emirates
+VN;en;Vietnam
+WF;en;Wallis and Futuna
+CX;en;Christmas Island
+BY;en;Belarus
+EH;en;Western Sahara
+CF;en;Central African Republic
+CY;en;Cyprus
+AF;rm;Afghanistan
+EG;rm;Egipta
+AX;rm;Aland
+AL;rm;Albania
+DZ;rm;Algeria
+VI;rm;Inslas Verginas americanas
+UM;rm;Inslas minuras dals Stadis unids da l'America
+AS;rm;Samoa americanas
+AD;rm;Andorra
+AO;rm;Angola
+AI;rm;Anguilla
+AQ;rm;Antarctica
+AG;rm;Antigua e Barbuda
+GQ;rm;Guinea equatoriala
+AR;rm;Argentina
+AM;rm;Armenia
+AW;rm;Aruba
+AZ;rm;Aserbaidschan
+ET;rm;Etiopia
+AU;rm;Australia
+BS;rm;Bahamas
+BH;rm;Bahrain
+BD;rm;Bangladesch
+BB;rm;Barbados
+BE;rm;Belgia
+BZ;rm;Belize
+BJ;rm;Benin
+BM;rm;Bermudas
+BT;rm;Bhutan
+BO;rm;Bolivia
+BA;rm;Bosnia ed Erzegovina
+BW;rm;Botswana
+BV;rm;Inslas da Bouvet
+BR;rm;Brasilia
+VG;rm;Inslas Verginas britannicas
+IO;rm;Territori britannic da l'Ocean ind
+BN;rm;Brunei
+BG;rm;Bulgaria
+BF;rm;Burkina Faso
+BI;rm;Burundi
+CL;rm;Chile
+CN;rm;China
+CK;rm;Inslas da Cook
+CR;rm;Costa Rica
+CI;rm;Costa d'Ivur
+DK;rm;Danemarc
+DE;rm;Germania
+DM;rm;Dominica
+DO;rm;Republica dominicana
+DJ;rm;Dschibuti
+EC;rm;Ecuador
+SV;rm;El Salvador
+ER;rm;Eritrea
+EE;rm;Estonia
+FK;rm;Inslas da Falkland
+FO;rm;Inslas da Feröer
+FJ;rm;Fidschi
+FI;rm;Finlanda
+FR;rm;Frantscha
+GF;rm;Gujana franzosa
+PF;rm;Polinesia franzosa
+GA;rm;Gabun
+GM;rm;Gambia
+GE;rm;Georgia
+GH;rm;Ghana
+GI;rm;Gibraltar
+GD;rm;Grenada
+GR;rm;Grezia
+GL;rm;Grönlanda
+GB;rm;Gronda Britannia ed Irlanda dal nord
+GP;rm;Guadeloupe
+GU;rm;Guam
+GT;rm;Guatemala
+GN;rm;Guinea
+GW;rm;Guinea-Bissau
+GY;rm;Gujana
+HT;rm;Haiti
+HM;rm;Inslas da Heard e da McDonald
+HN;rm;Honduras
+HK;rm;Hongkong
+IN;rm;India
+ID;rm;Indonesia
+IQ;rm;Irac
+IR;rm;Iran
+IE;rm;Irlanda
+IS;rm;Islanda
+IL;rm;Israel
+IT;rm;Italia
+JM;rm;Giamaica
+JP;rm;Giapun
+YE;rm;Jemen
+JO;rm;Jordania
+KY;rm;Inslas da Caiman
+KH;rm;Cambodscha
+CM;rm;Camerun
+CA;rm;Canada
+CV;rm;Cap verd
+KZ;rm;Kasachstan
+QA;rm;Katar
+KE;rm;Kenia
+KG;rm;Kirghisistan
+KI;rm;Kiribati
+CC;rm;Inslas da Cocos
+CO;rm;Columbia
+KM;rm;Comoras
+CD;rm;Republica democratica dal Congo
+CG;rm;Republica dal Congo
+HR;rm;Croazia
+CU;rm;Cuba
+KW;rm;Kuwait
+LA;rm;Laos
+LS;rm;Lesotho
+LV;rm;Lettonia
+LB;rm;Libanon
+LR;rm;Liberia
+LY;rm;Libia
+LI;rm;Principadi da Liechtenstein
+LT;rm;Lituania
+LU;rm;Luxemburg
+MO;rm;Macao
+MG;rm;Madagascar
+MW;rm;Malawi
+MY;rm;Malaisia
+MV;rm;Maldivas
+ML;rm;Mali
+MT;rm;Malta
+MA;rm;Maroc
+MH;rm;Inslas da Marshall
+MQ;rm;Martinique
+MR;rm;Mauretania
+MU;rm;Maurizius
+YT;rm;Mayotte
+MK;rm;Macedonia
+MX;rm;Mexico
+FM;rm;Micronesia
+MD;rm;Moldavia
+MC;rm;Monaco
+MN;rm;Mongolia
+MS;rm;Montserrat
+MZ;rm;Mosambic
+MM;rm;Myanmar
+NA;rm;Namibia
+NR;rm;Nauru
+NP;rm;Nepal
+NC;rm;Nova Caledonia
+NZ;rm;Nova Zelanda
+NI;rm;Nicaragua
+NL;rm;Pajais bass
+AN;rm;Antillas ollandaisas
+NE;rm;Niger
+NG;rm;Nigeria
+NU;rm;Niue
+KP;rm;Corea dal nord
+MP;rm;Inslas Marianas dal nord
+NF;rm;Insla da Norfolk
+NO;rm;Norvegia
+OM;rm;Oman
+AT;rm;Austria
+TL;rm;Timor da l'ost
+PK;rm;Pakistan
+PS;rm;Territoris palestinais occupads
+PW;rm;Palau
+PA;rm;Panama
+PG;rm;Papua Nova Guinea
+PY;rm;Paraguay
+PE;rm;Peru
+PH;rm;Filippinas
+PN;rm;Pitcairn
+PL;rm;Pologna
+PT;rm;Portugal
+PR;rm;Puerto Rico
+RE;rm;Réunion
+RW;rm;Ruanda
+RO;rm;Rumenia
+RU;rm;Russia
+SB;rm;Inslas Salomonas
+ZM;rm;Sambia
+WS;rm;Samoa
+SM;rm;San Marino
+ST;rm;Sao Tomé e Principe
+SA;rm;Arabia saudita
+SE;rm;Svezia
+CH;rm;Svizra
+SN;rm;Senegal
+CS;rm;Serbia e Montenegro
+SC;rm;Seychellas
+SL;rm;Sierra Leone
+ZW;rm;Simbabwe
+SG;rm;Singapur
+SK;rm;Slovachia
+SI;rm;Slovenia
+SO;rm;Somalia
+ES;rm;Spagna
+LK;rm;Sri Lanka
+SH;rm;St. Helena
+KN;rm;St. Kitts e Nevis
+LC;rm;St. Lucia
+PM;rm;St. Pierre e Miquelon
+VC;rm;St. Vincent e las Grenadinas
+ZA;rm;Africa dal sid
+SD;rm;Sudan
+GS;rm;Georgia dal sid
+KR;rm;Corea dal sid
+SR;rm;Surinam
+SJ;rm;Svalbard e Jan Mayen
+SZ;rm;Swaziland
+SY;rm;Siria
+TJ;rm;Tadschikistan
+TW;rm;Taiwan
+TZ;rm;Tansania
+TH;rm;Tailanda
+TG;rm;Togo
+TK;rm;Tokelau
+TO;rm;Tonga
+TT;rm;Trinidad e Tobago
+TD;rm;Tschad
+CZ;rm;Tschechia
+TN;rm;Tunesia
+TR;rm;Tirchia
+TM;rm;Turkmenistan
+TC;rm;Inslas da Turcs e da Caicos
+TV;rm;Tuvalu
+UG;rm;Uganda
+UA;rm;Ucraina
+HU;rm;Ungaria
+UY;rm;Uruguay
+US;rm;Stadis unids da l'America
+UZ;rm;Usbekistan
+VU;rm;Vanuatu
+VA;rm;Citad dal Vatican
+VE;rm;Venezuela
+AE;rm;Emirats arabs unids
+VN;rm;Vietnam
+WF;rm;Wallis e Fatuna
+CX;rm;Insla da Nadal
+BY;rm;Bielorussia
+EH;rm;Sahara occidentala
+CF;rm;Republica centralafricana
+CY;rm;Cipra
+TF;rm;Territoris franzos dal sid e da l'Antarctica
+AF;de;Afghanistan
+EG;de;Ägypten
+AX;de;Aland
+AL;de;Albanien
+DZ;de;Algerien
+VI;de;Amerikanische Jungferninseln
+UM;de;Amerikanisch-Ozeanien
+AS;de;Amerikanisch-Samoa
+AD;de;Andorra
+AO;de;Angola
+AI;de;Anguilla
+AQ;de;Antarktis
+AG;de;Antigua und Barbuda
+GQ;de;Äquatorialguinea
+AR;de;Argentinien
+AM;de;Armenien
+AW;de;Aruba
+AZ;de;Aserbaidschan
+ET;de;Äthiopien
+AU;de;Australien
+BS;de;Bahamas
+BH;de;Bahrain
+BD;de;Bangladesch
+BB;de;Barbados
+BE;de;Belgien
+BZ;de;Belize
+BJ;de;Benin
+BM;de;Bermuda
+BT;de;Bhutan
+BO;de;Bolivien
+BA;de;Bosnien und Herzegowina
+BW;de;Botswana
+BV;de;Bouvetinsel
+BR;de;Brasilien
+VG;de;Britische Jungferninseln
+IO;de;Britisches Territorium im Ind. Ozean
+BN;de;Brunei
+BG;de;Bulgarien
+BF;de;Burkina Faso
+BI;de;Burundi
+CL;de;Chile
+CN;de;China
+CK;de;Cookinseln
+CR;de;Costa Rica
+CI;de;Côte d'Ivoire
+DK;de;Dänemark
+DE;de;Deutschland
+DM;de;Dominica
+DO;de;Dominikanische Republik
+DJ;de;Dschibuti
+EC;de;Ecuador
+SV;de;El Salvador
+ER;de;Eritrea
+EE;de;Estland
+FK;de;Falklandinseln
+FO;de;Färöer
+FJ;de;Fidschi
+FI;de;Finnland
+FR;de;Frankreich
+GF;de;Französisch-Guayana
+PF;de;Französisch-Polynesien
+GA;de;Gabun
+GM;de;Gambia
+GE;de;Georgien
+GH;de;Ghana
+GI;de;Gibraltar
+GD;de;Grenada
+GR;de;Griechenland
+GL;de;Grönland
+GB;de;Grossbritannien und Nordirland
+GP;de;Guadeloupe
+GU;de;Guam
+GT;de;Guatemala
+GN;de;Guinea
+GW;de;Guinea-Bissau
+GY;de;Guyana
+HT;de;Haiti
+HM;de;Heard- und McDonald-Inseln
+HN;de;Honduras
+HK;de;Hongkong
+IN;de;Indien
+ID;de;Indonesien
+IQ;de;Irak
+IR;de;Iran
+IE;de;Irland
+IS;de;Island
+IL;de;Israel
+IT;de;Italien
+JM;de;Jamaika
+JP;de;Japan
+YE;de;Jemen
+JO;de;Jordanien
+KY;de;Kaimaninseln
+KH;de;Kambodscha
+CM;de;Kamerun
+CA;de;Kanada
+CV;de;Kap Verde
+KZ;de;Kasachstan
+QA;de;Katar
+KE;de;Kenia
+KG;de;Kirgisistan
+KI;de;Kiribati
+CC;de;Kokosinseln
+CO;de;Kolumbien
+KM;de;Komoren
+CD;de;Kongo, Demokratische Republik
+CG;de;Kongo, Republik
+HR;de;Kroatien
+CU;de;Kuba
+KW;de;Kuwait
+LA;de;Laos
+LS;de;Lesotho
+LV;de;Lettland
+LB;de;Libanon
+LR;de;Liberia
+LY;de;Libyen
+LI;de;Liechtenstein
+LT;de;Litauen
+LU;de;Luxemburg
+MO;de;Macao
+MG;de;Madagaskar
+MW;de;Malawi
+MY;de;Malaysia
+MV;de;Malediven
+ML;de;Mali
+MT;de;Malta
+MA;de;Marokko
+MH;de;Marshallinseln
+MQ;de;Martinique
+MR;de;Mauretanien
+MU;de;Mauritius
+YT;de;Mayotte
+MK;de;Mazedonien
+MX;de;Mexiko
+FM;de;Mikronesien
+MD;de;Moldawien
+MC;de;Monaco
+MN;de;Mongolei
+MS;de;Montserrat
+MZ;de;Mosambik
+MM;de;Myanmar
+NA;de;Namibia
+NR;de;Nauru
+NP;de;Nepal
+NC;de;Neukaledonien
+NZ;de;Neuseeland
+NI;de;Nicaragua
+NL;de;Niederlande
+AN;de;Niederländische Antillen
+NE;de;Niger
+NG;de;Nigeria
+NU;de;Niue
+KP;de;Nordkorea
+MP;de;Nördliche Marianen
+NF;de;Norfolkinsel
+NO;de;Norwegen
+OM;de;Oman
+AT;de;Österreich
+TL;de;Osttimor
+PK;de;Pakistan
+PS;de;Palästinensische Autonomiegebiete
+PW;de;Palau
+PA;de;Panama
+PG;de;Papua-Neuguinea
+PY;de;Paraguay
+PE;de;Peru
+PH;de;Philippinen
+PN;de;Pitcairninseln
+PL;de;Polen
+PT;de;Portugal
+PR;de;Puerto Rico
+RE;de;Réunion
+RW;de;Ruanda
+RO;de;Rumänien
+RU;de;Russland
+SB;de;Salomonen
+ZM;de;Sambia
+WS;de;Samoa
+SM;de;San Marino
+ST;de;Sao Tomé und Principe
+SA;de;Saudi-Arabien
+SE;de;Schweden
+CH;de;Schweiz
+SN;de;Senegal
+CS;de;Serbien und Montenegro
+SC;de;Seychellen
+SL;de;Sierra Leone
+ZW;de;Simbabwe
+SG;de;Singapur
+SK;de;Slowakei
+SI;de;Slowenien
+SO;de;Somalia
+ES;de;Spanien
+LK;de;Sri Lanka
+SH;de;St. Helena
+KN;de;St. Kitts und Nevis
+LC;de;St. Lucia
+PM;de;St. Pierre und Miquelon
+VC;de;St. Vincent und die Grenadinen
+ZA;de;Südafrika
+SD;de;Sudan
+GS;de;Südgeorgien
+KR;de;Südkorea
+SR;de;Suriname
+SJ;de;Svalbard und Jan Mayen
+SZ;de;Swasiland
+SY;de;Syrien
+TJ;de;Tadschikistan
+TW;de;Taiwan
+TZ;de;Tansania
+TH;de;Thailand
+TG;de;Togo
+TK;de;Tokelau
+TO;de;Tonga
+TT;de;Trinidad und Tobago
+TD;de;Tschad
+CZ;de;Tschechien
+TN;de;Tunesien
+TR;de;Türkei
+TM;de;Turkmenistan
+TC;de;Turks- und Caicosinseln
+TV;de;Tuvalu
+UG;de;Uganda
+UA;de;Ukraine
+HU;de;Ungarn
+UY;de;Uruguay
+US;de;USA
+UZ;de;Usbekistan
+VU;de;Vanuatu
+VA;de;Vatikanstadt
+VE;de;Venezuela
+AE;de;Vereinigte Arabische Emirate
+VN;de;Vietnam
+WF;de;Wallis und Fatuna
+CX;de;Weihnachtsinsel
+BY;de;Weissrussland
+EH;de;Westsahara
+CF;de;Zentralafrikanische Republik
+CY;de;Zypern
+TF;de;Französische Süd- und Antarktisgebiete
+AF;fr;Afghanistan
+EG;fr;Égypte
+AX;fr;Îles d'Aland
+AL;fr;Albanie
+DZ;fr;Algérie
+VI;fr;Îles Vierges Américaines
+UM;fr;Îles Mineures Dépendant des États-Unis
+AS;fr;Samoa Américaines
+AD;fr;Andorre
+AO;fr;Angola
+AI;fr;Anguilla
+AQ;fr;Antarctique
+AG;fr;Antigua-et-Barbuda
+GQ;fr;Guinée Équatoriale
+AR;fr;Argentine
+AM;fr;Arménie
+AW;fr;Aruba
+AZ;fr;Azerbaïdjan
+ET;fr;Éthiopie
+AU;fr;Australie
+BS;fr;Bahamas
+BH;fr;Bahreïn
+BD;fr;Bangladesh
+BB;fr;Barbade
+BE;fr;Belgique
+BZ;fr;Belize
+BJ;fr;Bénin
+BM;fr;Bermudes
+BT;fr;Bhoutan
+BO;fr;Bolivie
+BA;fr;Bosnie-Herzégovine
+BW;fr;Botswana
+BV;fr;Île Bouvet
+BR;fr;Brésil
+VG;fr;Îles Vierges Britanniques
+IO;fr;Territoire Britannique de l'Océan Indien
+BN;fr;Brunei
+BG;fr;Bulgarie
+BF;fr;Burkina Faso
+BI;fr;Burundi
+CL;fr;Chili
+CN;fr;Chine
+CK;fr;Îles Cook
+CR;fr;Costa Rica
+CI;fr;Côte d'Ivoire
+DK;fr;Danemark
+DE;fr;Allemagne
+DM;fr;Dominique
+DO;fr;République Dominicaine
+DJ;fr;Djibouti
+EC;fr;Équateur
+SV;fr;Salvador
+ER;fr;Érythrée
+EE;fr;Estonie
+FK;fr;Îles Malouines
+FO;fr;Îles Féroé
+FJ;fr;Fidji
+FI;fr;Finlande
+FR;fr;France
+TF;fr;Terres Australes et Antarctiques Françaises
+GF;fr;Guyane Française
+PF;fr;Polynésie Française
+GA;fr;Gabon
+GM;fr;Gambie
+GE;fr;Géorgie
+GH;fr;Ghana
+GI;fr;Gibraltar
+GD;fr;Grenade
+GR;fr;Grèce
+GL;fr;Groenland
+GB;fr;Royaume-Uni
+GP;fr;Guadeloupe
+GU;fr;Guam
+GT;fr;Guatemala
+GN;fr;Guinée
+GW;fr;Guinée-Bissau
+GY;fr;Guyana
+HT;fr;Haïti
+HM;fr;Île Heard et îles McDonald
+HN;fr;Honduras
+HK;fr;Hong Kong
+IN;fr;Inde
+ID;fr;Indonésie
+IQ;fr;Irak
+IR;fr;Iran
+IE;fr;Irlande
+IS;fr;Islande
+IL;fr;Israël
+IT;fr;Italie
+JM;fr;Jamaïque
+JP;fr;Japon
+YE;fr;Yémen
+JO;fr;Jordanie
+KY;fr;Îles Caïmanes
+KH;fr;Cambodge
+CM;fr;Cameroun
+CA;fr;Canada
+CV;fr;Cap-Vert
+KZ;fr;Kazakhstan
+QA;fr;Qatar
+KE;fr;Kenya
+KG;fr;Kirghizstan
+KI;fr;Kiribati
+CC;fr;Îles Cocos
+CO;fr;Colombie
+KM;fr;Union des Comores
+CD;fr;République Démocratique du Congo
+CG;fr;Congo
+HR;fr;Croatie
+CU;fr;Cuba
+KW;fr;Koweït
+LA;fr;Laos
+LS;fr;Lesotho
+LV;fr;Lettonie
+LB;fr;Liban
+LR;fr;Liberia
+LY;fr;Libye
+LI;fr;Liechtenstein
+LT;fr;Lituanie
+LU;fr;Luxembourg
+MO;fr;Macao
+MG;fr;Madagascar
+MW;fr;Malawi
+MY;fr;Malaisie
+MV;fr;Maldives
+ML;fr;Mali
+MT;fr;Malte
+MA;fr;Maroc
+MH;fr;Marshall
+MQ;fr;Martinique
+MR;fr;Mauritanie
+MU;fr;Maurice
+YT;fr;Mayotte
+MK;fr;Macédoine
+MX;fr;Mexique
+FM;fr;Micronésie
+MD;fr;Moldavie
+MC;fr;Monaco
+MN;fr;Mongolie
+MS;fr;Montserrat
+MZ;fr;Mozambique
+MM;fr;Birmanie
+NA;fr;Namibie
+NR;fr;Nauru
+NP;fr;Népal
+NC;fr;Nouvelle-Calédonie
+NZ;fr;Nouvelle-Zélande
+NI;fr;Nicaragua
+NL;fr;Hollande
+AN;fr;Antilles Néerlandaises
+NE;fr;Niger
+NG;fr;Nigeria
+NU;fr;Niue
+KP;fr;Corée du Nord
+MP;fr;Îles Mariannes du Nord
+NF;fr;Île de Norfolk
+NO;fr;Norvège
+OM;fr;Oman
+AT;fr;Autriche
+TL;fr;Timor oriental
+PK;fr;Pakistan
+PS;fr;Territoires Occupés de Palestine
+PW;fr;Palaos
+PA;fr;Panama
+PG;fr;Papouasie-Nouvelle-Guinée
+PY;fr;Paraguay
+PE;fr;Pérou
+PH;fr;Philippines
+PN;fr;Pitcairn
+PL;fr;Pologne
+PT;fr;Portugal
+PR;fr;Porto Rico
+RE;fr;Réunion
+RW;fr;Rwanda
+RO;fr;Roumanie
+RU;fr;Russie
+SB;fr;Salomon
+ZM;fr;Zambie
+WS;fr;Samoa
+SM;fr;Saint-Marin
+ST;fr;Sao Tomé-et-Principe
+SA;fr;Arabie Saoudite
+SE;fr;Suède
+CH;fr;Suisse
+SN;fr;Sénégal
+CS;fr;Serbie-et-Monténégro
+SC;fr;Seychelles
+SL;fr;Sierra Leone
+ZW;fr;Zimbabwe
+SG;fr;Singapour
+SK;fr;Slovaquie
+SI;fr;Slovénie
+SO;fr;Somalie
+ES;fr;Espagne
+LK;fr;Sri Lanka
+SH;fr;Sainte-Hélène
+KN;fr;Saint-Christophe-et-Niévès
+LC;fr;Sainte-Lucie
+PM;fr;Saint-Pierre-et-Miquelon
+VC;fr;Saint-Vincent-et-les Grenadines
+ZA;fr;Afrique du Sud
+SD;fr;Soudan
+GS;fr;Géorgie du Sud
+KR;fr;Corée du Sud
+SR;fr;Suriname
+SJ;fr;Svalbard et Jan Mayen
+SZ;fr;Swaziland
+SY;fr;Syrie
+TJ;fr;Tadjikistan
+TW;fr;Taïwan
+TZ;fr;Tanzanie
+TH;fr;Thaïlande
+TG;fr;Togo
+TK;fr;Tokelau
+TO;fr;Tonga
+TT;fr;Trinité-et-Tobago
+TD;fr;Tchad
+CZ;fr;République Tchèque
+TN;fr;Tunisie
+TR;fr;Turquie
+TM;fr;Turkménistan
+TC;fr;Îles Turques et Caïques
+TV;fr;Tuvalu
+UG;fr;Ouganda
+UA;fr;Ukraine
+HU;fr;Hongrie
+UY;fr;Uruguay
+US;fr;États-Unis
+UZ;fr;Ouzbékistan
+VU;fr;Vanuatu
+VA;fr;Vatican
+VE;fr;Venezuela
+AE;fr;Émirats Arabes Unis
+VN;fr;Viêt Nam
+WF;fr;Wallis-et-Futuna
+CX;fr;Île Christmas
+BY;fr;Biélorussie
+EH;fr;Sahara Occidental
+CF;fr;République Centrafricaine
+CY;fr;Chypre
+AF;it;Afghanistan
+EG;it;Egitto
+AX;it;Isole d' Aland
+AL;it;Albania
+DZ;it;Algeria
+VI;it;Isole Vergini Americane
+UM;it;Isole Minori degli Stati Uniti d'America
+AS;it;Samoa Americane
+AD;it;Andorra
+AO;it;Angola
+AI;it;Anguilla
+AQ;it;Antartide
+AG;it;Antigua e Barbuda
+GQ;it;Guinea Equatoriale
+AR;it;Argentina
+AM;it;Armenia
+AW;it;Aruba
+AZ;it;Azerbaijan
+ET;it;Etiopia
+AU;it;Australia
+BS;it;Bahamas
+BH;it;Bahrain
+BD;it;Bangladesh
+BB;it;Barbados
+BE;it;Belgio
+BZ;it;Belize
+BJ;it;Benin
+BM;it;Bermuda
+BT;it;Bhutan
+BO;it;Bolivia
+BA;it;Bosnia Erzegovina
+BW;it;Botswana
+BV;it;Isola di Bouvet
+BR;it;Brasile
+VG;it;Isole Vergini Britanniche
+IO;it;Territori Britannici dell'Oceano Indiano
+BN;it;Brunei Darussalam
+BG;it;Bulgaria
+BF;it;Burkina Faso
+BI;it;Burundi
+CL;it;Cile
+CN;it;Cina
+CK;it;Isole Cook
+CR;it;Costa Rica
+CI;it;Costa d'Avorio
+DK;it;Danimarca
+DE;it;Germania
+DM;it;Dominica
+DO;it;Repubblica Dominicana
+DJ;it;Gibuti
+EC;it;Ecuador
+SV;it;El Salvador
+ER;it;Eritrea
+EE;it;Estonia
+FK;it;Isole Falkland
+FO;it;Isole Faroe
+FJ;it;Figi
+FI;it;Finlandia
+FR;it;Francia
+TF;it;Territori Francesi del Sud
+GF;it;Guyana Francese
+PF;it;Polinesia Francese
+GA;it;Gabon
+GM;it;Gambia
+GE;it;Georgia
+GH;it;Ghana
+GI;it;Gibilterra
+GD;it;Grenada
+GR;it;Grecia
+GL;it;Groenlandia
+GB;it;Regno Unito
+GP;it;Guadalupa
+GU;it;Guam
+GT;it;Guatemala
+GN;it;Guinea
+GW;it;Guinea-Bissau
+GY;it;Guyana
+HT;it;Haiti
+HM;it;Isola Heard e Isole McDonald
+HN;it;Honduras
+HK;it;Hong Kong
+IN;it;India
+ID;it;Indonesia
+IQ;it;Iraq
+IR;it;Iran
+IE;it;Irlanda
+IS;it;Islanda
+IL;it;Israele
+IT;it;Italia
+JM;it;Giamaica
+JP;it;Giappone
+YE;it;Yemen
+JO;it;Giordania
+KY;it;Isole Cayman
+KH;it;Cambogia
+CM;it;Camerun
+CA;it;Canada
+CV;it;Capo Verde
+KZ;it;Kazakhistan
+QA;it;Qatar
+KE;it;Kenya
+KG;it;Kirghizistan
+KI;it;Kiribati
+CC;it;Isole Cocos
+CO;it;Colombia
+KM;it;Comore
+CD;it;Repubblica Democratica del Congo
+CG;it;Repubblica del Congo
+HR;it;Croazia
+CU;it;Cuba
+KW;it;Kuwait
+LA;it;Laos
+LS;it;Lesotho
+LV;it;Lettonia
+LB;it;Libano
+LR;it;Liberia
+LY;it;Libia
+LI;it;Liechtenstein
+LT;it;Lituania
+LU;it;Lussemburgo
+MO;it;Macao
+MG;it;Madagascar
+MW;it;Malawi
+MY;it;Malesia
+MV;it;Maldive
+ML;it;Mali
+MT;it;Malta
+MA;it;Marocco
+MH;it;Isole Marshall
+MQ;it;Martinica
+MR;it;Mauritania
+MU;it;Maurizius
+YT;it;Mayotte
+MK;it;Macedonia
+MX;it;Messico
+FM;it;Micronesia
+MD;it;Moldavia
+MC;it;Monaco
+MN;it;Mongolia
+MS;it;Montserrat
+MZ;it;Mozambico
+MM;it;Myanmar
+NA;it;Namibia
+NR;it;Nauru
+NP;it;Nepal
+NC;it;Nuova Caledonia
+NZ;it;Nuova Zelanda
+NI;it;Nicaragua
+NL;it;Paesi Bassi
+AN;it;Antille Olandesi
+NE;it;Niger
+NG;it;Nigeria
+NU;it;Niue
+KP;it;Corea del Nord
+MP;it;Isole Marianne Settentrionali
+NF;it;Isola Norfolk
+NO;it;Norvegia
+OM;it;Oman
+AT;it;Austria
+TL;it;Timor Est
+PK;it;Pakistan
+PS;it;Territori Palestinesi Occupati
+PW;it;Palau
+PA;it;Panamá
+PG;it;Papua Nuova Guinea
+PY;it;Paraguay
+PE;it;Perù
+PH;it;Filippine
+PN;it;Pitcairn
+PL;it;Polonia
+PT;it;Portogallo
+PR;it;Porto Rico
+RE;it;Isola Reunion
+RW;it;Ruanda
+RO;it;Romania
+RU;it;Russia
+SB;it;Isole Solomon
+ZM;it;Zambia
+WS;it;Samoa
+SM;it;San Marino
+ST;it;Sao Tome e Principe
+SA;it;Arabia Saudita
+SE;it;Svezia
