@@ -206,9 +206,9 @@
 			</plugin>
 			<plugin>
 				<artifactId>maven-deploy-plugin</artifactId>
-				<configuration>
-					<skip>true</skip>
-				</configuration>
+				<!--<configuration>-->
+					<!--<skip>true</skip>-->
+				<!--</configuration>-->
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -273,16 +273,16 @@
 					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
 					<autoReleaseAfterClose>true</autoReleaseAfterClose>
 				</configuration>
-				<executions>
-					<execution>
-						<id>deploy-to-sonatype</id>
-						<phase>deploy</phase>
-						<goals>
-							<goal>deploy</goal>
-							<goal>release</goal>
-						</goals>
-					</execution>
-				</executions>
+				<!--<executions>-->
+					<!--<execution>-->
+						<!--<id>deploy-to-sonatype</id>-->
+						<!--<phase>deploy</phase>-->
+						<!--<goals>-->
+							<!--<goal>deploy</goal>-->
+							<!--<goal>release</goal>-->
+						<!--</goals>-->
+					<!--</execution>-->
+				<!--</executions>-->
 			</plugin>
 
 
