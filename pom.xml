@@ -4,7 +4,7 @@
 
 	<groupId>com.namics.oss</groupId>
 	<artifactId>java-random</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.1</version>
 
 	<name>${project.artifactId}</name>
 	<description>This modules aims to provide a universal mechanism to create random test dummies of java objects.</description>
