@@ -1,4 +1,5 @@
 [![Build Status][travis-image]][travis-url]
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.namics.oss/java-random/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.namics.oss/java-random)
 
 # Advanced Random Test Data Utils
 
