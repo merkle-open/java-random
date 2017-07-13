@@ -21,9 +21,20 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.beans.PropertyDescriptor;
-import java.lang.reflect.*;
+import java.lang.reflect.Array;
+import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.lang.reflect.TypeVariable;
 import java.math.BigDecimal;
-import java.util.*;
+import java.text.Normalizer;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 import static com.namics.commons.random.support.BeanUtils.makeAccessible;
 
@@ -325,7 +336,7 @@ public class RandomData {
 
 	public static String email(String firstname, String lastname, String domain) {
 		String email = firstname + "." + lastname + "@" + domain;
-		return email.toLowerCase().replaceAll("[^A-Za-z\\.@\\-\\+]+", "");
+		return removeAccents(email).toLowerCase().replaceAll("[^A-Za-z\\.@\\-\\+]+", "");
 	}
 
 	public static String firstname() {
@@ -345,7 +356,7 @@ public class RandomData {
 	}
 
 	public static String username() {
-		return firstname().toLowerCase() + randomInteger(0, 4711);
+		return removeAccents(firstname().toLowerCase()) + randomInteger(0, 9999);
 	}
 
 	public static String name() {
@@ -520,6 +531,15 @@ public class RandomData {
 			}
 		}
 		return map;
+	}
+
+	public static String removeAccents(final String value) {
+		if (value == null) {
+			return null;
+		}
+		String result = Normalizer.normalize(value, Normalizer.Form.NFD);
+		result = result.replaceAll("\\p{M}", "");
+		return result;
 	}
 
 

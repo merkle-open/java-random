@@ -16,6 +16,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.*;
 
+import static com.namics.commons.random.RandomData.removeAccents;
 import static com.namics.commons.random.RandomData.email;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
@@ -227,6 +228,15 @@ public class RandomDataTest {
 	@Test
 	public void testEmail() throws Exception {
 		assertThat(email("Hans!","O'Neal","dasd'#.com"),equalTo("hans.oneal@dasd.com"));
+
+	}
+
+	@Test
+	public void testRemoveAccents() throws Exception {
+		assertThat(removeAccents("André"), equalTo("Andre"));
+		assertThat(removeAccents("Schäfer"), equalTo("Schafer"));
+		assertThat(removeAccents(""), equalTo(""));
+		assertThat(removeAccents(null), nullValue());
 
 	}
 }
