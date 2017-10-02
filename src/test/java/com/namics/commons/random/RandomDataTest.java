@@ -7,17 +7,34 @@ package com.namics.commons.random;
 import com.namics.commons.random.known.Person;
 import com.namics.commons.random.known.TestAttributeKnown;
 import com.namics.commons.random.known.TestBean;
-import com.namics.commons.random.known.TestBeanNoDefaultConstructor;
-import com.namics.commons.random.test.*;
+import com.namics.commons.random.test.ComparableCollectionsTestBean;
+import com.namics.commons.random.test.GenericChild;
+import com.namics.commons.random.test.GenericGrandDaughter;
+import com.namics.commons.random.test.GenericGrandSon;
+import com.namics.commons.random.test.GenericsTestBean;
+import com.namics.commons.random.test.GenericsWrappedTestBean;
+import com.namics.commons.random.test.NoDefaultConstructor;
+import com.namics.commons.random.test.NoPublicDefaultConstructor;
+import com.namics.commons.random.test.NonComparable;
+import com.namics.commons.random.test.RecursionTestBean;
 import org.joda.time.DateTime;
 import org.junit.Test;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.SortedMap;
+import java.util.SortedSet;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
-import static com.namics.commons.random.RandomData.removeAccents;
-import static com.namics.commons.random.RandomData.email;
+import static com.namics.commons.random.RandomData.*;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
@@ -83,15 +100,7 @@ public class RandomDataTest {
 		assertNotNull(RandomData.random(TestBean.class));
 	}
 
-	@Test(expected = IllegalArgumentException.class)
-	public void testRandomCreateForClassNotExistsNoDefaultConstructor() {
-		try {
-			RandomData.random(TestBeanNoDefaultConstructor.class, true);
-		} catch (Exception e) {
-			throw e;
-		}
-	}
-
+	
 	@Test
 	public void testBasicGenetator() throws Exception {
 		List<Class<? extends Serializable>> classes = Arrays.asList(BigDecimal.class, Boolean.class, Date.class, DateTime.class, Double.class, Float.class, Integer.class, Locale.class, Long.class, String.class);
@@ -237,6 +246,21 @@ public class RandomDataTest {
 		assertThat(removeAccents("Schäfer"), equalTo("Schafer"));
 		assertThat(removeAccents(""), equalTo(""));
 		assertThat(removeAccents(null), nullValue());
-
 	}
+
+	@Test
+	public void testNoPublicDefaultConstructor() {
+		NoPublicDefaultConstructor random = RandomData.random(NoPublicDefaultConstructor.class);
+		assertNotNull(random);
+		Assert.assertPropertiesNotNull(random);
+	}
+
+	@Test
+	public void testNoDefaultConstructor() {
+		NoDefaultConstructor random = RandomData.random(NoDefaultConstructor.class);
+		assertNotNull(random);
+		Assert.assertPropertiesNotNull(random);
+	}
+
+
 }

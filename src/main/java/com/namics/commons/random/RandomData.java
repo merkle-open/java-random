@@ -22,7 +22,10 @@ import org.slf4j.LoggerFactory;
 
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Array;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
@@ -114,19 +117,50 @@ public class RandomData {
 				}
 				return (T) array;
 			} else {
-				try {
-					T bean = clazz.newInstance();
-					populateBean(bean);
-					return bean;
-				} catch (InstantiationException | IllegalAccessException e1) {
-					throw new IllegalArgumentException(
-							"Could not create random instance for " + clazz + ", maybe there is no default constructor available, see exception cause for details." + GENERATOR_REGISTER_INFO,
-							e1);
-				}
+				T bean = createInstance(clazz);
+				populateBean(bean);
+				return bean;
 			}
 		}
 		throw new IllegalArgumentException("No random generator for type " + clazz + GENERATOR_REGISTER_INFO);
 
+	}
+
+	private static <T> T createInstance(Class<T> clazz) {
+		try {
+			Constructor<T> constructor = clazz.getDeclaredConstructor();
+			constructor.setAccessible(true);
+			return constructor.newInstance();
+		} catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
+			throw new IllegalArgumentException(
+					"Could not create random instance for " + clazz + ", maybe there is no default constructor available, see exception cause for details." + GENERATOR_REGISTER_INFO, e);
+		} catch (NoSuchMethodException e) {
+			LOG.debug("No constructor without arguments {}", e, null);
+			return createWithNoDefaultConstructor(clazz);
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	private static <T> T createWithNoDefaultConstructor(Class<T> clazz) {
+		try {
+			Constructor<T>[] constructors = (Constructor<T>[]) clazz.getConstructors();
+			for (Constructor<T> constructor : constructors) {
+				if (constructor != null) {
+					Parameter[] parameters = constructor.getParameters();
+					Object[] args = new Object[parameters.length];
+					for (int i = 0; i < parameters.length; i++) {
+						args[i] = random(parameters[i].getType(), parameters[i].getName());
+					}
+					constructor.setAccessible(true);
+					return constructor.newInstance(args);
+				}
+			}
+		} catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
+			throw new IllegalArgumentException(
+					"Could not create random instance for " + clazz + ", maybe there is no default constructor available, see exception cause for details." + GENERATOR_REGISTER_INFO, e);
+		}
+		throw new IllegalArgumentException(
+				"Could not create random instance for " + clazz + ", maybe there is no default constructor available, see exception cause for details." + GENERATOR_REGISTER_INFO);
 	}
 
 	/**
