@@ -20,7 +20,15 @@ This modules aims to provide a universal mechanism to create random test dummies
 	
 ### Requirements	
 
-Java: JDK 8            	 
+#### Minumum Java Version
+
+- Java: JDK 8  
+
+#### Java 9 Notes
+
+- Module is not prepared for java 9 yet.
+- Due to heavy use of reflection in this lib it might not be that simple to adopt java 9 
+          	 
 
 ## Create random values
 
