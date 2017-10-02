@@ -23,7 +23,7 @@ cache:
 branches:
   only:
     - master
-    - develop                                                            x
+    - develop                                                            
     - /^feature.*/
     - /^hotfix.*/
 notifications:
