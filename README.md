@@ -4,7 +4,7 @@ System        | Status
 --------------|------------------------------------------------        
 CI master     | [![Build Status][travis-master]][travis-url]
 CI develop    | [![Build Status][travis-develop]][travis-url]
-Dependency    | [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.namics.oss/java-random/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.namics.oss/java-random)
+Dependency    | [![Maven Central][maven-central-version]][maven-central]
 
 This modules aims to provide a universal mechanism to create random test dummies of java objects.
 
@@ -17,7 +17,9 @@ This modules aims to provide a universal mechanism to create random test dummies
 		<artifactId>java-random</artifactId>
 		<version>1.0.0</version>
 	</dependency>
-	
+
+[![Maven Central][maven-central-version]][maven-central]	
+
 ### Requirements	
 
 #### Minumum Java Version
@@ -86,3 +88,5 @@ There are several ways to register custom `RandomGenerator<SupportedType>`s:
 [travis-master]: https://travis-ci.org/namics/java-random.svg?branch=master
 [travis-develop]: https://travis-ci.org/namics/java-random.svg?branch=develop
 [travis-url]: https://travis-ci.org/namics/java-random
+[maven-central-version]: https://maven-badges.herokuapp.com/maven-central/com.namics.oss/java-random/badge.svg
+[maven-central]: https://maven-badges.herokuapp.com/maven-central/com.namics.oss/java-random
