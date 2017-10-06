@@ -31,5 +31,5 @@ notifications:
     on_success: change
     on_failure: change
 after_failure:
-  - find . -size +1k -regex  ".*/surefire-reports/.*\.txt" -exec cat {} +
+  - find . -size +1k -regex  ".*-reports/.*\.txt" -exec cat {} +
 
