@@ -9,27 +9,26 @@ env:
     - secure: "h/CYhFpYBJx7BVoSBqD/0mr820FOK2wuim096ftlGT0LmC7wJkuhzG4SR82Wrp8DJY0qzPG0et60+MmdCsrFtHAokcqYY8mNV/U99DdN9YY8IjvEaBm7oyjWchLMO1PqzHWRuxZz6Ou12QJf1eDUEOeuM2WKtIwL4d0xbt8QIu+zTgKm0Uyli89sk0iiUaUTbLMSIRjwZrV6o3/cO+Qki88j0Ui/Px8dZz9+/VY/W5drPQOMpMCAXEgCHRKmG9lXtmPFaxjie5vjMSpyeEMJKfj6/pSBf+v2QRa5C1CeleHK1O9TfzpGzR4iIYNyaf+8czZTXbp74+KeXx60Te9jeO2GrmA1PPz/Z91xRljSqAdp/bNUUlKK9VoTDqsaQM+wqBHwtgw9O0elavschaSBjRtisQBAaIJ+18U77nHmh6rWIxxj+epr4EekaI6k4xI/WspP6gNqHu1+tugt3T3qsQjcs3n9o66+0H1/on0Td4Ubz//4T34SabdMfFdjB5IgKZxDbSuZV1kmYN5fTcMTSsT5m3+zEDkkP6oefF1JjynTAvcZHVitZ/usioxiykGRrBwh1wRR5Bw/NWlfYuxDn0pepXJcGhmAFxPEFKHIp0L5q52jZhI4kumDbaK4Ca5ThHaZ6ph14ogSaGG69OsqvjT1q0BZKT83NM4yIKI7nQk="
     - # ^^ GPG_PASSPHRASE
     - secure: "rblfwaE3QBj02himP9DiaJHF5211UjwEL3Aa2oJxIeWCNoG+zy/1BTymWO2hyLX1RpE1uwIgmYl6pstel6Gxzubu8z45eUOp5MNVyOHHKHXfLq0rR0ObJLKF7R6EZJ1Iqdn0/n2ysLOkBcFuVwEEEHdQ0mjCoIwh1ZoHlGg4YKRz9YZJQdU/OT+KdPYxjcj9wgAimqs7fymuFfroIfV0N/xEjC17janfcyJO6lNiS/hq+Q7cPeAVvgph1MZDrTaYMwp33jQgWMqjW/DPzlSjjySVZWeI+WXunhNH4jGR12MnS4h1gZG/+McZdLONuOz2EKMQ3isaYQheF/zjTWHiPirBVUMegz1ZCnDdX/6VjeEYxF3PVAcpipLWsTchcdIFmWmcPmF5Tz4ZgmYvAYjabsW+V3iWAmD6DQFcHTBKu4bZTyoexZq/QZ778Ee1K0JDKifzY1sYaxmKccdEjND4ruFb/8n60Ub0kEAjA2qyEv5t1pTtN+nmZ2K02KNORS/k5HnmFrPLrzAl68smP9FWHQr+jo5d7Wf2SYtfIzTR2jB2AFs+12mGSUBnjilzON4jI/LcTWQfVmPICjD+Jpddc/GOg75NGARsthPfdl0v06XVCedeGPOeYJmPJBlSN0vjBLwfSyaKYzfdLANKK8Qsbsd92Jlnx7vVgBAqnzi0Xhw="
-before_install:
-  - openssl aes-256-cbc -K $encrypted_60abb3d8cccc_key -iv $encrypted_60abb3d8cccc_iv -in codesigning.asc.enc -out codesigning.asc -d
-  - gpg --yes --batch --import codesigning.asc
 jdk:
   - oraclejdk8
 install: mvn clean install -P !ossrh -DskipTests=true -Dmaven.javadoc.skip=true -B -V -U
 script:
-- mvn deploy -P ossrh --settings mvnsettings.xml
+- mvn verify -P !ossrh -B
+
 cache:
   directories:
     - ~/.m2/repository
-branches:
-  only:
-    - master
-    - develop                                                            
-    - /^feature.*/
-    - /^hotfix.*/
+
 notifications:
   email:
-    on_success: change
-    on_failure: change
+    on_success: never
+    on_failure: never
+
+after_success:
+  - ./.travis/deploy.sh
+
 after_failure:
   - find . -size +1k -regex  ".*-reports/.*\.txt" -exec cat {} +
+
+
 
