@@ -18,6 +18,11 @@ deploy:
     provider: script
     script: .travis/deploy.sh
     skip_cleanup: true
+    on:
+      branches:    
+        only:
+          - master
+          - develop
 
 after_failure:
   - find . -size +1k -regex  ".*-reports/.*\.txt" -exec cat {} +
