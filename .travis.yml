@@ -13,19 +13,10 @@ jdk:
   - oraclejdk8
 install: mvn clean install -P !ossrh -DskipTests=true -Dmaven.javadoc.skip=true -B -V -U  --settings .travis/mvnsettings.xml
 script: mvn verify -P !ossrh -B --settings .travis/mvnsettings.xml
-deploy:
-  - provider: script
-    script: .travis/deploy.sh
-    skip_cleanup: true
-    on:
-      branch: master
-  - provider: script
-    script: .travis/deploy.sh
-    skip_cleanup: true
-    on:
-      branch: develop
 after_failure:
   - find . -size +1k -regex  ".*-reports/.*\.txt" -exec cat {} +
+after_success:
+    script: .travis/deploy.sh
 cache:
   directories:
     - ~/.m2/repository
