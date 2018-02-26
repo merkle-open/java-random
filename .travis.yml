@@ -16,7 +16,7 @@ script: mvn verify -P !ossrh -B --settings .travis/mvnsettings.xml
 after_failure:
   - find . -size +1k -regex  ".*-reports/.*\.txt" -exec cat {} +
 after_success:
-    script: .travis/deploy.sh
+  sh .travis/deploy.sh
 cache:
   directories:
     - ~/.m2/repository
