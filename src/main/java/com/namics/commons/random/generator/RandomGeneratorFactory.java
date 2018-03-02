@@ -31,12 +31,7 @@ public abstract class RandomGeneratorFactory {
 	public static final String DEFAULT_SCAN_PACKAGE = "com.namics.commons.random.generator.basic";
 
 	private static final Map<String, Reflections> PACKAGE_REFLECTIONS = new TreeMap<>();
-	private static final Map<Class<?>, RandomGenerator> generators = new TreeMap<>(new Comparator<Class<?>>() {
-		@Override
-		public int compare(Class<?> o1, Class<?> o2) {
-			return o1.getName().compareTo(o2.getName());
-		}
-	});
+	private static final Map<Class<?>, RandomGenerator> generators = new TreeMap<>(Comparator.comparing(Class::getName));
 
 	static {
 		ReflectionsInitializer.init();
@@ -71,7 +66,7 @@ public abstract class RandomGeneratorFactory {
 				RandomGenerator generator = generatorClazz.newInstance();
 				addRandomGenerator(generator);
 			}
-		} catch (InstantiationException | IllegalAccessException e) {
+		} catch (InstantiationException | IllegalAccessException | NoClassDefFoundError e) {
 			LOG.warn("Could not add generator {} {}", generatorClazz, e.toString());
 		}
 	}
