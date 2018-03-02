@@ -15,8 +15,7 @@ import com.namics.commons.random.support.Names;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.math.RandomUtils;
-import org.joda.time.DateTime;
-import org.joda.time.Years;
+import org.joda.time.LocalDateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -225,26 +224,9 @@ public class RandomData {
 		return random(Date.class);
 	}
 
-	public static DateTime dateTime() {
-		return random(DateTime.class);
+	public static LocalDateTime dateTime() {
+		return random(LocalDateTime.class);
 	}
-
-	public static DateTime futureDateTime() {
-		DateTime now = DateTime.now();
-		long min = now.getMillis();
-		long max = now.plus(Years.TWO).getMillis();
-		double random = randomDouble(min, max);
-		return new DateTime(Double.valueOf(random).longValue());
-	}
-
-	public static DateTime pastDateTime() {
-		DateTime now = DateTime.now();
-		long min = now.minus(Years.TWO).getMillis();
-		long max = now.getMillis();
-		double random = randomDouble(min, max);
-		return new DateTime(Double.valueOf(random).longValue());
-	}
-
 
 	public static String alphabetic(int count) {
 		return RandomStringUtils.randomAlphabetic(count);
