@@ -7,7 +7,7 @@ if [ "$TRAVIS_PULL_REQUEST" == 'false' ]; then
 		NEW_VERSION=${CURRENT_VERSION%'-SNAPSHOT'}
 		NEXT_VERSION=`bash ci/semver.sh -p $NEW_VERSION`
 		NEXT_SNAPSHOT="$NEXT_VERSION-SNAPSHOT"
-		echo "perform releas of $NEW_VERSION from $CURRENT_VERSION and set next develop version $NEXT_SNAPSHOT"
+		echo "perform release of $NEW_VERSION from $CURRENT_VERSION and set next develop version $NEXT_SNAPSHOT"
 
 		mvn versions:set -DnewVersion=$NEW_VERSION
 		mvn versions:commit
@@ -16,7 +16,7 @@ if [ "$TRAVIS_PULL_REQUEST" == 'false' ]; then
 		git commit -a -m "Release $NEW_VERSION: set master to new release version"
 
 		echo "Update version in README.md"
-		sed -i -e 's|<version>[0-9A-Za-z._-]\{1,\}</version>|<version>TEST</version>|g' README.md && rm -f README.md-e
+		sed -i -e "s|<version>[0-9A-Za-z._-]\{1,\}</version>|<version>$NEW_VERSION</version>|g" README.md && rm -f README.md-e
 		git commit -a -m "Release $NEW_VERSION: Update README.md"
 
 		echo "Build maven site"

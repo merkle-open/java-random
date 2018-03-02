@@ -15,5 +15,4 @@ if [ "$TRAVIS_PULL_REQUEST" == 'false' ]; then
 
 	CURRENT_VERSION=`bash ci/current-version.sh`
 	git commit -a -m "Version $CURRENT_VERSION: Update docs"
-	git push github --force
 fi
