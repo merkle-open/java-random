@@ -6,6 +6,7 @@ package com.namics.commons.random.generator.basic;
 
 import com.namics.commons.random.generator.RandomGenerator;
 
+import java.time.ZoneId;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -19,7 +20,7 @@ public class DateGenerator implements RandomGenerator<Date> {
 
 	@Override
 	public Date random() {
-		return new DateTimeGenerator().random().toDate();
+		return Date.from(new LocalDateTimeGenerator().random().atZone(ZoneId.systemDefault()).toInstant());
 	}
 
 	@Override
