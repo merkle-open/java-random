@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 if [ "$TRAVIS_PULL_REQUEST" == 'false' ]; then
-    sudo -E apt-get -yq --no-install-suggests --no-install-recommends --force-yes install libxml2-utils
-
 	CURRENT_VERSION=`xmllint --xpath '/*[local-name()="project"]/*[local-name()="version"]/text()' pom.xml`
 
 	if [[ $CURRENT_VERSION == *-SNAPSHOT ]]; then

@@ -29,6 +29,11 @@ notifications:
 deploy:
   - provider: script
     skip-cleanup: true
+    script: sudo -E apt-get -yq --no-install-suggests --no-install-recommends --force-yes install
+    on:
+      branch: master
+  - provider: script
+    skip-cleanup: true
     script: bash ci/mvn-release.sh
     on:
       branch: master
@@ -42,3 +47,7 @@ deploy:
     script: bash ci/mvn-deploy.sh
     on:
       tags: true
+addons:
+  apt:
+    packages:
+    - libxml2-utils
