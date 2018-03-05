@@ -345,7 +345,7 @@ import static com.namics.commons.random.support.BeanUtils.makeAccessible;
 	public static String email(String firstname, String lastname) {
 <span class="fc" id="L346">		String tld = &quot;com&quot;;</span>
 <span class="pc bpc" id="L347" title="1 of 2 branches missed.">		if (randomInteger(0, 10) % 2 == 0) {</span>
-<span class="fc" id="L348">			tld = countryCode();</span>
+<span class="nc" id="L348">			tld = countryCode();</span>
 		}
 <span class="fc" id="L350">		return email(firstname, lastname, lastname + &quot;.&quot; + tld);</span>
 	}
@@ -392,7 +392,7 @@ import static com.namics.commons.random.support.BeanUtils.makeAccessible;
 	}
 
 	public static String streetNumber() {
-<span class="fc bfc" id="L395" title="All 2 branches covered.">		return Integer.toString(randomInteger(1, 999)) + (randomInteger(0, 4) == 0 ? alphabetic(1) : &quot;&quot;);</span>
+<span class="pc bpc" id="L395" title="1 of 2 branches missed.">		return Integer.toString(randomInteger(1, 999)) + (randomInteger(0, 4) == 0 ? alphabetic(1) : &quot;&quot;);</span>
 	}
 
 	public static String address() {
@@ -404,7 +404,7 @@ import static com.namics.commons.random.support.BeanUtils.makeAccessible;
 	}
 
 	public static String zipCH() {
-<span class="nc" id="L407">		return Integer.toString(randomInteger(1000, 9999));</span>
+<span class="fc" id="L407">		return Integer.toString(randomInteger(1000, 9999));</span>
 	}
 
 	public static String zipDE() {
@@ -415,9 +415,9 @@ import static com.namics.commons.random.support.BeanUtils.makeAccessible;
 <span class="fc" id="L415">		final int type = randomInteger(0, 1);</span>
 <span class="pc bpc" id="L416" title="1 of 2 branches missed.">		switch (type) {</span>
 		case 0:
-<span class="nc" id="L418">			return zipCH();</span>
+<span class="fc" id="L418">			return zipCH();</span>
 		default:
-<span class="fc" id="L420">			return zipDE();</span>
+<span class="nc" id="L420">			return zipDE();</span>
 		}
 	}
 
