@@ -15,10 +15,10 @@
 -docencoding
 'UTF-8'
 -doctitle
-'java-random 1.1.1 API'
+'java-random 1.1.2 API'
 -linkoffline
 'https://docs.oracle.com/javase/8/docs/api' '/home/travis/build/namics/java-random/target/javadoc-bundle-options'
 -use
 -version
 -windowtitle
-'java-random 1.1.1 API'
+'java-random 1.1.2 API'
