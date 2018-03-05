@@ -25,7 +25,7 @@ if [ "$TRAVIS_PULL_REQUEST" == 'false' ]; then
 		git tag -a $NEW_VERSION -m "Release $NEW_VERSION: tag release"
 
 		echo "merge master back to develop"
-		git checkout develop
+		git checkout -f -b develop github/develop
 		git merge master
 
 		mvn versions:set -DnewVersion=$NEXT_SNAPSHOT
