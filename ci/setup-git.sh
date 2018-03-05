@@ -9,6 +9,6 @@ git remote add github $GITHUB
 git fetch github
 
 if [ "$TRAVIS_PULL_REQUEST" == 'false' ]; then
-	git checkout -qf -b $TRAVIS_BRANCH github/$TRAVIS_BRANCH
+	git checkout -qf $TRAVIS_BRANCH
 fi;
 
