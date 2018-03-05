@@ -345,7 +345,7 @@ import static com.namics.commons.random.support.BeanUtils.makeAccessible;
 	public static String email(String firstname, String lastname) {
 <span class="fc" id="L346">		String tld = &quot;com&quot;;</span>
 <span class="pc bpc" id="L347" title="1 of 2 branches missed.">		if (randomInteger(0, 10) % 2 == 0) {</span>
-<span class="fc" id="L348">			tld = countryCode();</span>
+<span class="nc" id="L348">			tld = countryCode();</span>
 		}
 <span class="fc" id="L350">		return email(firstname, lastname, lastname + &quot;.&quot; + tld);</span>
 	}
