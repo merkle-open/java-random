@@ -15,7 +15,7 @@ This modules aims to provide a universal mechanism to create random test dummies
 	<dependency>
 		<groupId>com.namics.oss</groupId>
 		<artifactId>java-random</artifactId>
-		<version>1.1.3</version>
+		<version>1.1.4</version>
 	</dependency>
 
 [![Maven Central][maven-central-version]][maven-central]	
