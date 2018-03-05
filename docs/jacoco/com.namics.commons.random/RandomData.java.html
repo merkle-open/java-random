@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RandomData.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">java-random</a> &gt; <a href="index.source.html" class="el_package">com.namics.commons.random</a> &gt; <span class="el_source">RandomData.java</span></div><h1>RandomData.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2000-2012 Namics AG. All rights reserved.
+ */
+
+package com.namics.commons.random;
+
+import com.googlecode.gentyref.GenericTypeReflector;
+import com.namics.commons.random.generator.InformedRandomGenerator;
+import com.namics.commons.random.generator.RandomGenerator;
+import com.namics.commons.random.generator.RandomGeneratorFactory;
+import com.namics.commons.random.support.BarcodeUtils;
+import com.namics.commons.random.support.BeanUtils;
+import com.namics.commons.random.support.LoremIpsum;
+import com.namics.commons.random.support.Names;
+import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang.RandomStringUtils;
+import org.apache.commons.lang.math.RandomUtils;
+import org.joda.time.LocalDateTime;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.Array;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.lang.reflect.TypeVariable;
+import java.math.BigDecimal;
+import java.text.Normalizer;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
+import static com.namics.commons.random.support.BeanUtils.makeAccessible;
+
+/**
+ * Utility class to generate random data.
+ * TODO: improve documentation.
+ *
+ * @author aschaefer
+ * @author pnueesch
+ * @since 21.02.14 13:43
+ */
+<span class="nc" id="L51">public class RandomData {</span>
+<span class="fc" id="L52">	private static final Logger LOG = LoggerFactory.getLogger(RandomData.class);</span>
+
+	/**
+	 * Creates a random instance of the class provided, if a suitable {@link RandomGenerator} is registered.
+	 * A suitable generator can be registered in several ways:
+	 * &lt;li&gt;automatically when placed in same package as the SupportedType&lt;/li&gt;
+	 * &lt;li&gt;Manually by registering either class or instance directly to {@link com.namics.commons.random.RandomData#addRandomGenerator}&lt;/li&gt;
+	 * &lt;li&gt;Manually by registering package for scanning  to {@link com.namics.commons.random.RandomData#addRandomGenerators(String)}&lt;/li&gt;
+	 *
+	 * @param type class to create a random object for.
+	 * @param info optional additional information for the object to create, e.g. a field name.
+	 * @return Random instance of the class.
+	 * @throws java.lang.IllegalArgumentException if no suitable {@link RandomGenerator} is registered.
+	 */
+	public static &lt;T&gt; T random(Type type, Object... info) throws IllegalArgumentException {
+<span class="fc bfc" id="L67" title="All 2 branches covered.">		if (type instanceof ParameterizedType) {</span>
+<span class="fc" id="L68">			ParameterizedType parameterizedType = (ParameterizedType) type;</span>
+<span class="fc" id="L69">			Type[] genericTypes = parameterizedType.getActualTypeArguments();</span>
+<span class="fc" id="L70">			Object[] information = new Object[0];</span>
+<span class="fc" id="L71">			information = ArrayUtils.addAll(information, genericTypes);</span>
+<span class="fc" id="L72">			information = ArrayUtils.addAll(information, info);</span>
+<span class="fc" id="L73">			return (T) random((Class) parameterizedType.getRawType(), information);</span>
+<span class="pc bpc" id="L74" title="1 of 2 branches missed.">		} else if (type instanceof Class) {</span>
+<span class="fc" id="L75">			return (T) random((Class) type, info);</span>
+		}
+<span class="nc" id="L77">		throw new IllegalArgumentException(type.toString() + &quot; not supported, only ParameterizedType and Class are supported.&quot;);</span>
+	}
+
+	/**
+	 * Creates a random instance of the class provided, if a suitable {@link RandomGenerator} is registered.
+	 * A suitable generator can be registered in several ways:
+	 * &lt;li&gt;automatically when placed in same package as the SupportedType&lt;/li&gt;
+	 * &lt;li&gt;Manually by registering either class or instance directly to {@link com.namics.commons.random.RandomData#addRandomGenerator}&lt;/li&gt;
+	 * &lt;li&gt;Manually by registering package for scanning  to {@link com.namics.commons.random.RandomData#addRandomGenerators(String)}&lt;/li&gt;
+	 *
+	 * @param clazz class to create a random object for.
+	 * @param info
+	 * @return Random instance of the class.
+	 * @throws java.lang.IllegalArgumentException if no suitable {@link RandomGenerator} is registered.
+	 */
+	public static &lt;T&gt; T random(Class&lt;T&gt; clazz, Object... info) throws IllegalArgumentException {
+<span class="pc bpc" id="L93" title="1 of 2 branches missed.">		if (clazz == null) {</span>
+<span class="nc" id="L94">			return null;</span>
+		}
+
+		// check for enum
+<span class="fc" id="L98">		T[] enumConstants = clazz.getEnumConstants();</span>
+<span class="pc bpc" id="L99" title="1 of 2 branches missed.">		if (enumConstants != null) {</span>
+<span class="nc" id="L100">			return RandomData.random(enumConstants);</span>
+		}
+
+<span class="fc" id="L103">		RandomGenerator&lt;T&gt; generator = RandomGeneratorFactory.generator(clazz);</span>
+<span class="fc bfc" id="L104" title="All 2 branches covered.">		if (generator != null) {</span>
+<span class="pc bpc" id="L105" title="1 of 4 branches missed.">			if (info != null &amp;&amp; generator instanceof InformedRandomGenerator) {</span>
+<span class="fc" id="L106">				return ((InformedRandomGenerator&lt;T&gt;) generator).random(info);</span>
+			}
+<span class="fc" id="L108">			return generator.random();</span>
+		}
+<span class="pc bpc" id="L110" title="1 of 2 branches missed.">		if (Class.class != clazz) {</span>
+<span class="fc bfc" id="L111" title="All 2 branches covered.">			if (clazz.isArray()) {</span>
+<span class="fc" id="L112">				int length = RandomData.randomInteger(1, 5);</span>
+<span class="fc" id="L113">				Object array = Array.newInstance(clazz.getComponentType(), length);</span>
+<span class="fc bfc" id="L114" title="All 2 branches covered.">				for (int i = 0; i &lt; length; i++) {</span>
+<span class="fc" id="L115">					Array.set(array, i, RandomData.random(clazz.getComponentType()));</span>
+				}
+<span class="fc" id="L117">				return (T) array;</span>
+			} else {
+<span class="fc" id="L119">				T bean = createInstance(clazz);</span>
+<span class="fc" id="L120">				populateBean(bean);</span>
+<span class="fc" id="L121">				return bean;</span>
+			}
+		}
+<span class="nc" id="L124">		throw new IllegalArgumentException(&quot;No random generator for type &quot; + clazz + GENERATOR_REGISTER_INFO);</span>
+
+	}
+
+	private static &lt;T&gt; T createInstance(Class&lt;T&gt; clazz) {
+		try {
+<span class="fc" id="L130">			Constructor&lt;T&gt; constructor = clazz.getDeclaredConstructor();</span>
+<span class="fc" id="L131">			constructor.setAccessible(true);</span>
+<span class="fc" id="L132">			return constructor.newInstance();</span>
+<span class="nc" id="L133">		} catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {</span>
+<span class="nc" id="L134">			throw new IllegalArgumentException(</span>
+					&quot;Could not create random instance for &quot; + clazz + &quot;, maybe there is no default constructor available, see exception cause for details.&quot; + GENERATOR_REGISTER_INFO, e);
+<span class="fc" id="L136">		} catch (NoSuchMethodException e) {</span>
+<span class="fc" id="L137">			LOG.debug(&quot;No constructor without arguments {}&quot;, e, null);</span>
+<span class="fc" id="L138">			return createWithNoDefaultConstructor(clazz);</span>
+		}
+	}
+
+	@SuppressWarnings(&quot;unchecked&quot;)
+	private static &lt;T&gt; T createWithNoDefaultConstructor(Class&lt;T&gt; clazz) {
+		try {
+<span class="fc" id="L145">			Constructor&lt;T&gt;[] constructors = (Constructor&lt;T&gt;[]) clazz.getConstructors();</span>
+<span class="pc bpc" id="L146" title="1 of 2 branches missed.">			for (Constructor&lt;T&gt; constructor : constructors) {</span>
+<span class="pc bpc" id="L147" title="1 of 2 branches missed.">				if (constructor != null) {</span>
+<span class="fc" id="L148">					Parameter[] parameters = constructor.getParameters();</span>
+<span class="fc" id="L149">					Object[] args = new Object[parameters.length];</span>
+<span class="fc bfc" id="L150" title="All 2 branches covered.">					for (int i = 0; i &lt; parameters.length; i++) {</span>
+<span class="fc" id="L151">						args[i] = random(parameters[i].getType(), parameters[i].getName());</span>
+					}
+<span class="fc" id="L153">					constructor.setAccessible(true);</span>
+<span class="fc" id="L154">					return constructor.newInstance(args);</span>
+				}
+			}
+<span class="nc" id="L157">		} catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {</span>
+<span class="nc" id="L158">			throw new IllegalArgumentException(</span>
+					&quot;Could not create random instance for &quot; + clazz + &quot;, maybe there is no default constructor available, see exception cause for details.&quot; + GENERATOR_REGISTER_INFO, e);
+<span class="nc" id="L160">		}</span>
+<span class="nc" id="L161">		throw new IllegalArgumentException(</span>
+				&quot;Could not create random instance for &quot; + clazz + &quot;, maybe there is no default constructor available, see exception cause for details.&quot; + GENERATOR_REGISTER_INFO);
+	}
+
+	/**
+	 * Pickes a random value of the array / vararg provided.
+	 *
+	 * @param items array / vararg to pick an items from
+	 * @param &lt;I&gt;   Item class
+	 * @return Randomly picked items
+	 */
+	public static &lt;I&gt; I random(I[] items) {
+<span class="fc" id="L173">		return random(Arrays.asList(items));</span>
+	}
+
+	/**
+	 * Pickes a random value of the collection provided.
+	 *
+	 * @param items collection to pick an items from
+	 * @param &lt;I&gt;   Item class
+	 * @return Randomly picked items
+	 */
+	public static &lt;I&gt; I random(Collection&lt;I&gt; items) {
+<span class="pc bpc" id="L184" title="2 of 4 branches missed.">		if (items == null || items.size() == 0) {</span>
+<span class="nc" id="L185">			return null;</span>
+		}
+<span class="fc" id="L187">		int size = items.size();</span>
+<span class="fc" id="L188">		int random = randomInteger(0, size);</span>
+<span class="fc" id="L189">		int current = 0;</span>
+<span class="fc bfc" id="L190" title="All 2 branches covered.">		for (I i : items) {</span>
+<span class="fc bfc" id="L191" title="All 2 branches covered.">			if (current == random) {</span>
+<span class="fc" id="L192">				return i;</span>
+			}
+<span class="fc" id="L194">			current++;</span>
+<span class="fc" id="L195">		}</span>
+<span class="fc" id="L196">		return items.iterator().next();</span>
+	}
+
+	public static boolean randomBoolean() {
+<span class="nc" id="L200">		return random(Boolean.class);</span>
+	}
+
+	public static Integer randomInteger() {
+<span class="nc" id="L204">		return random(Integer.class);</span>
+	}
+
+	public static Long randomLong() {
+<span class="nc" id="L208">		return random(Long.class);</span>
+	}
+
+	public static float randomFloat() {
+<span class="nc" id="L212">		return random(Float.class);</span>
+	}
+
+	public static BigDecimal randomBigDecimal() {
+<span class="nc" id="L216">		return random(BigDecimal.class);</span>
+	}
+
+	public static String randomString() {
+<span class="nc" id="L220">		return random(String.class);</span>
+	}
+
+	public static Date date() {
+<span class="fc" id="L224">		return random(Date.class);</span>
+	}
+
+	public static LocalDateTime dateTime() {
+<span class="fc" id="L228">		return random(LocalDateTime.class);</span>
+	}
+
+	public static String alphabetic(int count) {
+<span class="fc" id="L232">		return RandomStringUtils.randomAlphabetic(count);</span>
+	}
+
+	public static String alphanumeric(int count) {
+<span class="fc" id="L236">		return RandomStringUtils.randomAlphanumeric(count);</span>
+	}
+
+
+	public static int randomInteger(int min, int max) {
+<span class="fc" id="L241">		return min + RandomUtils.nextInt(max - min + 1);</span>
+	}
+
+	public static long randomLong(int min, int max) {
+<span class="nc" id="L245">		return min + RandomUtils.nextInt(max - min + 1);</span>
+	}
+
+	public static float randomFloat0to1() {
+<span class="nc" id="L249">		return RandomUtils.nextFloat();</span>
+	}
+
+	public static float randomFloat(int min, int max) {
+<span class="nc" id="L253">		return RandomUtils.nextFloat() + RandomUtils.nextInt(max - min);</span>
+	}
+
+	public static float randomFloat(float min, float max) {
+<span class="nc bnc" id="L257" title="All 2 branches missed.">		if (Float.isInfinite(max - min)) {</span>
+<span class="nc" id="L258">			throw new IllegalArgumentException(&quot;range of float is infinty&quot;);</span>
+		}
+<span class="nc" id="L260">		return min + RandomUtils.nextFloat() * (max - min);</span>
+	}
+
+	public static double randomDouble(int min, int max) {
+<span class="nc" id="L264">		return RandomUtils.nextDouble() + RandomUtils.nextInt(max - min);</span>
+	}
+
+	public static double randomDouble(double min, double max) {
+<span class="nc bnc" id="L268" title="All 2 branches missed.">		if (Double.isInfinite(max - min)) {</span>
+<span class="nc" id="L269">			throw new IllegalArgumentException(&quot;range of double is infinty&quot;);</span>
+		}
+<span class="nc" id="L271">		return min + RandomUtils.nextDouble() * (max - min);</span>
+	}
+
+
+	public static String lang() {
+<span class="fc" id="L276">		return languageCode();</span>
+	}
+
+
+	public static String htmlParagraphs(int min, int max) {
+<span class="nc" id="L281">		int count = randomInteger(min, max);</span>
+<span class="nc" id="L282">		StringBuilder sb = new StringBuilder();</span>
+<span class="nc bnc" id="L283" title="All 2 branches missed.">		for (int i = 0; i &lt; count; i++) {</span>
+<span class="nc" id="L284">			sb.append(&quot;&lt;p&gt;&quot;);</span>
+<span class="nc" id="L285">			sb.append(paragraphs(1, 1));</span>
+<span class="nc" id="L286">			sb.append(&quot;&lt;/p&gt;&quot;);</span>
+		}
+<span class="nc" id="L288">		return sb.toString().trim();</span>
+	}
+
+	public static String paragraphs(int min, int max) {
+<span class="fc" id="L292">		int count = randomInteger(min, max);</span>
+<span class="fc" id="L293">		StringBuilder sb = new StringBuilder();</span>
+<span class="fc bfc" id="L294" title="All 2 branches covered.">		for (int j = 0; j &lt; count; j++) {</span>
+<span class="fc" id="L295">			int sentences = randomInteger(2, 10);</span>
+<span class="fc bfc" id="L296" title="All 2 branches covered.">			for (int i = 0; i &lt; sentences; i++) {</span>
+<span class="fc" id="L297">				sb.append(words(1, 20, false));</span>
+<span class="fc" id="L298">				sb.append(&quot;. &quot;);</span>
+			}
+<span class="fc" id="L300">			sb.append(&quot;\n&quot;);</span>
+		}
+<span class="fc" id="L302">		return sb.toString().trim();</span>
+	}
+
+	public static String words(int min, int max, boolean title) {
+<span class="fc" id="L306">		int count = randomInteger(min, max);</span>
+<span class="fc" id="L307">		return words(count, title);</span>
+	}
+
+	public static String words(int count, boolean title) {
+<span class="fc" id="L311">		StringBuilder sb = new StringBuilder();</span>
+<span class="fc" id="L312">		int wordCount = 0;</span>
+<span class="fc bfc" id="L313" title="All 2 branches covered.">		while (wordCount &lt; count) {</span>
+<span class="fc" id="L314">			String word = random(LoremIpsum.getWords());</span>
+<span class="pc bpc" id="L315" title="1 of 2 branches missed.">			if (title) {</span>
+<span class="nc bnc" id="L316" title="All 4 branches missed.">				if (wordCount == 0 || word.length() &gt; 3) {</span>
+<span class="nc" id="L317">					word = word.substring(0, 1).toUpperCase() + word.substring(1);</span>
+				}
+			}
+<span class="fc" id="L320">			sb.append(word);</span>
+<span class="fc" id="L321">			sb.append(&quot; &quot;);</span>
+<span class="fc" id="L322">			wordCount++;</span>
+<span class="fc" id="L323">		}</span>
+<span class="fc" id="L324">		return sb.toString().trim();</span>
+	}
+
+
+	public static String languageCode() {
+<span class="fc" id="L329">		return locale().getLanguage();</span>
+	}
+
+	public static Locale locale() {
+<span class="fc" id="L333">		return random(Locale.class);</span>
+	}
+
+	public static String countryCode() {
+<span class="fc" id="L337">		return random(Locale.getISOCountries());</span>
+	}
+
+
+	public static String email() {
+<span class="fc" id="L342">		return email(firstname(), lastname());</span>
+	}
+
+	public static String email(String firstname, String lastname) {
+<span class="fc" id="L346">		String tld = &quot;com&quot;;</span>
+<span class="pc bpc" id="L347" title="1 of 2 branches missed.">		if (randomInteger(0, 10) % 2 == 0) {</span>
+<span class="fc" id="L348">			tld = countryCode();</span>
+		}
+<span class="fc" id="L350">		return email(firstname, lastname, lastname + &quot;.&quot; + tld);</span>
+	}
+
+	public static String email(String firstname, String lastname, String domain) {
+<span class="fc" id="L354">		String email = firstname + &quot;.&quot; + lastname + &quot;@&quot; + domain;</span>
+<span class="fc" id="L355">		return removeAccents(email).toLowerCase().replaceAll(&quot;[^A-Za-z\\.@\\-\\+]+&quot;, &quot;&quot;);</span>
+	}
+
+	public static String firstname() {
+<span class="fc" id="L359">		return random(Names.getFirstNames());</span>
+	}
+
+	public static String firstnameMale() {
+<span class="nc" id="L363">		return random(Names.getMaleNames());</span>
+	}
+
+	public static String firstnameFemale() {
+<span class="nc" id="L367">		return random(Names.getFemaleNames());</span>
+	}
+
+	public static String lastname() {
+<span class="fc" id="L371">		return random(Names.getSurnames());</span>
+	}
+
+	public static String username() {
+<span class="nc" id="L375">		return removeAccents(firstname().toLowerCase()) + randomInteger(0, 9999);</span>
+	}
+
+	public static String name() {
+<span class="fc" id="L379">		return firstname() + &quot; &quot; + lastname();</span>
+	}
+
+	public static String nameMale() {
+<span class="nc" id="L383">		return firstnameMale() + &quot; &quot; + lastname();</span>
+	}
+
+	public static String nameFemale() {
+<span class="nc" id="L387">		return firstnameFemale() + &quot; &quot; + lastname();</span>
+	}
+
+	public static String street() {
+<span class="pc bpc" id="L391" title="1 of 2 branches missed.">		return randomInteger(0, 1) == 0 ? lastname() + RandomData.random(Names.getStreetSuffix()) : name() + RandomData.random(Names.getStreetSuffixesExtra());</span>
+	}
+
+	public static String streetNumber() {
+<span class="fc bfc" id="L395" title="All 2 branches covered.">		return Integer.toString(randomInteger(1, 999)) + (randomInteger(0, 4) == 0 ? alphabetic(1) : &quot;&quot;);</span>
+	}
+
+	public static String address() {
+<span class="fc" id="L399">		return street() + &quot; &quot; + streetNumber();</span>
+	}
+
+	public static String city() {
+<span class="fc" id="L403">		return random(Names.getCities());</span>
+	}
+
+	public static String zipCH() {
+<span class="fc" id="L407">		return Integer.toString(randomInteger(1000, 9999));</span>
+	}
+
+	public static String zipDE() {
+<span class="fc" id="L411">		return String.format(&quot;%05d&quot;, randomInteger(0, 99999));</span>
+	}
+
+	public static String zip() {
+<span class="fc" id="L415">		final int type = randomInteger(0, 1);</span>
+<span class="pc bpc" id="L416" title="1 of 2 branches missed.">		switch (type) {</span>
+		case 0:
+<span class="fc" id="L418">			return zipCH();</span>
+		default:
+<span class="nc" id="L420">			return zipDE();</span>
+		}
+	}
+
+	public static String company() {
+<span class="fc" id="L425">		return random(Names.getCompanies());</span>
+	}
+
+	public static String manufacturer() {
+<span class="nc" id="L429">		return random(Names.getManufacturers());</span>
+	}
+
+	public static String title(int count) {
+<span class="nc" id="L433">		return words(count, count, true);</span>
+	}
+
+	public static String title(int min, int max) {
+<span class="nc" id="L437">		return words(min, max, true);</span>
+	}
+
+	public static String words(int count) {
+<span class="nc" id="L441">		return words(count, count, false);</span>
+	}
+
+	public static String words(int min, int max) {
+<span class="nc" id="L445">		return words(min, max, false);</span>
+	}
+
+	public static String isbn10() {
+<span class="nc" id="L449">		StringBuilder isbn10 = new StringBuilder();</span>
+<span class="nc" id="L450">		isbn10.append(randomInteger(10, 99)); // group (2 digits)</span>
+<span class="nc" id="L451">		isbn10.append(randomInteger(1000, 9999)); // publisher (4 digits)</span>
+<span class="nc" id="L452">		isbn10.append(randomInteger(100, 999)); // title (3 digits)</span>
+<span class="nc" id="L453">		isbn10.append(BarcodeUtils.createIsbn10CheckSumDigit(isbn10.toString())); // checksum (1 digit)</span>
+<span class="nc" id="L454">		return isbn10.toString();</span>
+	}
+
+	public static String eanIsbn() {
+<span class="nc" id="L458">		StringBuilder eanIsbn = new StringBuilder();</span>
+<span class="nc" id="L459">		eanIsbn.append(&quot;978&quot;); // bookland (3 digits)</span>
+<span class="nc" id="L460">		eanIsbn.append(randomInteger(10, 99)); // group (2 digits)</span>
+<span class="nc" id="L461">		eanIsbn.append(randomInteger(1000, 9999)); // publisher (4 digits)</span>
+<span class="nc" id="L462">		eanIsbn.append(randomInteger(100, 999)); // title (3 digits)</span>
+<span class="nc" id="L463">		eanIsbn.append(BarcodeUtils.createEanCheckSumDigit(eanIsbn.toString())); // checksum (1 digit)</span>
+<span class="nc" id="L464">		return eanIsbn.toString();</span>
+	}
+
+	public static String ean13() {
+<span class="nc" id="L468">		StringBuilder ean13 = new StringBuilder();</span>
+<span class="nc" id="L469">		ean13.append(randomInteger(100, 999)); // country (3 digits)</span>
+<span class="nc" id="L470">		ean13.append(randomInteger(1000, 9999)); // company (4 digits)</span>
+<span class="nc" id="L471">		ean13.append(randomInteger(10000, 99999)); // item (5 digits)</span>
+<span class="nc" id="L472">		ean13.append(BarcodeUtils.createEanCheckSumDigit(ean13.toString())); // checksum (1 digit)</span>
+<span class="nc" id="L473">		return ean13.toString();</span>
+	}
+
+	public static String ean8() {
+<span class="nc" id="L477">		StringBuilder ean8 = new StringBuilder();</span>
+<span class="nc" id="L478">		ean8.append(randomInteger(100, 999)); // country (3 digits)</span>
+<span class="nc" id="L479">		ean8.append(randomInteger(1000, 9999)); // item (4 digits)</span>
+<span class="nc" id="L480">		ean8.append(BarcodeUtils.createEanCheckSumDigit(ean8.toString())); // checksum (1 digit)</span>
+<span class="nc" id="L481">		return ean8.toString();</span>
+	}
+
+	/**
+	 * Populates a bean instance with random values for properties of a supported types of RandomGenerators.
+	 *
+	 * @param bean bean to be populated
+	 * @param &lt;T&gt;  Type of the bean to be populated
+	 * @return populated bean, the original object is populated, so the returned object is the same instance as provided as parameter.
+	 * @see com.namics.commons.random.generator.RandomGenerator
+	 * @see RandomData#random(Class, Object...)
+	 */
+	public static &lt;T&gt; T populateBean(T bean) {
+<span class="fc" id="L494">		Class&lt;?&gt; beanClass = bean.getClass();</span>
+<span class="fc" id="L495">		List&lt;PropertyDescriptor&gt; propertyDescriptors = BeanUtils.getPropertyDescriptors(beanClass);</span>
+<span class="fc bfc" id="L496" title="All 2 branches covered.">		for (PropertyDescriptor descriptor : propertyDescriptors) {</span>
+<span class="fc" id="L497">			Class&lt;?&gt; propertyType = descriptor.getPropertyType();</span>
+
+<span class="fc bfc" id="L499" title="All 2 branches covered.">			if (Class.class != propertyType) {</span>
+				try {
+<span class="fc" id="L501">					Method writeMethod = descriptor.getWriteMethod();</span>
+<span class="fc bfc" id="L502" title="All 2 branches covered.">					if (writeMethod != null) {</span>
+<span class="fc" id="L503">						LOG.info(&quot;Property {} &quot;, descriptor);</span>
+<span class="fc" id="L504">						String propertyName = descriptor.getName();</span>
+
+<span class="fc" id="L506">						Type[] genericParameterTypes = writeMethod.getGenericParameterTypes();</span>
+<span class="fc" id="L507">						Type genericFieldType = genericParameterTypes[0];</span>
+						Object random;
+<span class="fc bfc" id="L509" title="All 2 branches covered.">						if (beanClass == propertyType) {</span>
+<span class="fc" id="L510">							random = bean;</span>
+<span class="fc bfc" id="L511" title="All 2 branches covered.">						} else if (genericFieldType instanceof TypeVariable) {</span>
+<span class="fc" id="L512">							Type[] exactGenericTypes = GenericTypeReflector.getExactParameterTypes(writeMethod, beanClass);</span>
+<span class="fc" id="L513">							random = random(exactGenericTypes[0], propertyName);</span>
+<span class="fc bfc" id="L514" title="All 2 branches covered.">						} else if (genericFieldType instanceof ParameterizedType) {</span>
+<span class="fc" id="L515">							random = random(genericFieldType, propertyName);</span>
+						} else {
+<span class="fc" id="L517">							random = random(propertyType, propertyName);</span>
+						}
+<span class="pc bpc" id="L519" title="1 of 2 branches missed.">						if (random != null) {</span>
+<span class="fc" id="L520">							makeAccessible(writeMethod);</span>
+<span class="fc" id="L521">							writeMethod.invoke(bean, random);</span>
+						}
+					}
+<span class="nc" id="L524">				} catch (Throwable e) {</span>
+<span class="nc" id="L525">					LOG.info(&quot;Property {} could not be processed&quot;, descriptor, e);</span>
+<span class="fc" id="L526">				}</span>
+			}
+<span class="fc" id="L528">		}</span>
+<span class="fc" id="L529">		return bean;</span>
+	}
+
+	/**
+	 * Creates a HashMap, key and value class must be provided, since Generics are unknown at runtime.
+	 *
+	 * @param keyClass   class of key
+	 * @param valueClass class of value
+	 * @return Map populated with random values.
+	 */
+
+	public static Map map(Class&lt;? extends Comparable&gt; keyClass, Class&lt;?&gt; valueClass) {
+<span class="nc" id="L541">		Map map = new HashMap();</span>
+<span class="nc bnc" id="L542" title="All 2 branches missed.">		for (int i = 0; i &lt; 10; i++) {</span>
+<span class="nc" id="L543">			Object key = random(keyClass);</span>
+<span class="nc" id="L544">			Object value = random(valueClass);</span>
+<span class="nc bnc" id="L545" title="All 4 branches missed.">			if (key != null &amp;&amp; value != null) {</span>
+<span class="nc" id="L546">				map.put(key, value);</span>
+			}
+		}
+<span class="nc" id="L549">		return map;</span>
+	}
+
+	public static String removeAccents(final String value) {
+<span class="fc bfc" id="L553" title="All 2 branches covered.">		if (value == null) {</span>
+<span class="fc" id="L554">			return null;</span>
+		}
+<span class="fc" id="L556">		String result = Normalizer.normalize(value, Normalizer.Form.NFD);</span>
+<span class="fc" id="L557">		result = result.replaceAll(&quot;\\p{M}&quot;, &quot;&quot;);</span>
+<span class="fc" id="L558">		return result;</span>
+	}
+
+
+	/**
+	 * Register the instance of the {@link RandomGenerator} implementation.
+	 *
+	 * @param generator {@link RandomGenerator} implementations instance to register.
+	 */
+	public static void addRandomGenerator(RandomGenerator generator) {
+<span class="nc" id="L568">		RandomGeneratorFactory.addRandomGenerator(generator);</span>
+<span class="nc" id="L569">	}</span>
+
+	/**
+	 * Create and register an instance of the {@link RandomGenerator} implementation.
+	 *
+	 * @param generatorClazz {@link RandomGenerator} implementation to register.
+	 */
+	public static void addRandomGenerator(Class&lt;? extends RandomGenerator&gt; generatorClazz) {
+<span class="nc" id="L577">		RandomGeneratorFactory.addRandomGenerator(generatorClazz);</span>
+<span class="nc" id="L578">	}</span>
+
+	/**
+	 * Registers {@link com.namics.commons.random.generator.RandomGenerator} implementations found in the package provided.
+	 *
+	 * @param scanpackage package to scan for implementation of {@link RandomGenerator} to be registered.
+	 */
+	public static void addRandomGenerators(String scanpackage) {
+<span class="nc" id="L586">		RandomGeneratorFactory.addRandomGenerators(scanpackage);</span>
+<span class="nc" id="L587">	}</span>
+
+	private static final String GENERATOR_REGISTER_INFO = &quot;.\nA suitable generator can be registered in several ways:\n&quot;
+	                                                      + &quot;\t- automatically when placed in same package as the SupportedType\n&quot;
+	                                                      + &quot;\t- Manually by registering either class or instance directly toRandomData.addRandomGenerator\n&quot;
+	                                                      + &quot;\t- Manually by registering package for scanning  to RandomData.addRandomGenerators&quot;;
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>
