@@ -13,6 +13,5 @@ if [ "$TRAVIS_PULL_REQUEST" == 'false' ]; then
 
 	git add docs
 
-	CURRENT_VERSION=`bash ci/current-version.sh`
-	git commit -a -m "Version $CURRENT_VERSION: Update docs"
+	git commit -a -m "Update docs"
 fi
