@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BarcodeUtils.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">java-random</a> &gt; <a href="index.source.html" class="el_package">com.namics.commons.random.support</a> &gt; <span class="el_source">BarcodeUtils.java</span></div><h1>BarcodeUtils.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2000-2014 Namics AG. All rights reserved.
+ */
+
+package com.namics.commons.random.support;
+
+/**
+ * BarcodeUtils.
+ * 
+ * @author pnueesch
+ * @since 08.05.14 13:00
+ */
+<span class="nc" id="L13">public class BarcodeUtils {</span>
+
+	public static String createEanCheckSumDigit(String value) {
+		try {
+<span class="fc" id="L17">			int total = 0;</span>
+<span class="fc bfc" id="L18" title="All 2 branches covered.">			for (int i = 0; i &lt; value.length(); i++) {</span>
+<span class="fc" id="L19">				int digit = Integer.parseInt(value.substring(value.length() - i - 1, value.length() - i));</span>
+<span class="fc bfc" id="L20" title="All 2 branches covered.">				total += digit * ((i % 2 == 1) ? 1 : 3);</span>
+			}
+<span class="fc" id="L22">			return String.valueOf(10 - (total % 10));</span>
+<span class="fc" id="L23">		} catch (NumberFormatException nfe) {</span>
+<span class="fc" id="L24">			return null;</span>
+		}
+	}
+
+	public static String createIsbn10CheckSumDigit(String value) {
+		try {
+<span class="fc" id="L30">			int total = 0;</span>
+<span class="fc bfc" id="L31" title="All 2 branches covered.">			for (int i = 1; i &lt;= value.length(); i++) {</span>
+<span class="fc" id="L32">				int digit = Integer.parseInt(value.substring(i - 1, i));</span>
+<span class="fc" id="L33">				total += i * digit;</span>
+			}
+<span class="fc" id="L35">			int modulo11 = total % 11;</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">			return (modulo11 != 10) ? String.valueOf(modulo11) : &quot;X&quot;;</span>
+<span class="fc" id="L37">		} catch (NumberFormatException nfe) {</span>
+<span class="fc" id="L38">			return null;</span>
+		}
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

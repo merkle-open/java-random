@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RandomGeneratorFactory.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">java-random</a> &gt; <a href="index.source.html" class="el_package">com.namics.commons.random.generator</a> &gt; <span class="el_source">RandomGeneratorFactory.java</span></div><h1>RandomGeneratorFactory.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2000-2014 Namics AG. All rights reserved.
+ */
+
+package com.namics.commons.random.generator;
+
+import com.namics.commons.random.support.reflections.ReflectionsInitializer;
+import org.reflections.Reflections;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.lang.reflect.Modifier;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+
+/**
+ * Factory to manage custom {@link RandomGenerator} instances and provide easy resolving facilities.
+ *
+ * @author aschaefer
+ * @since 20.02.14 16:07
+ */
+<span class="nc" id="L24">public abstract class RandomGeneratorFactory {</span>
+<span class="fc" id="L25">	private static final Logger LOG = LoggerFactory.getLogger(RandomGeneratorFactory.class);</span>
+
+	/**
+	 * Initially only default {@link RandomGenerator}s
+	 * in package &lt;code&gt;com.namics.commons.random.generator.basic&lt;/code&gt; are registered.
+	 */
+	public static final String DEFAULT_SCAN_PACKAGE = &quot;com.namics.commons.random.generator.basic&quot;;
+
+<span class="fc" id="L33">	private static final Map&lt;String, Reflections&gt; PACKAGE_REFLECTIONS = new TreeMap&lt;&gt;();</span>
+<span class="fc" id="L34">	private static final Map&lt;Class&lt;?&gt;, RandomGenerator&gt; generators = new TreeMap&lt;&gt;(Comparator.comparing(Class::getName));</span>
+
+	static {
+<span class="fc" id="L37">		ReflectionsInitializer.init();</span>
+<span class="fc" id="L38">		addRandomGenerators(DEFAULT_SCAN_PACKAGE);</span>
+<span class="fc" id="L39">	}</span>
+
+	/**
+	 * Registers {@link com.namics.commons.random.generator.RandomGenerator} implementations found in the package provided.
+	 *
+	 * @param scanpackage package to scan for implementation of {@link RandomGenerator} to be registered.
+	 */
+	public static void addRandomGenerators(String scanpackage) {
+<span class="pc bpc" id="L47" title="1 of 2 branches missed.">		if (!PACKAGE_REFLECTIONS.containsKey(scanpackage)) {</span>
+<span class="fc" id="L48">			LOG.debug(&quot;Scan package {}&quot;, scanpackage);</span>
+<span class="fc" id="L49">			Reflections reflections = new Reflections(scanpackage);</span>
+<span class="fc" id="L50">			PACKAGE_REFLECTIONS.put(scanpackage, reflections);</span>
+<span class="fc" id="L51">			Set&lt;Class&lt;? extends RandomGenerator&gt;&gt; randomGenerators = reflections.getSubTypesOf(RandomGenerator.class);</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">			for (Class&lt;? extends RandomGenerator&gt; generatorClazz : randomGenerators) {</span>
+<span class="fc" id="L53">				addRandomGenerator(generatorClazz);</span>
+<span class="fc" id="L54">			}</span>
+		}
+<span class="fc" id="L56">	}</span>
+
+	/**
+	 * Create and register an instance of the {@link RandomGenerator} implementation.
+	 *
+	 * @param generatorClazz {@link RandomGenerator} implementation to register.
+	 */
+	public static void addRandomGenerator(Class&lt;? extends RandomGenerator&gt; generatorClazz) {
+		try {
+<span class="fc bfc" id="L65" title="All 2 branches covered.">			if (!Modifier.isAbstract(generatorClazz.getModifiers())) {</span>
+<span class="fc" id="L66">				RandomGenerator generator = generatorClazz.newInstance();</span>
+<span class="fc" id="L67">				addRandomGenerator(generator);</span>
+			}
+<span class="nc" id="L69">		} catch (InstantiationException | IllegalAccessException | NoClassDefFoundError e) {</span>
+<span class="nc" id="L70">			LOG.warn(&quot;Could not add generator {} {}&quot;, generatorClazz, e.toString());</span>
+<span class="fc" id="L71">		}</span>
+<span class="fc" id="L72">	}</span>
+
+	/**
+	 * Register the instance of the {@link RandomGenerator} implementation.
+	 *
+	 * @param generator {@link RandomGenerator} implementations instance to register.
+	 */
+	public static void addRandomGenerator(RandomGenerator&lt;?&gt; generator) {
+<span class="fc bfc" id="L80" title="All 2 branches covered.">		for (Class&lt;?&gt; type : generator.supportedTypes()) {</span>
+<span class="fc" id="L81">			generators.put(type, generator);</span>
+<span class="fc" id="L82">		}</span>
+<span class="fc" id="L83">	}</span>
+
+
+	/**
+	 * Try to resolve a generator for the requested type.
+	 * Tries to load a  {@link RandomGenerator} instance of known generators.
+	 * Tries to scan package of SupportedType for  {@link RandomGenerator&lt;SupportedType&gt;} implementations,
+	 * registers them and returns the instance if an implementation is found.
+	 * If no suitable {@link RandomGenerator&lt;SupportedType&gt;} is found, &lt;code&gt;null&lt;/code&gt; is returned
+	 *
+	 * @param supportedType   Type to find a suitable generator for.
+	 * @param &lt;SupportedType&gt; Type to find a suitable generator for.
+	 * @return suitable generator if found, null else.
+	 */
+	public static &lt;SupportedType&gt; RandomGenerator&lt;SupportedType&gt; generator(Class&lt;SupportedType&gt; supportedType) {
+<span class="fc" id="L98">		RandomGenerator resolved = generators.get(supportedType);</span>
+
+<span class="pc bpc" id="L100" title="2 of 8 branches missed.">		if (resolved == null &amp;&amp; supportedType != null &amp;&amp; Class.class != supportedType &amp;&amp; supportedType.getPackage() != null) {</span>
+<span class="fc" id="L101">			String supportedTypePackage = supportedType.getPackage().getName();</span>
+<span class="fc bfc" id="L102" title="All 2 branches covered.">			if (!PACKAGE_REFLECTIONS.containsKey(supportedTypePackage)) {</span>
+<span class="fc" id="L103">				LOG.debug(&quot;No generator for class {}, scan its package {} for generator&quot;, supportedType, supportedTypePackage);</span>
+<span class="fc" id="L104">				addRandomGenerators(supportedTypePackage);</span>
+<span class="fc" id="L105">				resolved = generators.get(supportedType);</span>
+			}
+		}
+<span class="fc" id="L108">		return resolved;</span>
+
+	}
+
+	/**
+	 * Try to resolve a generator for the requested type.
+	 * Tries to load a  {@link RandomGenerator} instance of known generators.
+	 * Tries to scan package of SupportedType for  {@link RandomGenerator&lt;SupportedType&gt;} implementations,
+	 * registers them and returns the instance if an implementation is found.
+	 * If no suitable {@link RandomGenerator&lt;SupportedType&gt;} is found, &lt;code&gt;null&lt;/code&gt; is returned
+	 *
+	 * @param supportedType   Name of the type to find a suitable generator for.
+	 * @param &lt;SupportedType&gt; Type to find a suitable generator for.
+	 * @return suitable generator if found, null else.
+	 */
+	public static &lt;SupportedType&gt; RandomGenerator&lt;SupportedType&gt; generator(String supportedType) {
+		try {
+<span class="fc" id="L125">			return (RandomGenerator&lt;SupportedType&gt;) generator(Class.forName(supportedType));</span>
+<span class="fc" id="L126">		} catch (ClassNotFoundException e) {</span>
+<span class="fc" id="L127">			return null;</span>
+		}
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

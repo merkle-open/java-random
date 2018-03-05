@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Utils.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">java-random</a> &gt; <a href="index.source.html" class="el_package">com.namics.commons.random.support</a> &gt; <span class="el_source">Utils.java</span></div><h1>Utils.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2000-2014 Namics AG. All rights reserved.
+ */
+
+package com.namics.commons.random.support;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+/**
+ * Utils.
+ *
+ * @author aschaefer, Namics AG
+ * @since 20.08.14 14:26
+ */
+<span class="nc" id="L16">public class Utils {</span>
+
+	/**
+	 * Filter values for objects of the specified type.
+	 *
+	 * @param clazz       Object type to get
+	 * @param information objects to filter
+	 * @param &lt;T&gt;         Generic Type for Items in filtered result array
+	 * @return array with type and objects of T
+	 */
+	public static &lt;T&gt; T[] objectsOfType(Class&lt;T&gt; clazz, Object... information) {
+<span class="fc" id="L27">		ArrayList&lt;T&gt; items = new ArrayList&lt;&gt;();</span>
+<span class="pc bpc" id="L28" title="1 of 4 branches missed.">		if (information != null &amp;&amp; information.length &gt; 0) {</span>
+<span class="fc bfc" id="L29" title="All 2 branches covered.">			for (Object info : information) {</span>
+<span class="pc bpc" id="L30" title="1 of 4 branches missed.">				if (info != null &amp;&amp; clazz.isAssignableFrom(info.getClass())) {</span>
+<span class="fc" id="L31">					items.add((T) info);</span>
+				}
+			}
+		}
+<span class="fc" id="L35">		T[] result = (T[]) Array.newInstance(clazz, items.size());</span>
+<span class="fc" id="L36">		return items.toArray(result);</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>
