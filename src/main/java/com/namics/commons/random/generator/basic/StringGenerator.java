@@ -68,7 +68,8 @@ public class StringGenerator implements RandomGenerator<String>, InformedRandomG
 				if (name.contains("user")) {
 					return username();
 				}
-				if (name.contains("first")) {
+				if (name.contains("first")
+				    || name.contains("given")) {
 					return firstname();
 				}
 				if (name.contains("last")
@@ -76,6 +77,14 @@ public class StringGenerator implements RandomGenerator<String>, InformedRandomG
 				    || name.contains("family")) {
 					return lastname();
 				}
+				return name();
+			}
+			if (name.contains("author")
+			    || name.contains("writer")
+			    || name.contains("director")
+			    || name.contains("customer")
+			    || name.contains("actor")
+					) {
 				return name();
 			}
 			if (name.contains("mail")) {
