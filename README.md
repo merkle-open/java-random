@@ -1,5 +1,7 @@
 # Advanced Random Test Data Utils
 
+[Project Documentation](http://namics.github.io/java-random)
+
 System        | Status
 --------------|------------------------------------------------        
 CI master     | [![Build Status][travis-master]][travis-url]
