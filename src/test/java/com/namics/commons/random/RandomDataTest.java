@@ -100,7 +100,6 @@ public class RandomDataTest {
 		assertNotNull(RandomData.random(TestBean.class));
 	}
 
-	
 	@Test
 	public void testBasicGenetator() throws Exception {
 		List<Class<? extends Serializable>> classes = Arrays.asList(BigDecimal.class, Boolean.class, Date.class, DateTime.class, Double.class, Float.class, Integer.class, Locale.class, Long.class, String.class);
@@ -109,6 +108,15 @@ public class RandomDataTest {
 		}
 	}
 
+	@Test
+	public void uuid_matchesPattern() {
+		assertThat(uuid().matches("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"), is(true));
+	}
+
+	@Test
+	public void shortGuid_has22Digits() {
+		assertEquals(22, shortGuid().length());
+	}
 
 	@Test
 	public void testArray() throws Exception {
@@ -200,7 +208,7 @@ public class RandomDataTest {
 		assertThat(RandomData.random(RecursionTestBean.class), allOf(
 				isA(RecursionTestBean.class),
 				hasProperty("recursive", isA(RecursionTestBean.class))
-		                                                            ));
+		));
 	}
 
 	@Test
@@ -208,27 +216,29 @@ public class RandomDataTest {
 		assertThat(RandomData.random(GenericChild.class), allOf(
 				isA(GenericChild.class),
 				hasProperty("id", isA(String.class))
-				));
+		));
 	}
+
 	@Test
 	public void testGenericPropertiesHierarchie() throws Exception {
 		assertThat(RandomData.random(GenericGrandSon.class), allOf(
 				isA(GenericGrandSon.class),
 				hasProperty("id", isA(String.class))
-				));
+		));
 	}
+
 	@Test
 	public void testGenericPropertiesHierarchieBetween() throws Exception {
 		assertThat(RandomData.random(GenericGrandDaughter.class), allOf(
 				isA(GenericGrandDaughter.class),
 				hasProperty("id", isA(String.class))
-				));
+		));
 	}
 
 	@Test
-	public void testNonComparableCollections(){
+	public void testNonComparableCollections() {
 		ComparableCollectionsTestBean actual = RandomData.random(ComparableCollectionsTestBean.class);
-		assertThat(actual,hasProperty("map", instanceOf(Map.class)));
+		assertThat(actual, hasProperty("map", instanceOf(Map.class)));
 		actual.getMap().put("test", new NonComparable());
 		actual.getList().add(new NonComparable());
 		actual.getSet().add(new NonComparable());
@@ -236,7 +246,7 @@ public class RandomDataTest {
 
 	@Test
 	public void testEmail() throws Exception {
-		assertThat(email("Hans!","O'Neal","dasd'#.com"),equalTo("hans.oneal@dasd.com"));
+		assertThat(email("Hans!", "O'Neal", "dasd'#.com"), equalTo("hans.oneal@dasd.com"));
 
 	}
 

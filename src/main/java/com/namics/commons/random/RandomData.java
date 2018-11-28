@@ -29,14 +29,17 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
 import java.math.BigDecimal;
+import java.nio.ByteBuffer;
 import java.text.Normalizer;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.UUID;
 
 import static com.namics.commons.random.support.BeanUtils.makeAccessible;
 
@@ -353,6 +356,44 @@ public class RandomData {
 	public static String email(String firstname, String lastname, String domain) {
 		String email = firstname + "." + lastname + "@" + domain;
 		return removeAccents(email).toLowerCase().replaceAll("[^A-Za-z\\.@\\-\\+]+", "");
+	}
+
+	/**
+	 * Generate a Hex encoded block formatted type 4 (pseudo randomly generated) UUID.
+	 *
+	 * @see {@link UUID#randomUUID}
+	 * @return uuid string representation.
+	 */
+	public static String uuid() {
+		return UUID.randomUUID().toString();
+	}
+
+	/**
+	 * Generate a short UUID - 22 digit base64 representation of a UUID.
+	 * Details: http://www.shortguid.com
+	 *
+	 * @return 22 digit base64 representation of a UUID
+	 */
+	public static String shortGuid() {
+		UUID uuid = UUID.randomUUID();
+		byte[] array = toByteArray(uuid);
+		return Base64.getEncoder().withoutPadding().encodeToString(array);
+	}
+
+	/**
+	 * Convert UUID to 16 byte array.
+	 *
+	 * @param uuid uuid to get byte representation
+	 * @return 16 byte array, null for null
+	 */
+	private static byte[] toByteArray(UUID uuid) {
+		if (uuid == null) {
+			return null;
+		}
+		ByteBuffer bb = ByteBuffer.wrap(new byte[16]);
+		bb.putLong(uuid.getMostSignificantBits());
+		bb.putLong(uuid.getLeastSignificantBits());
+		return bb.array();
 	}
 
 	public static String firstname() {
