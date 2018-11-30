@@ -35,14 +35,16 @@ public class BarcodeUtilsTest {
 		assertEquals("1", checkDigit);
 		checkDigit = BarcodeUtils.createEanCheckSumDigit("921837743737");
 		assertEquals("9", checkDigit);
+		checkDigit = BarcodeUtils.createEanCheckSumDigit("978104625732");
+		assertEquals("0", checkDigit);
 	}
-	
+
 	@Test
 	public void testCheckDigitInvalidEan() throws Exception {
 		String checkDigit = BarcodeUtils.createEanCheckSumDigit("82736b376271");
 		assertNull(checkDigit);
 	}
-	
+
 	@Test
 	public void testCheckDigitIsbn10() throws Exception {
 		String checkDigit = BarcodeUtils.createIsbn10CheckSumDigit("386680192");
@@ -52,7 +54,7 @@ public class BarcodeUtilsTest {
 		checkDigit = BarcodeUtils.createIsbn10CheckSumDigit("668008783");
 		assertEquals("X", checkDigit);
 	}
-	
+
 	@Test
 	public void testCheckDigitInvalidIsbn() throws Exception {
 		String checkDigit = BarcodeUtils.createIsbn10CheckSumDigit("82397329g");

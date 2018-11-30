@@ -6,7 +6,7 @@ package com.namics.commons.random.support;
 
 /**
  * BarcodeUtils.
- * 
+ *
  * @author pnueesch
  * @since 08.05.14 13:00
  */
@@ -19,7 +19,8 @@ public class BarcodeUtils {
 				int digit = Integer.parseInt(value.substring(value.length() - i - 1, value.length() - i));
 				total += digit * ((i % 2 == 1) ? 1 : 3);
 			}
-			return String.valueOf(10 - (total % 10));
+			int checkSum = 10 - total % 10;
+			return String.valueOf(checkSum % 10);
 		} catch (NumberFormatException nfe) {
 			return null;
 		}
