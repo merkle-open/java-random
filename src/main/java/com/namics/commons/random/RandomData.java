@@ -346,11 +346,7 @@ public class RandomData {
 	}
 
 	public static String email(String firstname, String lastname) {
-		String tld = "com";
-		if (randomInteger(0, 10) % 2 == 0) {
-			tld = countryCode();
-		}
-		return email(firstname, lastname, lastname + "." + tld);
+		return email(firstname, lastname, lastname + "." + random(Names.getCountryTLDs()));
 	}
 
 	public static String email(String firstname, String lastname, String domain) {
