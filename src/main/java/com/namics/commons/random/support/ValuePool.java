@@ -19,7 +19,7 @@ import java.util.Set;
  * @author aschaefer
  * @since 21.02.14 11:00
  */
-public class Names {
+public class ValuePool {
 
 	protected static Set<String> maleNames;
 	protected static Set<String> femaleNames;
@@ -82,11 +82,11 @@ public class Names {
 	public static Set<String> getCities() {
 		return cities;
 	}
-	
+
 	public static Set<String> getCompanies() {
 		return companies;
 	}
-	
+
 	public static Set<String> getManufacturers() {
 		return manufacturers;
 	}
