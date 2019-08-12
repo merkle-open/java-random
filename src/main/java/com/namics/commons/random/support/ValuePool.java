@@ -19,7 +19,7 @@ import java.util.Set;
  * @author aschaefer
  * @since 21.02.14 11:00
  */
-public class Names {
+public class ValuePool {
 
 	protected static Set<String> maleNames;
 	protected static Set<String> femaleNames;
@@ -27,6 +27,7 @@ public class Names {
 	protected static Set<String> firstNames;
 	protected static Set<String> companies;
 	protected static Set<String> manufacturers;
+	protected static Set<String> countryTLDs;
 	protected static Set<String> cities = new HashSet<>();
 	public static String[] streetSuffix = new String[] { "street", "place", "square", "lane", "strasse", "platz", "gasse", "weg" };
 	public static String[] streetSuffixesExtra = new String[] { " Street", " Place", " Square", " Lane", " Ave.", " Strasse", " Platz", };
@@ -37,6 +38,7 @@ public class Names {
 		surnames = readLines("/testdata/surnames.txt");
 		companies = readLines("/testdata/companies.txt");
 		manufacturers = readLines("/testdata/manufacturers.txt");
+		countryTLDs = readLines("/testdata/country_tld.txt");
 		firstNames = new HashSet<String>();
 		firstNames.addAll(maleNames);
 		firstNames.addAll(femaleNames);
@@ -80,13 +82,17 @@ public class Names {
 	public static Set<String> getCities() {
 		return cities;
 	}
-	
+
 	public static Set<String> getCompanies() {
 		return companies;
 	}
-	
+
 	public static Set<String> getManufacturers() {
 		return manufacturers;
+	}
+
+	public static Set<String> getCountryTLDs() {
+		return countryTLDs;
 	}
 
 	public static String[] getStreetSuffix() {

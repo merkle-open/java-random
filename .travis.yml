@@ -12,7 +12,7 @@ env:
     - # GITHUB_TOKEN
     - secure: "yLa1xLlbE+J16UA0w3Fm7hgUTWC+EDpe6EL4CcrkrtEhVSUwYOc3XYpqU0MTNhz4TnlujyPvRn5yhqo529laeVJNUWVzcKQFoaOvaSx8IMcel5V4yeCb6CPUekrIKJ0Y0Cjr4+LboNUspiamuczelm+UwYwI1fO2g93YzbAPZ3E5E1Zichnj1vHSwwX4zVJBLwp7+FaVgjrg1eD0o8SajPTbR4quoXoZb2MGHx06cLedhExsYlvF62SZw5F2fcnIsLidONsdnXEp5N7FOOeMu1hgT4V+96cM91iPAYiX9b3GdV0DJO3qVN/Z9HS0WPEVeqLHyIECI13sKY+nfgI4JoZ5l0Py0GPIZvOibNHWvg+lImmPhx4fKzkmtFTVN+vCD3V1bcGQpoztX0DjhgfJhQ/Fj74kIhq2ni0U0y1PkBwVpJrHfZFGHNiTJxeKopjgHJQs2VJ8tOAP2fjB8r/meLeiB92avmmScO0ZA05DeDNyslFovYq+k5+z2jfPY7lA+w5ggn4QLsYg2ljq0t+BibnHvUxPo2p3t5miapP2aqHILMLjq4kKMMjKnL7D+l/C58qbWOaKcRcaWwLitYoRUhD7ebKlVpuUwX39w4wXz9RwQ4ZWbEOkL+k6CIz8pXxQVhY96oXY36Ixyfg8k0Nt6leQhTogKpNCw7KrbSgs+YQ="
 jdk:
-  - oraclejdk8
+  - openjdk8
 before_install:
   - source ci/setup-git.sh
 install: mvn clean install -P !ossrh -DskipTests=true -Dmaven.javadoc.skip=true -B -V -U  --settings ci/mvnsettings.xml
