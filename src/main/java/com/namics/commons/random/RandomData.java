@@ -11,7 +11,7 @@ import com.namics.commons.random.generator.RandomGeneratorFactory;
 import com.namics.commons.random.support.BarcodeUtils;
 import com.namics.commons.random.support.BeanUtils;
 import com.namics.commons.random.support.LoremIpsum;
-import com.namics.commons.random.support.Names;
+import com.namics.commons.random.support.ValuePool;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.math.RandomUtils;
@@ -346,11 +346,7 @@ public class RandomData {
 	}
 
 	public static String email(String firstname, String lastname) {
-		String tld = "com";
-		if (randomInteger(0, 10) % 2 == 0) {
-			tld = countryCode();
-		}
-		return email(firstname, lastname, lastname + "." + tld);
+		return email(firstname, lastname, lastname + "." + random(ValuePool.getCountryTLDs()));
 	}
 
 	public static String email(String firstname, String lastname, String domain) {
@@ -397,19 +393,19 @@ public class RandomData {
 	}
 
 	public static String firstname() {
-		return random(Names.getFirstNames());
+		return random(ValuePool.getFirstNames());
 	}
 
 	public static String firstnameMale() {
-		return random(Names.getMaleNames());
+		return random(ValuePool.getMaleNames());
 	}
 
 	public static String firstnameFemale() {
-		return random(Names.getFemaleNames());
+		return random(ValuePool.getFemaleNames());
 	}
 
 	public static String lastname() {
-		return random(Names.getSurnames());
+		return random(ValuePool.getSurnames());
 	}
 
 	public static String username() {
@@ -429,7 +425,7 @@ public class RandomData {
 	}
 
 	public static String street() {
-		return randomInteger(0, 1) == 0 ? lastname() + RandomData.random(Names.getStreetSuffix()) : name() + RandomData.random(Names.getStreetSuffixesExtra());
+		return randomInteger(0, 1) == 0 ? lastname() + RandomData.random(ValuePool.getStreetSuffix()) : name() + RandomData.random(ValuePool.getStreetSuffixesExtra());
 	}
 
 	public static String streetNumber() {
@@ -441,7 +437,7 @@ public class RandomData {
 	}
 
 	public static String city() {
-		return random(Names.getCities());
+		return random(ValuePool.getCities());
 	}
 
 	public static String zipCH() {
@@ -463,11 +459,11 @@ public class RandomData {
 	}
 
 	public static String company() {
-		return random(Names.getCompanies());
+		return random(ValuePool.getCompanies());
 	}
 
 	public static String manufacturer() {
-		return random(Names.getManufacturers());
+		return random(ValuePool.getManufacturers());
 	}
 
 	public static String title(int count) {
