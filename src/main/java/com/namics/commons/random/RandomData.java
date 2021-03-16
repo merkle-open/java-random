@@ -45,13 +45,17 @@ import static com.namics.commons.random.support.BeanUtils.makeAccessible;
 
 /**
  * Utility class to generate random data.
- * TODO: improve documentation.
+ *
+ * Hint according to international chars:
+ * You may enable international names by setting either
+ * - system property "random.names.international" to "true"
+ * - environment variable "RANDOM_NAMES_INTERNATIONAL" to "true"
  *
  * @author aschaefer
  * @author pnueesch
  * @since 21.02.14 13:43
  */
-public class RandomData {
+public final class RandomData {
 	private static final Logger LOG = LoggerFactory.getLogger(RandomData.class);
 
 	/**
@@ -627,4 +631,8 @@ public class RandomData {
 	                                                      + "\t- automatically when placed in same package as the SupportedType\n"
 	                                                      + "\t- Manually by registering either class or instance directly toRandomData.addRandomGenerator\n"
 	                                                      + "\t- Manually by registering package for scanning  to RandomData.addRandomGenerators";
+
+	private RandomData() {
+		// hide
+	}
 }
