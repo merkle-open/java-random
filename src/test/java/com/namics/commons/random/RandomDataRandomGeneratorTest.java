@@ -5,7 +5,9 @@
 package com.namics.commons.random;
 
 import com.namics.commons.random.known.TestAttributeKnown;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * RandomDataRandomGeneratorTest.
@@ -13,14 +15,14 @@ import org.junit.Test;
  * @author aschaefer
  * @since 20.02.14 15:39
  */
-public class RandomDataRandomGeneratorTest {
+class RandomDataRandomGeneratorTest {
 
 	@Test
-	public void testFullStack(){
+	void testFullStack(){
 		TestBean testBean = new TestBean();
 		RandomData.populateBean(testBean);
-		Assert.assertNotNull(testBean.getAttribute());
-		Assert.assertNotNull(testBean.getAttribute().getTest());
+		assertNotNull(testBean.getAttribute());
+		assertNotNull(testBean.getAttribute().getTest());
 	}
 
 	public static class TestBean {

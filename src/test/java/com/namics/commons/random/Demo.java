@@ -4,7 +4,7 @@
 
 package com.namics.commons.random;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Demo.

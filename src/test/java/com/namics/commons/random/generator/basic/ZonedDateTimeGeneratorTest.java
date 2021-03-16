@@ -5,7 +5,7 @@
 package com.namics.commons.random.generator.basic;
 
 import com.namics.commons.random.RandomData;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.time.ZonedDateTime;
 

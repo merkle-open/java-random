@@ -5,7 +5,7 @@
 package com.namics.commons.random.generator.basic;
 
 import com.namics.commons.random.RandomData;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 
@@ -15,10 +15,10 @@ import java.time.LocalDateTime;
  * @author aschaefer, Namics AG
  * @since 19.05.15 16:27
  */
-public class LocalDateTimeGeneratorTest {
+class LocalDateTimeGeneratorTest {
 
 	@Test
-	public void testRandom() throws Exception {
+	void testRandom() throws Exception {
 		System.out.println(RandomData.random(LocalDateTime.class));
 		System.out.println(RandomData.random(LocalDateTime.class));
 		System.out.println(RandomData.random(LocalDateTime.class));

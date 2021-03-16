@@ -5,13 +5,17 @@
 package com.namics.commons.random.support;
 
 import com.namics.commons.random.RandomData;
-import org.apache.commons.io.IOUtils;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
+
+import static java.util.stream.Collectors.toSet;
 
 /**
  * Helper class to read name data.
@@ -19,7 +23,7 @@ import java.util.Set;
  * @author aschaefer
  * @since 21.02.14 11:00
  */
-public class ValuePool {
+public final class ValuePool {
 
 	protected static Set<String> maleNames;
 	protected static Set<String> femaleNames;
@@ -51,13 +55,9 @@ public class ValuePool {
 
 	}
 
-
-	protected static Set<String> readLines(String name) {
-		try {
-			List<String> strings = IOUtils.readLines(RandomData.class.getResourceAsStream(name));
-			HashSet<String> result = new HashSet<String>();
-			result.addAll(strings);
-			return result;
+	private static Set<String> readLines(String name) {
+		try (InputStream resource = RandomData.class.getResourceAsStream(name)) {
+			return new BufferedReader(new InputStreamReader(resource, StandardCharsets.UTF_8)).lines().collect(toSet());
 		} catch (IOException e) {
 			return Collections.emptySet();
 		}
@@ -101,5 +101,9 @@ public class ValuePool {
 
 	public static String[] getStreetSuffixesExtra() {
 		return streetSuffixesExtra;
+	}
+
+	private ValuePool() {
+		// hide
 	}
 }

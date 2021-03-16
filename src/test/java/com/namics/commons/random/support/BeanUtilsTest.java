@@ -4,15 +4,15 @@
 
 package com.namics.commons.random.support;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.beans.PropertyDescriptor;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 /**
  * BeanUtilsTest.
@@ -20,40 +20,40 @@ import static org.junit.Assert.assertNotNull;
  * @author aschaefer
  * @since 21.02.14 10:05
  */
-public class BeanUtilsTest {
+class BeanUtilsTest {
 	private static final Logger LOG = LoggerFactory.getLogger(BeanUtilsTest.class);
 
 	@Test
-	public void testGetPropertyDescriptors() throws Exception {
+	void testGetPropertyDescriptors() throws Exception {
 		List<PropertyDescriptor> propertyDescriptors = BeanUtils.getPropertyDescriptors(TestBean.class);
 		LOG.info("{}", propertyDescriptors);
 		assertNotNull(propertyDescriptors);
 		assertEquals(3, propertyDescriptors.size());
 		for (PropertyDescriptor descriptor : propertyDescriptors) {
-			assertNotNull(descriptor.getName() + " read method is null ",descriptor.getReadMethod());
-			if ( !"class".equals(descriptor.getName())){
-				assertNotNull(descriptor.getName() + " write method is null ",descriptor.getWriteMethod());
+			assertNotNull(descriptor.getReadMethod(), descriptor.getName() + " read method is null ");
+			if (!"class".equals(descriptor.getName())) {
+				assertNotNull(descriptor.getWriteMethod(), descriptor.getName() + " write method is null ");
 			}
 		}
 	}
 
-	public static class TestBean{
+	static class TestBean {
 		private String standard;
 		private String extended;
 
-		public String getStandard() {
+		String getStandard() {
 			return standard;
 		}
 
-		public void setStandard(String standard) {
+		void setStandard(String standard) {
 			this.standard = standard;
 		}
 
-		public String getExtended() {
+		String getExtended() {
 			return extended;
 		}
 
-		public TestBean setExtended(String extended) {
+		TestBean setExtended(String extended) {
 			this.extended = extended;
 			return this;
 		}

@@ -4,7 +4,9 @@
 
 package com.namics.commons.random.support;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * LoremIpsumTest.
@@ -12,9 +14,9 @@ import org.junit.Test;
  * @author aschaefer
  * @since 27.02.14 19:13
  */
-public class LoremIpsumTest {
+class LoremIpsumTest {
 	@Test
-	public void testGetWords() throws Exception {
-		System.out.println(LoremIpsum.getWords().size());
+	void testGetWords() throws Exception {
+		assertEquals(195, LoremIpsum.getWords().size());
 	}
 }

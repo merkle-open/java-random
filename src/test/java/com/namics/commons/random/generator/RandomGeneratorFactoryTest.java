@@ -8,10 +8,10 @@ import com.namics.commons.random.known.TestAttributeManualRegisterBean;
 import com.namics.commons.random.known.TestAttributeManualRegisterClass;
 import com.namics.commons.random.unknown.TestAttributeManualRegisterBeanGenerator;
 import com.namics.commons.random.unknown.TestAttributeManualRegisterClassGenerator;
-import org.junit.Test;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * RandomGeneratorFactoryTest.
@@ -19,34 +19,34 @@ import static org.junit.Assert.assertNull;
  * @author aschaefer
  * @since 21.02.14 13:06
  */
-public class RandomGeneratorFactoryTest {
+class RandomGeneratorFactoryTest {
 
 	@Test
-	public void testGeneratorByClassExists() throws Exception {
+	void testGeneratorByClassExists() throws Exception {
 		assertNotNull(RandomGeneratorFactory.generator(Integer.class));
 	}
 
 	@Test
-	public void testGeneratorByClassNotExists() throws Exception {
+	void testGeneratorByClassNotExists() throws Exception {
 //	   	assertNull(RandomGeneratorFactory.generator(TestAttributeManualRegisterClass.class));
 		RandomGeneratorFactory.addRandomGenerator(TestAttributeManualRegisterClassGenerator.class);
 		assertNotNull(RandomGeneratorFactory.generator(TestAttributeManualRegisterClass.class));
 	}
 
 	@Test
-	public void testGeneratorByBeanNotExists() throws Exception {
+	void testGeneratorByBeanNotExists() throws Exception {
 //		assertNull(RandomGeneratorFactory.generator(TestAttributeManualRegisterBean.class));
 		RandomGeneratorFactory.addRandomGenerator(new TestAttributeManualRegisterBeanGenerator());
 		assertNotNull(RandomGeneratorFactory.generator(TestAttributeManualRegisterBean.class));
 	}
 
 	@Test
-	public void testGeneratorByName() throws Exception {
+	void testGeneratorByName() throws Exception {
 		assertNotNull(RandomGeneratorFactory.generator(Integer.class.getName()));
 	}
 
 	@Test
-	public void testGeneratorByNameWrongClassname() throws Exception {
+	void testGeneratorByNameWrongClassname() throws Exception {
 		assertNull(RandomGeneratorFactory.generator("unknown"));
 	}
 

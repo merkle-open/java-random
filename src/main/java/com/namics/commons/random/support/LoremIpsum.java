@@ -5,15 +5,16 @@
 package com.namics.commons.random.support;
 
 import com.namics.commons.random.RandomData;
-import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -22,32 +23,39 @@ import java.util.regex.Pattern;
  * @author aschaefer
  * @since 21.02.14 10:52
  */
-public class LoremIpsum {
+public final class LoremIpsum {
 	private static final Logger LOG = LoggerFactory.getLogger(LoremIpsum.class);
 
 	public static final String TEST_DATA_FILE = "/testdata/lorem.txt";
 
-	protected static Set<String> words = new HashSet<String>();
+	private static final Set<String> words = new HashSet<>();
 
 	static {
 		readLorem();
 	}
 
-	protected static void readLorem() {
-		try {
-			List<String> strings = IOUtils.readLines(RandomData.class.getResourceAsStream(TEST_DATA_FILE));
-			for (String line : strings) {
-				Matcher matcher = Pattern.compile("\\w+").matcher(line);
-				while (matcher.find()) {
-					words.add(matcher.group());
-				}
-			}
+	public static Set<String> getWords() {
+		return words;
+	}
+
+	private static void readLorem() {
+		Pattern wordPattern = Pattern.compile("\\w+");
+		try (InputStream resource = RandomData.class.getResourceAsStream(TEST_DATA_FILE)) {
+			new BufferedReader(new InputStreamReader(resource, StandardCharsets.UTF_8))
+					.lines()
+					.map(wordPattern::matcher)
+					.forEach(matcher -> {
+						while (matcher.find()) {
+							words.add(matcher.group());
+						}
+					});
+
 		} catch (IOException e) {
-			LOG.warn("{}", e);
+			LOG.warn("Load LoremIpsum failed", e);
 		}
 	}
 
-	public static Set<String> getWords() {
-		return words;
+	private LoremIpsum() {
+		// hide
 	}
 }

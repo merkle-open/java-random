@@ -18,7 +18,7 @@ import com.namics.commons.random.test.NoPublicDefaultConstructor;
 import com.namics.commons.random.test.NonComparable;
 import com.namics.commons.random.test.RecursionTestBean;
 import org.joda.time.DateTime;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -35,8 +35,9 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 
 import static com.namics.commons.random.RandomData.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * TestTestDataHelper.
@@ -44,50 +45,50 @@ import static org.junit.Assert.*;
  * @author aschaefer
  * @since 31.01.14 16:21
  */
-public class RandomDataTest {
+class RandomDataTest {
 
 	@Test
-	public void testParagraphs() {
+	void testParagraphs() {
 		assertNotNull(RandomData.paragraphs(0, 100));
 	}
 
 	@Test
-	public void testPerson() {
+	void testPerson() {
 		Person person = RandomData.random(Person.class);
 		assertNotNull(person);
 		Assert.assertPropertiesNotNull(person);
 	}
 
 	@Test
-	public void testRandomInteger() throws Exception {
+	void testRandomInteger() {
 		Integer random = RandomData.random(Integer.class);
 		assertNotNull(random);
 	}
 
 	@Test
-	public void testRandomDateTime() {
+	void testRandomDateTime() {
 		assertNotNull(RandomData.dateTime());
 	}
 
 	@Test
-	public void testPopulateBean() {
+	void testPopulateBean() {
 		TestBean bean = new TestBean();
 		RandomData.populateBean(bean);
 		Assert.assertPropertiesNotNull(bean);
 	}
 
 	@Test
-	public void testGetRandom() {
+	void testGetRandom() {
 		assertEquals("test", RandomData.random(Arrays.asList("test")));
 	}
 
 	@Test
-	public void testRandomForClassExists() {
+	void testRandomForClassExists() {
 		assertNotNull(RandomData.random(TestAttributeKnown.class));
 	}
 
 	@Test
-	public void testZipDE() {
+	void testZipDE() {
 		String zip;
 		do {
 			zip = RandomData.zipDE();
@@ -96,12 +97,12 @@ public class RandomDataTest {
 	}
 
 	@Test
-	public void testRandomCreateForClassNotExists() {
+	void testRandomCreateForClassNotExists() {
 		assertNotNull(RandomData.random(TestBean.class));
 	}
 
 	@Test
-	public void testBasicGenetator() throws Exception {
+	void testBasicGenetator() {
 		List<Class<? extends Serializable>> classes = Arrays.asList(BigDecimal.class, Boolean.class, Date.class, DateTime.class, Double.class, Float.class, Integer.class, Locale.class, Long.class, String.class);
 		for (Class<? extends Serializable> aClass : classes) {
 			assertEquals(aClass, RandomData.random(aClass).getClass());
@@ -109,17 +110,17 @@ public class RandomDataTest {
 	}
 
 	@Test
-	public void uuid_matchesPattern() {
+	void uuid_matchesPattern() {
 		assertThat(uuid().matches("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"), is(true));
 	}
 
 	@Test
-	public void shortGuid_has22Digits() {
+	void shortGuid_has22Digits() {
 		assertEquals(22, shortGuid().length());
 	}
 
 	@Test
-	public void testArray() throws Exception {
+	void testArray() {
 		int[] random = RandomData.random(int[].class, true);
 		assertNotNull(random);
 		assertTrue(random.length > 0);
@@ -131,7 +132,7 @@ public class RandomDataTest {
 
 
 	@Test
-	public void testGenericFieldTypes() {
+	void testGenericFieldTypes() {
 
 		GenericsTestBean listBean = RandomData.random(GenericsTestBean.class);
 		assertNotNull(listBean);
@@ -158,7 +159,7 @@ public class RandomDataTest {
 	}
 
 	@Test
-	public void testGenericWrappedFieldTypes() {
+	void testGenericWrappedFieldTypes() {
 
 		GenericsWrappedTestBean listBean = RandomData.random(GenericsWrappedTestBean.class);
 		assertNotNull(listBean);
@@ -183,14 +184,14 @@ public class RandomDataTest {
 	}
 
 	@Test
-	public void testMap() {
+	void testMap() {
 		assertTrue(RandomData.random(Map.class) instanceof Map);
 		assertTrue(RandomData.random(SortedMap.class) instanceof SortedMap);
 		assertTrue(RandomData.random(TreeMap.class) instanceof TreeMap);
 	}
 
 	@Test
-	public void testSet() {
+	void testSet() {
 		assertTrue(RandomData.random(Set.class) instanceof Set);
 		assertTrue(RandomData.random(SortedSet.class) instanceof SortedSet);
 		assertTrue(RandomData.random(TreeSet.class) instanceof TreeSet);
@@ -198,13 +199,13 @@ public class RandomDataTest {
 
 
 	@Test
-	public void testList() {
+	void testList() {
 		assertTrue(RandomData.random(List.class) instanceof List);
 		assertTrue(RandomData.random(ArrayList.class) instanceof ArrayList);
 	}
 
 	@Test
-	public void testDirectRecursion() {
+	void testDirectRecursion() {
 		assertThat(RandomData.random(RecursionTestBean.class), allOf(
 				isA(RecursionTestBean.class),
 				hasProperty("recursive", isA(RecursionTestBean.class))
@@ -212,7 +213,7 @@ public class RandomDataTest {
 	}
 
 	@Test
-	public void testGenericProperties() throws Exception {
+	void testGenericProperties() {
 		assertThat(RandomData.random(GenericChild.class), allOf(
 				isA(GenericChild.class),
 				hasProperty("id", isA(String.class))
@@ -220,7 +221,7 @@ public class RandomDataTest {
 	}
 
 	@Test
-	public void testGenericPropertiesHierarchie() throws Exception {
+	void testGenericPropertiesHierarchie() {
 		assertThat(RandomData.random(GenericGrandSon.class), allOf(
 				isA(GenericGrandSon.class),
 				hasProperty("id", isA(String.class))
@@ -228,7 +229,7 @@ public class RandomDataTest {
 	}
 
 	@Test
-	public void testGenericPropertiesHierarchieBetween() throws Exception {
+	void testGenericPropertiesHierarchieBetween() {
 		assertThat(RandomData.random(GenericGrandDaughter.class), allOf(
 				isA(GenericGrandDaughter.class),
 				hasProperty("id", isA(String.class))
@@ -236,7 +237,7 @@ public class RandomDataTest {
 	}
 
 	@Test
-	public void testNonComparableCollections() {
+	void testNonComparableCollections() {
 		ComparableCollectionsTestBean actual = RandomData.random(ComparableCollectionsTestBean.class);
 		assertThat(actual, hasProperty("map", instanceOf(Map.class)));
 		actual.getMap().put("test", new NonComparable());
@@ -245,13 +246,13 @@ public class RandomDataTest {
 	}
 
 	@Test
-	public void testEmail() throws Exception {
+	void testEmail() {
 		assertThat(email("Hans!", "O'Neal", "dasd'#.com"), equalTo("hans.oneal@dasd.com"));
 
 	}
 
 	@Test
-	public void testRemoveAccents() throws Exception {
+	void testRemoveAccents() {
 		assertThat(removeAccents("André"), equalTo("Andre"));
 		assertThat(removeAccents("Schäfer"), equalTo("Schafer"));
 		assertThat(removeAccents(""), equalTo(""));
@@ -259,14 +260,14 @@ public class RandomDataTest {
 	}
 
 	@Test
-	public void testNoPublicDefaultConstructor() {
+	void testNoPublicDefaultConstructor() {
 		NoPublicDefaultConstructor random = RandomData.random(NoPublicDefaultConstructor.class);
 		assertNotNull(random);
 		Assert.assertPropertiesNotNull(random);
 	}
 
 	@Test
-	public void testNoDefaultConstructor() {
+	void testNoDefaultConstructor() {
 		NoDefaultConstructor random = RandomData.random(NoDefaultConstructor.class);
 		assertNotNull(random);
 		Assert.assertPropertiesNotNull(random);
