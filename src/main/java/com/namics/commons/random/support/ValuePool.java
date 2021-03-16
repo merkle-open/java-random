@@ -13,8 +13,11 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import static java.util.Arrays.asList;
+import static java.util.Collections.unmodifiableList;
 import static java.util.stream.Collectors.toSet;
 
 /**
@@ -25,33 +28,45 @@ import static java.util.stream.Collectors.toSet;
  */
 public final class ValuePool {
 
-	protected static Set<String> maleNames;
-	protected static Set<String> femaleNames;
-	protected static Set<String> surnames;
-	protected static Set<String> firstNames;
-	protected static Set<String> companies;
-	protected static Set<String> manufacturers;
-	protected static Set<String> countryTLDs;
-	protected static Set<String> cities = new HashSet<>();
-	public static String[] streetSuffix = new String[] { "street", "place", "square", "lane", "strasse", "platz", "gasse", "weg" };
-	public static String[] streetSuffixesExtra = new String[] { " Street", " Place", " Square", " Lane", " Ave.", " Strasse", " Platz", };
+	private static final ValuePool INTERNATIONAL = new ValuePool(true);
+	private static final ValuePool COMPATIBLE = new ValuePool(false);
 
-	static {
-		maleNames = readLines("/testdata/male_names.txt");
-		femaleNames = readLines("/testdata/female_names.txt");
-		surnames = readLines("/testdata/surnames.txt");
+	private final Set<String> maleNames;
+	private final Set<String> femaleNames;
+	private final Set<String> surnames;
+	private final Set<String> firstNames;
+	private final Set<String> companies;
+	private final Set<String> manufacturers;
+	private final Set<String> countryTLDs;
+	private final Set<String> cities;
+	private final List<String> streetSuffix = unmodifiableList(asList("street", "place", "square", "lane", "strasse", "platz", "gasse", "weg"));
+	private final List<String> streetSuffixesExtra = unmodifiableList(asList(" Street", " Place", " Square", " Lane", " Ave.", " Strasse", " Platz"));
+
+
+	private ValuePool(boolean international) {
+		if (international) {
+			maleNames = readLines("/testdata/male_names_international.txt");
+			femaleNames = readLines("/testdata/female_names_international.txt");
+			surnames = readLines("/testdata/surnames_international.txt");
+		} else {
+			maleNames = readLines("/testdata/male_names.txt");
+			femaleNames = readLines("/testdata/female_names.txt");
+			surnames = readLines("/testdata/surnames.txt");
+		}
 		companies = readLines("/testdata/companies.txt");
 		manufacturers = readLines("/testdata/manufacturers.txt");
 		countryTLDs = readLines("/testdata/country_tld.txt");
-		firstNames = new HashSet<String>();
+		firstNames = new HashSet<>();
 		firstNames.addAll(maleNames);
 		firstNames.addAll(femaleNames);
 
+		Set<String> cityValues = new HashSet<>();
 		Set<String> cityInfos = readLines("/testdata/cities.txt");
 		for (String cityInfo : cityInfos) {
 			String[] info = cityInfo.split(";");
-			cities.add(info[1]);
+			cityValues.add(info[1]);
 		}
+		cities = Collections.unmodifiableSet(cityValues);
 
 	}
 
@@ -64,46 +79,51 @@ public final class ValuePool {
 	}
 
 	public static Set<String> getMaleNames() {
-		return maleNames;
+		return pool().maleNames;
 	}
 
 	public static Set<String> getFemaleNames() {
-		return femaleNames;
+		return pool().femaleNames;
 	}
 
 	public static Set<String> getSurnames() {
-		return surnames;
+		return pool().surnames;
 	}
 
 	public static Set<String> getFirstNames() {
-		return firstNames;
+		return pool().firstNames;
 	}
 
 	public static Set<String> getCities() {
-		return cities;
+		return pool().cities;
 	}
 
 	public static Set<String> getCompanies() {
-		return companies;
+		return pool().companies;
 	}
 
 	public static Set<String> getManufacturers() {
-		return manufacturers;
+		return pool().manufacturers;
 	}
 
 	public static Set<String> getCountryTLDs() {
-		return countryTLDs;
+		return pool().countryTLDs;
 	}
 
-	public static String[] getStreetSuffix() {
-		return streetSuffix;
+	public static List<String> getStreetSuffix() {
+		return pool().streetSuffix;
 	}
 
-	public static String[] getStreetSuffixesExtra() {
-		return streetSuffixesExtra;
+	public static List<String> getStreetSuffixesExtra() {
+		return pool().streetSuffixesExtra;
 	}
 
-	private ValuePool() {
-		// hide
+	private static ValuePool pool() {
+		if ("true".equalsIgnoreCase(System.getProperty("random.names.international", "false"))
+		    || "true".equalsIgnoreCase(System.getenv("RANDOM_NAMES_INTERNATIONAL"))) {
+			return INTERNATIONAL;
+		} else {
+			return COMPATIBLE;
+		}
 	}
 }

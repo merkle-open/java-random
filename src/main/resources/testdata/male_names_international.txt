@@ -1278,6 +1278,7 @@ Aluizio
 Alun
 Alus
 Alush
+Alva
 Alvar
 Alvarino
 Alvaro
@@ -1801,6 +1802,7 @@ Antsa
 Antti
 Antun
 Antuono
+Antwan
 Antònio
 Antón
 António
@@ -3271,6 +3273,7 @@ Benn
 Bennet
 Bennett
 Benni
+Bennie
 Benno
 Benny
 Beno
@@ -3487,6 +3490,7 @@ Biljent
 Bill
 Billal
 Billel
+Billie
 Billy
 Bilâl
 Bimal
@@ -3633,6 +3637,7 @@ Boaventura
 Boaz
 Bob
 Boban
+Bobbie
 Bobby
 Bobi
 Bobo
@@ -3679,6 +3684,7 @@ Bonifatius
 Bonifaz
 Bonifácio
 Bono
+Booker
 Boon
 Boonyarit
 Bora
@@ -3744,6 +3750,7 @@ Bowen
 Boy
 Boyan
 Boyang
+Boyd
 Boyko
 Boyu
 Boza
@@ -3862,17 +3869,20 @@ Bryant
 Bryce
 Bryn
 Brynjar
+Bryon
 Bryton
 Bráulio
 Bubacar
 Bubacarr
 Buchung
 Bud
+Buddy
 Budi
 Budimir
 Budimko
 Budislav
 Buenaventura
+Buford
 Bugra
 Bugrahan
 Bui
@@ -4078,6 +4088,7 @@ Carmelio
 Carmelito
 Carmello
 Carmelo
+Carmen
 Carmi
 Carmin
 Carminantonio
@@ -4087,6 +4098,7 @@ Carmino
 Carol
 Carolino
 Carolus
+Carroll
 Carryl
 Carson
 Carsten
@@ -4597,6 +4609,7 @@ Coen
 Coenraad
 Coenradus
 Colas
+Colby
 Cole
 Coleman
 Colin
@@ -4678,6 +4691,7 @@ Costel
 Costin
 Costinel
 Courtney
+Coy
 Craig
 Crescencio
 Crescenzio
@@ -5000,6 +5014,7 @@ Darran
 Darrel
 Darrell
 Darren
+Darrin
 Darryl
 Darryn
 Darsh
@@ -5089,6 +5104,7 @@ Dašmir
 De
 Dea
 Dean
+Deandre
 Dear
 Debas
 Debatik
@@ -5134,6 +5150,7 @@ Delaja
 Delal
 Delan
 Delano
+Delbert
 Delbrin
 Deldar
 Delf
@@ -5224,6 +5241,7 @@ Denniz
 Denny
 Dennys
 Denton
+Denver
 Deny
 Denys
 Denzel
@@ -5302,7 +5320,9 @@ Devrim
 Devris
 Devyn
 Dewa
+Dewayne
 Dewet
+Dewey
 Dewi
 Dewin
 Dewis
@@ -5737,6 +5757,7 @@ Doniphan
 Donis
 Donit
 Donjet
+Donnell
 Donnie
 Donny
 Donovan
@@ -5775,12 +5796,14 @@ Doryan
 Dositeo
 Dostan
 Doudou
+Doug
 Dougal
 Douglas
 Douwe
 Dov
 Dovi
 Dovydas
+Doyle
 Dragan
 Dragancho
 Draganco
@@ -5919,6 +5942,7 @@ Dushko
 Dushyanthan
 Dusko
 Dustin
+Dusty
 Dustyn
 Duy
 Duyen
@@ -6025,6 +6049,8 @@ Eamon
 Eamonn
 Ean
 Earl
+Earle
+Earnest
 Easwaran
 Eathan
 Ebadullah
@@ -6151,6 +6177,7 @@ Edvino
 Edwald
 Edwar
 Edward
+Edwardo
 Edwin
 Edwyn
 Edy
@@ -6508,6 +6535,7 @@ Elvys
 Elwan
 Elwin
 Elwis
+Elwood
 Ely
 Elya
 Elyah
@@ -6578,6 +6606,7 @@ Emmanuil
 Emmerich
 Emmett
 Emo
+Emory
 Emra
 Emrah
 Emran
@@ -7060,6 +7089,7 @@ Everaldo
 Everard
 Everardo
 Everett
+Everette
 Everson
 Evert
 Everton
@@ -7814,6 +7844,7 @@ Fredrick
 Fredrik
 Fredy
 Freek
+Freeman
 Freimut
 Frej
 Frenk
@@ -7921,6 +7952,7 @@ Gafur
 Gafurr
 Gagan
 Gagandeep
+Gail
 Gailan
 Gajamugan
 Gajan
@@ -7936,6 +7968,7 @@ Galaad
 Galal
 Galdim
 Galdino
+Gale
 Galen
 Galib
 Galien
@@ -7978,6 +8011,7 @@ Gari
 Garik
 Garip
 Garis
+Garland
 Garlef
 Garo
 Garret
@@ -8679,6 +8713,7 @@ Graciano
 Gracjan
 Grada
 Gradimir
+Grady
 Graeme
 Graham
 Grahame
@@ -8719,6 +8754,7 @@ Grigorios
 Grigoriy
 Grigory
 Grischa
+Grover
 Grozdan
 Gruja
 Grujica
@@ -8729,6 +8765,7 @@ Grégoire
 Grégor
 Grégori
 Grégory
+Guadalupe
 Gualberto
 Gualdino
 Gualter
@@ -8814,6 +8851,7 @@ Gurtej
 Guru
 Gurvan
 Gurvinder
+Gus
 Gust
 Gustaaf
 Gustaf
@@ -9605,7 +9643,9 @@ Heros
 Herrmann
 Herry
 Hersch
+Herschel
 Hersh
+Hershel
 Herve
 Hervin
 Hervé
@@ -9741,6 +9781,7 @@ Hok
 Hokan
 Holden
 Holger
+Hollis
 Holm
 Homayoon
 Homayoun
@@ -9790,6 +9831,7 @@ Houssein
 Houssem
 Houssin
 Houssine
+Houston
 Houzan
 Hovhannes
 Hovsep
@@ -10646,6 +10688,7 @@ Jamaal
 Jamain
 Jamaine
 Jamal
+Jamar
 Jamba
 Jame
 Jameel
@@ -10807,6 +10850,7 @@ Jaronas
 Jaroslav
 Jaroslaw
 Jarred
+Jarrett
 Jarrod
 Jarun
 Jarvis
@@ -11208,6 +11252,7 @@ Jeronimo
 Jerre
 Jerrel
 Jerri
+Jerrod
 Jerron
 Jerry
 Jerson
@@ -11377,6 +11422,7 @@ Jim
 Jimale
 Jimi
 Jimmi
+Jimmie
 Jimmy
 Jimmy-Lee
 Jimoh
@@ -11462,6 +11508,7 @@ Joerg
 Joergen
 Joeri
 Joern
+Joesph
 Joey
 Joffre
 Joffrey
@@ -11499,7 +11546,9 @@ Johna
 Johnas
 Johnatan
 Johnathan
+Johnathon
 Johnattan
+Johnie
 Johnn
 Johnni
 Johnnie
@@ -12387,6 +12436,7 @@ Kennedy
 Kennet
 Kenneth
 Kenni
+Kennith
 Kenny
 Keno
 Kenoa
@@ -12414,6 +12464,7 @@ Keremcan
 Kerian
 Kerim
 Kerlin
+Kermit
 Kern
 Kerrian
 Kerry
@@ -12554,6 +12605,7 @@ Kieren
 Kieron
 Kierthanan
 Kiet
+Kieth
 Kifah
 Kiflay
 Kifle
@@ -13125,6 +13177,7 @@ Lamin
 Lamine
 Lamjed
 Lammert
+Lamont
 Lampros
 Lan
 Lance
@@ -13233,6 +13286,8 @@ Lavdim
 Lavdrim
 Laveen
 Laven
+Lavern
+Laverne
 Lavi
 Laviero
 Lavin
@@ -13431,6 +13486,7 @@ Leovigildo
 Lepomir
 Leron
 Leroy
+Les
 Leshan
 Leslaw
 Lesley
@@ -13574,6 +13630,7 @@ Lindor
 Lindorfo
 Lindrit
 Lindsay
+Lindsey
 Lines
 Linfeng
 Ling
@@ -13590,6 +13647,7 @@ Linos
 Linto
 Linton
 Linus
+Linwood
 Lio
 Lion
 Lionardo
@@ -13746,6 +13804,7 @@ Loni
 Lonik
 Lonis
 Lonit
+Lonnie
 Lonny
 Lony
 Lopes
@@ -14004,6 +14063,7 @@ Luta
 Lutfi
 Lutfullah
 Lutgardo
+Luther
 Lutrim
 Lutumba
 Lutvi
@@ -14538,6 +14598,7 @@ Marec
 Marek
 Mareks
 Marem
+Margarito
 Margus
 Marian
 Mariangelo
@@ -14609,6 +14670,7 @@ Maroun
 Maroš
 Marquard
 Marques
+Marquis
 Mars
 Marsel
 Marsell
@@ -14651,6 +14713,7 @@ Marwane
 Marwen
 Marwin
 Marx
+Mary
 Maryan
 Maryancho
 Maryo
@@ -14915,6 +14978,7 @@ Maykel
 Maykol
 Maylan
 Maylo
+Maynard
 Mayo
 Mayooran
 Mayron
@@ -15190,6 +15254,7 @@ Meritan
 Meriton
 Meriç
 Merjon
+Merle
 Merlijn
 Merlin
 Merlind
@@ -15510,6 +15575,7 @@ Milkiyas
 Milko
 Milkyas
 Millan
+Millard
 Miller
 Millian
 Million
@@ -15832,12 +15898,14 @@ Mongkhon
 Monir
 Monish
 Monji
+Monroe
 Monsif
 Montague
 Montano
 Montaser
 Montassar
 Montasser
+Monte
 Montgomery
 Monther
 Monti
@@ -15865,6 +15933,7 @@ Mortaza
 Morten
 Morteza
 Mortimer
+Morton
 Mory
 Mosa
 Mosche
@@ -17216,6 +17285,7 @@ Nuhija
 Nuho
 Numa
 Numan
+Numbers
 Numo
 Nunes
 Nunio
@@ -17314,6 +17384,7 @@ Odd
 Oddo
 Oddone
 Oded
+Odell
 Oden
 Odhran
 Odil
@@ -17421,6 +17492,7 @@ Olkan
 Olkay
 Olle
 Olli
+Ollie
 Ollin
 Ollivier
 Olmedo
@@ -18795,6 +18867,7 @@ Rance
 Randal
 Randall
 Randel
+Randell
 Randhir
 Randjel
 Rando
@@ -19025,6 +19098,7 @@ Refet
 Refik
 Refki
 Refoel
+Refugio
 Regaib
 Regan
 Reggie
@@ -19229,6 +19303,7 @@ Rick
 Rickard
 Rickey
 Ricki
+Rickie
 Ricky
 Rico
 Rida
@@ -19537,6 +19612,7 @@ Rosam
 Rosan
 Rosano
 Rosario
+Roscoe
 Rosen
 Rosendo
 Roshan
@@ -19667,6 +19743,7 @@ Rustam
 Rustan
 Rustem
 Rustom
+Rusty
 Rutger
 Ruud
 Ruurd
@@ -21782,6 +21859,8 @@ Srivathsan
 Srour
 Srpko
 Sruli
+Stacey
+Stacy
 Staffan
 Stalin
 Stamatios
@@ -22580,6 +22659,7 @@ Teresio
 Terje
 Tero
 Terrance
+Terrell
 Terrence
 Terrill
 Terry
@@ -22639,6 +22719,7 @@ Tezer
 Teófilo
 Thabet
 Thabo
+Thad
 Thaddeus
 Thaddäus
 Thaddée
@@ -22778,6 +22859,7 @@ Theologos
 Theophil
 Theophile
 Theophilus
+Theron
 Therry
 Thery
 Thevakumar
@@ -22910,6 +22992,7 @@ Thurairatnam
 Thuraisamy
 Thuraisingam
 Thuraisingham
+Thurman
 Thuro
 Thusan
 Thusanthan
@@ -23161,6 +23244,7 @@ Tomislaw
 Tommasino
 Tommaso
 Tommi
+Tommie
 Tommy
 Tomo
 Tomohiko
@@ -23235,6 +23319,8 @@ Touradj
 Touseef
 Toussaint
 Toygar
+Tracey
+Tracy
 Traian
 Trajan
 Trajce
@@ -23251,6 +23337,7 @@ Trayche
 Traycho
 Tregim
 Trent
+Trenton
 Tresor
 Treuhold
 Treumund
@@ -23287,6 +23374,7 @@ Trong
 Troy
 Truc
 Truls
+Truman
 Trung
 Truong
 Tryfon
@@ -23767,6 +23855,7 @@ Vasvi
 Vasyl
 Vatan
 Vaughan
+Vaughn
 Vaxhid
 Vaxhit
 Vazgen
@@ -23868,6 +23957,7 @@ Vergim
 Verim
 Verissimo
 Verlind
+Vern
 Verner
 Vernes
 Vernon
@@ -24346,6 +24436,7 @@ Weldegebriel
 Weldemariam
 Welderufael
 Weldit
+Weldon
 Weldu
 Welf
 Welington
@@ -24372,6 +24463,7 @@ Weslley
 Wesly
 Wessel
 Wessim
+Weston
 Wichai
 Wichian
 Wicky
@@ -24392,8 +24484,11 @@ Wilber
 Wilbert
 Wilberto
 Wilbur
+Wilburn
 Wilco
 Wilder
+Wiley
+Wilford
 Wilfred
 Wilfredo
 Wilfrid
@@ -24441,6 +24536,7 @@ Wim
 Win
 Winai
 Winand
+Winfred
 Winfrid
 Winfried
 Wing
@@ -24463,6 +24559,7 @@ Wladimiro
 Wladislaw
 Wladyslaw
 Wlodzimierz
+Wm
 Woeser
 Wojciech
 Wojtek
@@ -24485,6 +24582,7 @@ Won
 Wondwossen
 Wong
 Woo
+Woodrow
 Woody
 Woojin
 Woon
@@ -25112,6 +25210,7 @@ Zachariah
 Zacharias
 Zacharie
 Zachary
+Zachery
 Zachäus
 Zachée
 Zack
