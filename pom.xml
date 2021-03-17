@@ -69,7 +69,7 @@
 		<slf4j-api.version>1.7.30</slf4j-api.version>
 		<joda-time.version>2.10.10</joda-time.version>
 		<commons-lang.version>2.6</commons-lang.version>
-		<reflections.version>0.9.10</reflections.version>
+		<reflections.version>0.9.11</reflections.version>
 		<guava.version>30.1-jre</guava.version>
 		<gentyref.version>1.2.0</gentyref.version>
 		<hamcrest.version>2.2</hamcrest.version>
