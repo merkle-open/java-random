@@ -67,13 +67,11 @@ But also for Java beans:
  } 
 ```
 
-There is a basic support for Collections.
-
-
 This requires a registered instance of  `com.namics.commons.random.generator.RandomGenerator<SupportedType>` for the requested type.
 There is a basic list of generators registered by default to support most basic type.
-See [basic generators](src/main/java/com/namics/commons/random/generator/basic) for complete list. 
+See [basic generators](src/main/java/com/namics/commons/random/generator/basic) for complete list.
 
+There is a basic support for Collections.
 
 #### Register custom generators `RandomGenerator<SupportedType>` 
 
@@ -86,6 +84,15 @@ There are several ways to register custom `RandomGenerator<SupportedType>`s:
     - Register generator class `RandomData.addRandomGenerator(Class<? extends RandomGenerator> generatorClass )`
     - Register generator instance `RandomData.addRandomGenerator(RandomGenerator generator)`
     - Ein zu scannendes Package registrieren: 
+
+### Accented chars in random names
+
+You may enable international names by setting either
+
+- system property "random.names.international" to "true"
+- environment variable "RANDOM_NAMES_INTERNATIONAL" to "true"
+
+if not enabled, only names without accents are used.
 
 [travis-master]: https://travis-ci.org/namics/java-random.svg?branch=master
 [travis-develop]: https://travis-ci.org/namics/java-random.svg?branch=develop
