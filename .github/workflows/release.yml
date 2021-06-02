@@ -17,30 +17,16 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: '8'
-      - name: Install package
-        run: sudo apt-get -y install libxml2-utils
-
-      - name: Release
-        run: ci/mvn-release.sh
-
-      - name: Publish to GitHub Packages Apache Maven
-        run: mvn deploy
-        env:
-          GITHUB_TOKEN: ${{ github.token }} # GITHUB_TOKEN is the default env for the password
-
-      - name: Set up Apache Maven Central
-        uses: actions/setup-java@v2
-        with: # running setup-java again overwrites the settings.xml
-          distribution: 'adopt'
-          java-version: '8'
           server-id: ossrh
           server-username: MAVEN_USERNAME # env variable for username in deploy
           server-password: MAVEN_CENTRAL_TOKEN # env variable for token in deploy
           gpg-private-key: ${{ secrets.SIGN_KEY }} # Value of the GPG private key to import
           gpg-passphrase: MAVEN_GPG_PASSPHRASE # env variable for GPG private key passphrase
+      - name: Install package
+        run: sudo apt-get -y install libxml2-utils
 
-      - name: Publish to Apache Maven Central
-        run: mvn -B deploy -P release
+      - name: Release
+        run: ci/mvn-release.sh
         env:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           MAVEN_CENTRAL_TOKEN: ${{ secrets.OSSRH_PASSWORD }}

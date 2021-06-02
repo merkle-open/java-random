@@ -23,6 +23,9 @@ if [[ $CURRENT_VERSION == *-SNAPSHOT ]]; then
   echo "create tag for new release"
   git tag -a "v$NEW_VERSION" -m "Release $NEW_VERSION: tag release"
 
+  echo "deploy release"
+  mvn -B deploy -P release
+
   echo "merge master back to develop"
   git checkout develop
   git merge master
@@ -35,7 +38,5 @@ if [[ $CURRENT_VERSION == *-SNAPSHOT ]]; then
 
   git push origin --all
   git push origin --tags
-  git checkout master
-
 
 fi
