@@ -19,4 +19,6 @@ jobs:
         run: sudo apt-get -y install libxml2-utils
       - name: Release
         run: ci/mvn-release.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 

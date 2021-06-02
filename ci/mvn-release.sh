@@ -18,13 +18,13 @@ if [[ $CURRENT_VERSION == *-SNAPSHOT ]]; then
   git commit -a -m "Release $NEW_VERSION: Update README.md"
 
   echo "Build maven site"
-  source ci/mvn-site.sh
+#  source ci/mvn-site.sh
 
   echo "create tag for new release"
   git tag -a "v$NEW_VERSION" -m "Release $NEW_VERSION: tag release"
 
   echo "merge master back to develop"
-  git checkout -f -b develop origin/develop
+  git checkout develop
   git merge master
 
   mvn -B versions:set -DnewVersion=$NEXT_SNAPSHOT
