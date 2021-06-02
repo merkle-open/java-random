@@ -1,0 +1,22 @@
+name: Release
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+      - name: Install package
+        run: |
+          sudo apt-get -y install libxml2-utils
+          which libxml2-utils
+      - name: Release
+        run: ci/mvn-release.sh
+
