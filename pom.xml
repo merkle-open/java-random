@@ -183,6 +183,7 @@
 					<generateGitPropertiesFile>false</generateGitPropertiesFile>
 					<failOnNoGitDirectory>false</failOnNoGitDirectory>
 					<skip>false</skip>
+					<useNativeGit>true</useNativeGit>
 					<gitDescribe>
 						<skip>false</skip>
 						<always>false</always>
