@@ -35,5 +35,7 @@ if [[ $CURRENT_VERSION == *-SNAPSHOT ]]; then
 
   git push origin --all
   git push origin --tags
+  git checkout master
+
 
 fi
