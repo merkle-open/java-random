@@ -20,9 +20,9 @@ import java.util.Arrays;
 
 	@Override
 	public LocalDateTime random() {
-<span class="fc" id="L23">		LocalDateTime now = LocalDateTime.now();</span>
-<span class="fc" id="L24">		int year = 60 * 60 * 24 * 365;</span>
-<span class="fc" id="L25">		return now.plusSeconds((long) RandomData.randomInteger(-2 * year, 2 * year));// +- 2 years;</span>
+<span class="nc" id="L23">		LocalDateTime now = LocalDateTime.now();</span>
+<span class="nc" id="L24">		int year = 60 * 60 * 24 * 365;</span>
+<span class="nc" id="L25">		return now.plusSeconds((long) RandomData.randomInteger(-2 * year, 2 * year));// +- 2 years;</span>
 	}
 
 	@Override

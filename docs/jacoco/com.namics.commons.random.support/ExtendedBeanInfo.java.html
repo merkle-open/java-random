@@ -60,7 +60,7 @@ class ExtendedBeanInfo implements BeanInfo {
 
 	private final BeanInfo delegate;
 
-<span class="fc" id="L63">	private final Set&lt;PropertyDescriptor&gt; propertyDescriptors = new TreeSet&lt;&gt;(new PropertyDescriptorComparator());</span>
+<span class="nc" id="L63">	private final Set&lt;PropertyDescriptor&gt; propertyDescriptors = new TreeSet&lt;&gt;(new PropertyDescriptorComparator());</span>
 
 
 	/**
@@ -76,61 +76,61 @@ class ExtendedBeanInfo implements BeanInfo {
 	 *                                property descriptors
 	 * @see #getPropertyDescriptors()
 	 */
-<span class="fc" id="L79">	public ExtendedBeanInfo(BeanInfo delegate) throws IntrospectionException {</span>
-<span class="fc" id="L80">		this.delegate = delegate;</span>
-<span class="fc bfc" id="L81" title="All 2 branches covered.">		for (PropertyDescriptor pd : delegate.getPropertyDescriptors()) {</span>
-<span class="fc bfc" id="L82" title="All 2 branches covered.">			this.propertyDescriptors.add(pd instanceof IndexedPropertyDescriptor ?</span>
+<span class="nc" id="L79">	public ExtendedBeanInfo(BeanInfo delegate) throws IntrospectionException {</span>
+<span class="nc" id="L80">		this.delegate = delegate;</span>
+<span class="nc bnc" id="L81" title="All 2 branches missed.">		for (PropertyDescriptor pd : delegate.getPropertyDescriptors()) {</span>
+<span class="nc bnc" id="L82" title="All 2 branches missed.">			this.propertyDescriptors.add(pd instanceof IndexedPropertyDescriptor ?</span>
 					                             new SimpleIndexedPropertyDescriptor((IndexedPropertyDescriptor) pd) :
 					                             new SimplePropertyDescriptor(pd));
 		}
-<span class="fc" id="L86">		MethodDescriptor[] methodDescriptors = delegate.getMethodDescriptors();</span>
-<span class="pc bpc" id="L87" title="1 of 2 branches missed.">		if (methodDescriptors != null) {</span>
-<span class="fc bfc" id="L88" title="All 2 branches covered.">			for (Method method : findCandidateWriteMethods(methodDescriptors)) {</span>
-<span class="fc" id="L89">				handleCandidateWriteMethod(method);</span>
-<span class="fc" id="L90">			}</span>
+<span class="nc" id="L86">		MethodDescriptor[] methodDescriptors = delegate.getMethodDescriptors();</span>
+<span class="nc bnc" id="L87" title="All 2 branches missed.">		if (methodDescriptors != null) {</span>
+<span class="nc bnc" id="L88" title="All 2 branches missed.">			for (Method method : findCandidateWriteMethods(methodDescriptors)) {</span>
+<span class="nc" id="L89">				handleCandidateWriteMethod(method);</span>
+<span class="nc" id="L90">			}</span>
 		}
-<span class="fc" id="L92">	}</span>
+<span class="nc" id="L92">	}</span>
 
 
 	private List&lt;Method&gt; findCandidateWriteMethods(MethodDescriptor[] methodDescriptors) {
-<span class="fc" id="L96">		List&lt;Method&gt; matches = new ArrayList&lt;&gt;();</span>
-<span class="fc bfc" id="L97" title="All 2 branches covered.">		for (MethodDescriptor methodDescriptor : methodDescriptors) {</span>
-<span class="fc" id="L98">			Method method = methodDescriptor.getMethod();</span>
-<span class="fc bfc" id="L99" title="All 2 branches covered.">			if (isCandidateWriteMethod(method)) {</span>
-<span class="fc" id="L100">				matches.add(method);</span>
+<span class="nc" id="L96">		List&lt;Method&gt; matches = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L97" title="All 2 branches missed.">		for (MethodDescriptor methodDescriptor : methodDescriptors) {</span>
+<span class="nc" id="L98">			Method method = methodDescriptor.getMethod();</span>
+<span class="nc bnc" id="L99" title="All 2 branches missed.">			if (isCandidateWriteMethod(method)) {</span>
+<span class="nc" id="L100">				matches.add(method);</span>
 			}
 		}
 		// sort non-void returning write methods to guard against the ill effects of
 		// non-deterministic sorting of methods returned from Class#getDeclaredMethods
 		// under JDK 7. See http://bugs.sun.com/view_bug.do?bug_id=7023180
-<span class="fc" id="L106">		Collections.sort(matches, new Comparator&lt;Method&gt;() {</span>
+<span class="nc" id="L106">		Collections.sort(matches, new Comparator&lt;Method&gt;() {</span>
 			@Override
 			public int compare(Method m1, Method m2) {
 <span class="nc" id="L109">				return m2.toString().compareTo(m1.toString());</span>
 			}
 		});
-<span class="fc" id="L112">		return matches;</span>
+<span class="nc" id="L112">		return matches;</span>
 	}
 
 	public static boolean isCandidateWriteMethod(Method method) {
-<span class="fc" id="L116">		String methodName = method.getName();</span>
-<span class="fc" id="L117">		Class&lt;?&gt;[] parameterTypes = method.getParameterTypes();</span>
-<span class="fc" id="L118">		int nParams = parameterTypes.length;</span>
-<span class="pc bpc" id="L119" title="1 of 6 branches missed.">		return methodName.length() &gt; 3 &amp;&amp; methodName.startsWith(&quot;set&quot;) &amp;&amp; Modifier.isPublic(method.getModifiers()) &amp;&amp;</span>
-<span class="pc bpc" id="L120" title="4 of 8 branches missed.">		       (!void.class.isAssignableFrom(method.getReturnType()) || Modifier.isStatic(method.getModifiers())) &amp;&amp;</span>
-<span class="pc bnc" id="L121" title="All 2 branches missed.">		       (nParams == 1 || (nParams == 2 &amp;&amp; parameterTypes[0].equals(int.class)));</span>
+<span class="nc" id="L116">		String methodName = method.getName();</span>
+<span class="nc" id="L117">		Class&lt;?&gt;[] parameterTypes = method.getParameterTypes();</span>
+<span class="nc" id="L118">		int nParams = parameterTypes.length;</span>
+<span class="nc bnc" id="L119" title="All 6 branches missed.">		return methodName.length() &gt; 3 &amp;&amp; methodName.startsWith(&quot;set&quot;) &amp;&amp; Modifier.isPublic(method.getModifiers()) &amp;&amp;</span>
+<span class="nc bnc" id="L120" title="All 8 branches missed.">		       (!void.class.isAssignableFrom(method.getReturnType()) || Modifier.isStatic(method.getModifiers())) &amp;&amp;</span>
+<span class="nc bnc" id="L121" title="All 2 branches missed.">		       (nParams == 1 || (nParams == 2 &amp;&amp; parameterTypes[0].equals(int.class)));</span>
 	}
 
 	private void handleCandidateWriteMethod(Method method) throws IntrospectionException {
-<span class="fc" id="L125">		int nParams = method.getParameterTypes().length;</span>
-<span class="fc" id="L126">		String propertyName = propertyNameFor(method);</span>
-<span class="fc" id="L127">		Class&lt;?&gt; propertyType = method.getParameterTypes()[nParams - 1];</span>
-<span class="fc" id="L128">		PropertyDescriptor existingPd = findExistingPropertyDescriptor(propertyName, propertyType);</span>
-<span class="pc bpc" id="L129" title="1 of 2 branches missed.">		if (nParams == 1) {</span>
-<span class="pc bpc" id="L130" title="1 of 2 branches missed.">			if (existingPd == null) {</span>
+<span class="nc" id="L125">		int nParams = method.getParameterTypes().length;</span>
+<span class="nc" id="L126">		String propertyName = propertyNameFor(method);</span>
+<span class="nc" id="L127">		Class&lt;?&gt; propertyType = method.getParameterTypes()[nParams - 1];</span>
+<span class="nc" id="L128">		PropertyDescriptor existingPd = findExistingPropertyDescriptor(propertyName, propertyType);</span>
+<span class="nc bnc" id="L129" title="All 2 branches missed.">		if (nParams == 1) {</span>
+<span class="nc bnc" id="L130" title="All 2 branches missed.">			if (existingPd == null) {</span>
 <span class="nc" id="L131">				this.propertyDescriptors.add(new SimplePropertyDescriptor(propertyName, null, method));</span>
 			} else {
-<span class="fc" id="L133">				existingPd.setWriteMethod(method);</span>
+<span class="nc" id="L133">				existingPd.setWriteMethod(method);</span>
 			}
 <span class="nc bnc" id="L135" title="All 2 branches missed.">		} else if (nParams == 2) {</span>
 <span class="nc bnc" id="L136" title="All 2 branches missed.">			if (existingPd == null) {</span>
@@ -146,13 +146,13 @@ class ExtendedBeanInfo implements BeanInfo {
 		} else {
 <span class="nc" id="L147">			throw new IllegalArgumentException(&quot;Write method must have exactly 1 or 2 parameters: &quot; + method);</span>
 		}
-<span class="fc" id="L149">	}</span>
+<span class="nc" id="L149">	}</span>
 
 	private PropertyDescriptor findExistingPropertyDescriptor(String propertyName, Class&lt;?&gt; propertyType) {
-<span class="pc bpc" id="L152" title="1 of 2 branches missed.">		for (PropertyDescriptor pd : this.propertyDescriptors) {</span>
+<span class="nc bnc" id="L152" title="All 2 branches missed.">		for (PropertyDescriptor pd : this.propertyDescriptors) {</span>
 			final Class&lt;?&gt; candidateType;
-<span class="fc" id="L154">			final String candidateName = pd.getName();</span>
-<span class="pc bpc" id="L155" title="1 of 2 branches missed.">			if (pd instanceof IndexedPropertyDescriptor) {</span>
+<span class="nc" id="L154">			final String candidateName = pd.getName();</span>
+<span class="nc bnc" id="L155" title="All 2 branches missed.">			if (pd instanceof IndexedPropertyDescriptor) {</span>
 <span class="nc" id="L156">				IndexedPropertyDescriptor ipd = (IndexedPropertyDescriptor) pd;</span>
 <span class="nc" id="L157">				candidateType = ipd.getIndexedPropertyType();</span>
 <span class="nc bnc" id="L158" title="All 2 branches missed.">				if (candidateName.equals(propertyName) &amp;&amp;</span>
@@ -160,18 +160,18 @@ class ExtendedBeanInfo implements BeanInfo {
 <span class="nc" id="L160">					return pd;</span>
 				}
 <span class="nc" id="L162">			} else {</span>
-<span class="fc" id="L163">				candidateType = pd.getPropertyType();</span>
-<span class="fc bfc" id="L164" title="All 2 branches covered.">				if (candidateName.equals(propertyName) &amp;&amp;</span>
-<span class="pc bpc" id="L165" title="3 of 4 branches missed.">				    (candidateType.equals(propertyType) || propertyType.equals(candidateType.getComponentType()))) {</span>
-<span class="fc" id="L166">					return pd;</span>
+<span class="nc" id="L163">				candidateType = pd.getPropertyType();</span>
+<span class="nc bnc" id="L164" title="All 2 branches missed.">				if (candidateName.equals(propertyName) &amp;&amp;</span>
+<span class="nc bnc" id="L165" title="All 4 branches missed.">				    (candidateType.equals(propertyType) || propertyType.equals(candidateType.getComponentType()))) {</span>
+<span class="nc" id="L166">					return pd;</span>
 				}
 			}
-<span class="fc" id="L169">		}</span>
+<span class="nc" id="L169">		}</span>
 <span class="nc" id="L170">		return null;</span>
 	}
 
 	private String propertyNameFor(Method method) {
-<span class="fc" id="L174">		return Introspector.decapitalize(method.getName().substring(3, method.getName().length()));</span>
+<span class="nc" id="L174">		return Introspector.decapitalize(method.getName().substring(3, method.getName().length()));</span>
 	}
 
 
@@ -184,7 +184,7 @@ class ExtendedBeanInfo implements BeanInfo {
 	 */
 	@Override
 	public PropertyDescriptor[] getPropertyDescriptors() {
-<span class="fc" id="L187">		return this.propertyDescriptors.toArray(new PropertyDescriptor[this.propertyDescriptors.size()]);</span>
+<span class="nc" id="L187">		return this.propertyDescriptors.toArray(new PropertyDescriptor[this.propertyDescriptors.size()]);</span>
 	}
 
 	@Override
@@ -235,47 +235,47 @@ class SimplePropertyDescriptor extends PropertyDescriptor {
 	private Class&lt;?&gt; propertyEditorClass;
 
 	public SimplePropertyDescriptor(PropertyDescriptor original) throws IntrospectionException {
-<span class="fc" id="L238">		this(original.getName(), original.getReadMethod(), original.getWriteMethod());</span>
-<span class="fc" id="L239">		copyNonMethodProperties(original, this);</span>
-<span class="fc" id="L240">	}</span>
+<span class="nc" id="L238">		this(original.getName(), original.getReadMethod(), original.getWriteMethod());</span>
+<span class="nc" id="L239">		copyNonMethodProperties(original, this);</span>
+<span class="nc" id="L240">	}</span>
 
 	public SimplePropertyDescriptor(String propertyName, Method readMethod, Method writeMethod) throws IntrospectionException {
-<span class="fc" id="L243">		super(propertyName, null, null);</span>
-<span class="fc" id="L244">		this.readMethod = readMethod;</span>
-<span class="fc" id="L245">		this.writeMethod = writeMethod;</span>
-<span class="fc" id="L246">		this.propertyType = findPropertyType(readMethod, writeMethod);</span>
-<span class="fc" id="L247">	}</span>
+<span class="nc" id="L243">		super(propertyName, null, null);</span>
+<span class="nc" id="L244">		this.readMethod = readMethod;</span>
+<span class="nc" id="L245">		this.writeMethod = writeMethod;</span>
+<span class="nc" id="L246">		this.propertyType = findPropertyType(readMethod, writeMethod);</span>
+<span class="nc" id="L247">	}</span>
 
 	@Override
 	public Method getReadMethod() {
-<span class="fc" id="L251">		return this.readMethod;</span>
+<span class="nc" id="L251">		return this.readMethod;</span>
 	}
 
 	@Override
 	public void setReadMethod(Method readMethod) {
-<span class="fc" id="L256">		this.readMethod = readMethod;</span>
-<span class="fc" id="L257">	}</span>
+<span class="nc" id="L256">		this.readMethod = readMethod;</span>
+<span class="nc" id="L257">	}</span>
 
 	@Override
 	public Method getWriteMethod() {
-<span class="fc" id="L261">		return this.writeMethod;</span>
+<span class="nc" id="L261">		return this.writeMethod;</span>
 	}
 
 	@Override
 	public void setWriteMethod(Method writeMethod) {
-<span class="fc" id="L266">		this.writeMethod = writeMethod;</span>
-<span class="fc" id="L267">	}</span>
+<span class="nc" id="L266">		this.writeMethod = writeMethod;</span>
+<span class="nc" id="L267">	}</span>
 
 	@Override
 	public Class&lt;?&gt; getPropertyType() {
-<span class="pc bpc" id="L271" title="1 of 2 branches missed.">		if (this.propertyType == null) {</span>
+<span class="nc bnc" id="L271" title="All 2 branches missed.">		if (this.propertyType == null) {</span>
 			try {
 <span class="nc" id="L273">				this.propertyType = findPropertyType(this.readMethod, this.writeMethod);</span>
 <span class="nc" id="L274">			} catch (IntrospectionException ex) {</span>
 				// Ignore, as does PropertyDescriptor#getPropertyType
 <span class="nc" id="L276">			}</span>
 		}
-<span class="fc" id="L278">		return this.propertyType;</span>
+<span class="nc" id="L278">		return this.propertyType;</span>
 	}
 
 	@Override
@@ -285,8 +285,8 @@ class SimplePropertyDescriptor extends PropertyDescriptor {
 
 	@Override
 	public void setPropertyEditorClass(Class&lt;?&gt; propertyEditorClass) {
-<span class="fc" id="L288">		this.propertyEditorClass = propertyEditorClass;</span>
-<span class="fc" id="L289">	}</span>
+<span class="nc" id="L288">		this.propertyEditorClass = propertyEditorClass;</span>
+<span class="nc" id="L289">	}</span>
 
 	@Override
 	public boolean equals(Object obj) {
@@ -295,8 +295,8 @@ class SimplePropertyDescriptor extends PropertyDescriptor {
 
 	@Override
 	public String toString() {
-<span class="fc" id="L298">		return String.format(&quot;%s[name=%s, propertyType=%s, readMethod=%s, writeMethod=%s]&quot;,</span>
-<span class="fc" id="L299">		                     getClass().getSimpleName(), getName(), getPropertyType(), this.readMethod, this.writeMethod);</span>
+<span class="nc" id="L298">		return String.format(&quot;%s[name=%s, propertyType=%s, readMethod=%s, writeMethod=%s]&quot;,</span>
+<span class="nc" id="L299">		                     getClass().getSimpleName(), getName(), getPropertyType(), this.readMethod, this.writeMethod);</span>
 	}
 }
 
@@ -318,22 +318,22 @@ class SimpleIndexedPropertyDescriptor extends IndexedPropertyDescriptor {
 	private Class&lt;?&gt; propertyEditorClass;
 
 	public SimpleIndexedPropertyDescriptor(IndexedPropertyDescriptor original) throws IntrospectionException {
-<span class="fc" id="L321">		this(original.getName(), original.getReadMethod(), original.getWriteMethod(),</span>
-<span class="fc" id="L322">		     original.getIndexedReadMethod(), original.getIndexedWriteMethod());</span>
-<span class="fc" id="L323">		copyNonMethodProperties(original, this);</span>
-<span class="fc" id="L324">	}</span>
+<span class="nc" id="L321">		this(original.getName(), original.getReadMethod(), original.getWriteMethod(),</span>
+<span class="nc" id="L322">		     original.getIndexedReadMethod(), original.getIndexedWriteMethod());</span>
+<span class="nc" id="L323">		copyNonMethodProperties(original, this);</span>
+<span class="nc" id="L324">	}</span>
 
 	public SimpleIndexedPropertyDescriptor(String propertyName, Method readMethod, Method writeMethod,
 	                                       Method indexedReadMethod, Method indexedWriteMethod) throws IntrospectionException {
 
-<span class="fc" id="L329">		super(propertyName, null, null, null, null);</span>
-<span class="fc" id="L330">		this.readMethod = readMethod;</span>
-<span class="fc" id="L331">		this.writeMethod = writeMethod;</span>
-<span class="fc" id="L332">		this.propertyType = findPropertyType(readMethod, writeMethod);</span>
-<span class="fc" id="L333">		this.indexedReadMethod = indexedReadMethod;</span>
-<span class="fc" id="L334">		this.indexedWriteMethod = indexedWriteMethod;</span>
-<span class="fc" id="L335">		this.indexedPropertyType = findIndexedPropertyType(propertyName, this.propertyType, indexedReadMethod, indexedWriteMethod);</span>
-<span class="fc" id="L336">	}</span>
+<span class="nc" id="L329">		super(propertyName, null, null, null, null);</span>
+<span class="nc" id="L330">		this.readMethod = readMethod;</span>
+<span class="nc" id="L331">		this.writeMethod = writeMethod;</span>
+<span class="nc" id="L332">		this.propertyType = findPropertyType(readMethod, writeMethod);</span>
+<span class="nc" id="L333">		this.indexedReadMethod = indexedReadMethod;</span>
+<span class="nc" id="L334">		this.indexedWriteMethod = indexedWriteMethod;</span>
+<span class="nc" id="L335">		this.indexedPropertyType = findIndexedPropertyType(propertyName, this.propertyType, indexedReadMethod, indexedWriteMethod);</span>
+<span class="nc" id="L336">	}</span>
 
 	@Override
 	public Method getReadMethod() {
@@ -342,29 +342,29 @@ class SimpleIndexedPropertyDescriptor extends IndexedPropertyDescriptor {
 
 	@Override
 	public void setReadMethod(Method readMethod) {
-<span class="fc" id="L345">		this.readMethod = readMethod;</span>
-<span class="fc" id="L346">	}</span>
+<span class="nc" id="L345">		this.readMethod = readMethod;</span>
+<span class="nc" id="L346">	}</span>
 
 	@Override
 	public Method getWriteMethod() {
-<span class="fc" id="L350">		return this.writeMethod;</span>
+<span class="nc" id="L350">		return this.writeMethod;</span>
 	}
 
 	@Override
 	public void setWriteMethod(Method writeMethod) {
-<span class="fc" id="L355">		this.writeMethod = writeMethod;</span>
-<span class="fc" id="L356">	}</span>
+<span class="nc" id="L355">		this.writeMethod = writeMethod;</span>
+<span class="nc" id="L356">	}</span>
 
 	@Override
 	public Class&lt;?&gt; getPropertyType() {
-<span class="pc bpc" id="L360" title="1 of 2 branches missed.">		if (this.propertyType == null) {</span>
+<span class="nc bnc" id="L360" title="All 2 branches missed.">		if (this.propertyType == null) {</span>
 			try {
-<span class="fc" id="L362">				this.propertyType = findPropertyType(this.readMethod, this.writeMethod);</span>
+<span class="nc" id="L362">				this.propertyType = findPropertyType(this.readMethod, this.writeMethod);</span>
 <span class="nc" id="L363">			} catch (IntrospectionException ex) {</span>
 				// Ignore, as does IndexedPropertyDescriptor#getPropertyType
-<span class="fc" id="L365">			}</span>
+<span class="nc" id="L365">			}</span>
 		}
-<span class="fc" id="L367">		return this.propertyType;</span>
+<span class="nc" id="L367">		return this.propertyType;</span>
 	}
 
 	@Override
@@ -407,8 +407,8 @@ class SimpleIndexedPropertyDescriptor extends IndexedPropertyDescriptor {
 
 	@Override
 	public void setPropertyEditorClass(Class&lt;?&gt; propertyEditorClass) {
-<span class="fc" id="L410">		this.propertyEditorClass = propertyEditorClass;</span>
-<span class="fc" id="L411">	}</span>
+<span class="nc" id="L410">		this.propertyEditorClass = propertyEditorClass;</span>
+<span class="nc" id="L411">	}</span>
 
 	/*
 	 * See java.beans.IndexedPropertyDescriptor#equals(java.lang.Object)
@@ -452,50 +452,50 @@ class SimpleIndexedPropertyDescriptor extends IndexedPropertyDescriptor {
 	public static void copyNonMethodProperties(PropertyDescriptor source, PropertyDescriptor target)
 			throws IntrospectionException {
 
-<span class="fc" id="L455">		target.setExpert(source.isExpert());</span>
-<span class="fc" id="L456">		target.setHidden(source.isHidden());</span>
-<span class="fc" id="L457">		target.setPreferred(source.isPreferred());</span>
-<span class="fc" id="L458">		target.setName(source.getName());</span>
-<span class="fc" id="L459">		target.setShortDescription(source.getShortDescription());</span>
-<span class="fc" id="L460">		target.setDisplayName(source.getDisplayName());</span>
+<span class="nc" id="L455">		target.setExpert(source.isExpert());</span>
+<span class="nc" id="L456">		target.setHidden(source.isHidden());</span>
+<span class="nc" id="L457">		target.setPreferred(source.isPreferred());</span>
+<span class="nc" id="L458">		target.setName(source.getName());</span>
+<span class="nc" id="L459">		target.setShortDescription(source.getShortDescription());</span>
+<span class="nc" id="L460">		target.setDisplayName(source.getDisplayName());</span>
 
 		// Copy all attributes (emulating behavior of private FeatureDescriptor#addTable)
-<span class="fc" id="L463">		Enumeration&lt;String&gt; keys = source.attributeNames();</span>
-<span class="pc bpc" id="L464" title="1 of 2 branches missed.">		while (keys.hasMoreElements()) {</span>
+<span class="nc" id="L463">		Enumeration&lt;String&gt; keys = source.attributeNames();</span>
+<span class="nc bnc" id="L464" title="All 2 branches missed.">		while (keys.hasMoreElements()) {</span>
 <span class="nc" id="L465">			String key = keys.nextElement();</span>
 <span class="nc" id="L466">			target.setValue(key, source.getValue(key));</span>
 <span class="nc" id="L467">		}</span>
 
 		// See java.beans.PropertyDescriptor#PropertyDescriptor(PropertyDescriptor)
-<span class="fc" id="L470">		target.setPropertyEditorClass(source.getPropertyEditorClass());</span>
-<span class="fc" id="L471">		target.setBound(source.isBound());</span>
-<span class="fc" id="L472">		target.setConstrained(source.isConstrained());</span>
-<span class="fc" id="L473">	}</span>
+<span class="nc" id="L470">		target.setPropertyEditorClass(source.getPropertyEditorClass());</span>
+<span class="nc" id="L471">		target.setBound(source.isBound());</span>
+<span class="nc" id="L472">		target.setConstrained(source.isConstrained());</span>
+<span class="nc" id="L473">	}</span>
 
 	/*
 	 * See PropertyDescriptor#findPropertyType
 	 */
 	public static Class&lt;?&gt; findPropertyType(Method readMethod, Method writeMethod) throws IntrospectionException {
-<span class="fc" id="L479">		Class&lt;?&gt; propertyType = null;</span>
-<span class="fc bfc" id="L480" title="All 2 branches covered.">		if (readMethod != null) {</span>
-<span class="fc" id="L481">			Class&lt;?&gt;[] params = readMethod.getParameterTypes();</span>
-<span class="pc bpc" id="L482" title="1 of 2 branches missed.">			if (params.length != 0) {</span>
+<span class="nc" id="L479">		Class&lt;?&gt; propertyType = null;</span>
+<span class="nc bnc" id="L480" title="All 2 branches missed.">		if (readMethod != null) {</span>
+<span class="nc" id="L481">			Class&lt;?&gt;[] params = readMethod.getParameterTypes();</span>
+<span class="nc bnc" id="L482" title="All 2 branches missed.">			if (params.length != 0) {</span>
 <span class="nc" id="L483">				throw new IntrospectionException(&quot;Bad read method arg count: &quot; + readMethod);</span>
 			}
-<span class="fc" id="L485">			propertyType = readMethod.getReturnType();</span>
-<span class="pc bpc" id="L486" title="1 of 2 branches missed.">			if (propertyType == Void.TYPE) {</span>
+<span class="nc" id="L485">			propertyType = readMethod.getReturnType();</span>
+<span class="nc bnc" id="L486" title="All 2 branches missed.">			if (propertyType == Void.TYPE) {</span>
 <span class="nc" id="L487">				throw new IntrospectionException(&quot;Read method returns void: &quot; + readMethod);</span>
 			}
 		}
-<span class="fc bfc" id="L490" title="All 2 branches covered.">		if (writeMethod != null) {</span>
-<span class="fc" id="L491">			Class&lt;?&gt; params[] = writeMethod.getParameterTypes();</span>
-<span class="pc bpc" id="L492" title="1 of 2 branches missed.">			if (params.length != 1) {</span>
+<span class="nc bnc" id="L490" title="All 2 branches missed.">		if (writeMethod != null) {</span>
+<span class="nc" id="L491">			Class&lt;?&gt; params[] = writeMethod.getParameterTypes();</span>
+<span class="nc bnc" id="L492" title="All 2 branches missed.">			if (params.length != 1) {</span>
 <span class="nc" id="L493">				throw new IntrospectionException(&quot;Bad write method arg count: &quot; + writeMethod);</span>
 			}
-<span class="pc bpc" id="L495" title="1 of 2 branches missed.">			if (propertyType != null) {</span>
-<span class="pc bpc" id="L496" title="1 of 2 branches missed.">				if (propertyType.isAssignableFrom(params[0])) {</span>
+<span class="nc bnc" id="L495" title="All 2 branches missed.">			if (propertyType != null) {</span>
+<span class="nc bnc" id="L496" title="All 2 branches missed.">				if (propertyType.isAssignableFrom(params[0])) {</span>
 					// Write method's property type potentially more specific
-<span class="fc" id="L498">					propertyType = params[0];</span>
+<span class="nc" id="L498">					propertyType = params[0];</span>
 <span class="nc bnc" id="L499" title="All 2 branches missed.">				} else if (params[0].isAssignableFrom(propertyType)) {</span>
 					// Proceed with read method's property type
 				} else {
@@ -506,7 +506,7 @@ class SimpleIndexedPropertyDescriptor extends IndexedPropertyDescriptor {
 <span class="nc" id="L506">				propertyType = params[0];</span>
 			}
 		}
-<span class="fc" id="L509">		return propertyType;</span>
+<span class="nc" id="L509">		return propertyType;</span>
 	}
 
 	/*
@@ -515,21 +515,21 @@ class SimpleIndexedPropertyDescriptor extends IndexedPropertyDescriptor {
 	public static Class&lt;?&gt; findIndexedPropertyType(String name, Class&lt;?&gt; propertyType,
 	                                               Method indexedReadMethod, Method indexedWriteMethod) throws IntrospectionException {
 
-<span class="fc" id="L518">		Class&lt;?&gt; indexedPropertyType = null;</span>
-<span class="pc bpc" id="L519" title="1 of 2 branches missed.">		if (indexedReadMethod != null) {</span>
-<span class="fc" id="L520">			Class&lt;?&gt; params[] = indexedReadMethod.getParameterTypes();</span>
-<span class="pc bpc" id="L521" title="1 of 2 branches missed.">			if (params.length != 1) {</span>
+<span class="nc" id="L518">		Class&lt;?&gt; indexedPropertyType = null;</span>
+<span class="nc bnc" id="L519" title="All 2 branches missed.">		if (indexedReadMethod != null) {</span>
+<span class="nc" id="L520">			Class&lt;?&gt; params[] = indexedReadMethod.getParameterTypes();</span>
+<span class="nc bnc" id="L521" title="All 2 branches missed.">			if (params.length != 1) {</span>
 <span class="nc" id="L522">				throw new IntrospectionException(&quot;Bad indexed read method arg count: &quot; + indexedReadMethod);</span>
 			}
-<span class="pc bpc" id="L524" title="1 of 2 branches missed.">			if (params[0] != Integer.TYPE) {</span>
+<span class="nc bnc" id="L524" title="All 2 branches missed.">			if (params[0] != Integer.TYPE) {</span>
 <span class="nc" id="L525">				throw new IntrospectionException(&quot;Non int index to indexed read method: &quot; + indexedReadMethod);</span>
 			}
-<span class="fc" id="L527">			indexedPropertyType = indexedReadMethod.getReturnType();</span>
-<span class="pc bpc" id="L528" title="1 of 2 branches missed.">			if (indexedPropertyType == Void.TYPE) {</span>
+<span class="nc" id="L527">			indexedPropertyType = indexedReadMethod.getReturnType();</span>
+<span class="nc bnc" id="L528" title="All 2 branches missed.">			if (indexedPropertyType == Void.TYPE) {</span>
 <span class="nc" id="L529">				throw new IntrospectionException(&quot;Indexed read method returns void: &quot; + indexedReadMethod);</span>
 			}
 		}
-<span class="pc bpc" id="L532" title="1 of 2 branches missed.">		if (indexedWriteMethod != null) {</span>
+<span class="nc bnc" id="L532" title="All 2 branches missed.">		if (indexedWriteMethod != null) {</span>
 <span class="nc" id="L533">			Class&lt;?&gt; params[] = indexedWriteMethod.getParameterTypes();</span>
 <span class="nc bnc" id="L534" title="All 2 branches missed.">			if (params.length != 2) {</span>
 <span class="nc" id="L535">				throw new IntrospectionException(&quot;Bad indexed write method arg count: &quot; + indexedWriteMethod);</span>
@@ -551,12 +551,12 @@ class SimpleIndexedPropertyDescriptor extends IndexedPropertyDescriptor {
 <span class="nc" id="L551">				indexedPropertyType = params[1];</span>
 			}
 		}
-<span class="pc bpc" id="L554" title="3 of 4 branches missed.">		if (propertyType != null &amp;&amp; (!propertyType.isArray() ||</span>
+<span class="nc bnc" id="L554" title="All 4 branches missed.">		if (propertyType != null &amp;&amp; (!propertyType.isArray() ||</span>
 <span class="nc bnc" id="L555" title="All 2 branches missed.">		                             propertyType.getComponentType() != indexedPropertyType)) {</span>
 <span class="nc" id="L556">			throw new IntrospectionException(&quot;Type mismatch between indexed and non-indexed methods: &quot; +</span>
 			                                 indexedReadMethod + &quot; - &quot; + indexedWriteMethod);
 		}
-<span class="fc" id="L559">		return indexedPropertyType;</span>
+<span class="nc" id="L559">		return indexedPropertyType;</span>
 	}
 
 
@@ -612,22 +612,22 @@ class SimpleIndexedPropertyDescriptor extends IndexedPropertyDescriptor {
  *
  * @see ExtendedBeanInfo#propertyDescriptors
  */
-<span class="fc" id="L615">class PropertyDescriptorComparator implements Comparator&lt;PropertyDescriptor&gt; {</span>
+<span class="nc" id="L615">class PropertyDescriptorComparator implements Comparator&lt;PropertyDescriptor&gt; {</span>
 
 	@Override
 	public int compare(PropertyDescriptor desc1, PropertyDescriptor desc2) {
-<span class="fc" id="L619">		String left = desc1.getName();</span>
-<span class="fc" id="L620">		String right = desc2.getName();</span>
-<span class="fc bfc" id="L621" title="All 2 branches covered.">		for (int i = 0; i &lt; left.length(); i++) {</span>
-<span class="fc bfc" id="L622" title="All 2 branches covered.">			if (right.length() == i) {</span>
-<span class="fc" id="L623">				return 1;</span>
+<span class="nc" id="L619">		String left = desc1.getName();</span>
+<span class="nc" id="L620">		String right = desc2.getName();</span>
+<span class="nc bnc" id="L621" title="All 2 branches missed.">		for (int i = 0; i &lt; left.length(); i++) {</span>
+<span class="nc bnc" id="L622" title="All 2 branches missed.">			if (right.length() == i) {</span>
+<span class="nc" id="L623">				return 1;</span>
 			}
-<span class="fc" id="L625">			int result = left.getBytes()[i] - right.getBytes()[i];</span>
-<span class="fc bfc" id="L626" title="All 2 branches covered.">			if (result != 0) {</span>
-<span class="fc" id="L627">				return result;</span>
+<span class="nc" id="L625">			int result = left.getBytes()[i] - right.getBytes()[i];</span>
+<span class="nc bnc" id="L626" title="All 2 branches missed.">			if (result != 0) {</span>
+<span class="nc" id="L627">				return result;</span>
 			}
 		}
-<span class="fc" id="L630">		return left.length() - right.length();</span>
+<span class="nc" id="L630">		return left.length() - right.length();</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

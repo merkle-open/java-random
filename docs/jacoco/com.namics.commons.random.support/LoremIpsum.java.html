@@ -5,15 +5,16 @@
 package com.namics.commons.random.support;
 
 import com.namics.commons.random.RandomData;
-import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -22,33 +23,40 @@ import java.util.regex.Pattern;
  * @author aschaefer
  * @since 21.02.14 10:52
  */
-<span class="nc" id="L25">public class LoremIpsum {</span>
-<span class="fc" id="L26">	private static final Logger LOG = LoggerFactory.getLogger(LoremIpsum.class);</span>
+public final class LoremIpsum {
+<span class="nc" id="L27">	private static final Logger LOG = LoggerFactory.getLogger(LoremIpsum.class);</span>
 
 	public static final String TEST_DATA_FILE = &quot;/testdata/lorem.txt&quot;;
 
-<span class="fc" id="L30">	protected static Set&lt;String&gt; words = new HashSet&lt;String&gt;();</span>
+<span class="nc" id="L31">	private static final Set&lt;String&gt; words = new HashSet&lt;&gt;();</span>
 
 	static {
-<span class="fc" id="L33">		readLorem();</span>
-<span class="fc" id="L34">	}</span>
-
-	protected static void readLorem() {
-		try {
-<span class="fc" id="L38">			List&lt;String&gt; strings = IOUtils.readLines(RandomData.class.getResourceAsStream(TEST_DATA_FILE));</span>
-<span class="fc bfc" id="L39" title="All 2 branches covered.">			for (String line : strings) {</span>
-<span class="fc" id="L40">				Matcher matcher = Pattern.compile(&quot;\\w+&quot;).matcher(line);</span>
-<span class="fc bfc" id="L41" title="All 2 branches covered.">				while (matcher.find()) {</span>
-<span class="fc" id="L42">					words.add(matcher.group());</span>
-				}
-<span class="fc" id="L44">			}</span>
-<span class="nc" id="L45">		} catch (IOException e) {</span>
-<span class="nc" id="L46">			LOG.warn(&quot;{}&quot;, e);</span>
-<span class="fc" id="L47">		}</span>
-<span class="fc" id="L48">	}</span>
+<span class="nc" id="L34">		readLorem();</span>
+<span class="nc" id="L35">	}</span>
 
 	public static Set&lt;String&gt; getWords() {
-<span class="fc" id="L51">		return words;</span>
+<span class="nc" id="L38">		return words;</span>
+	}
+
+	private static void readLorem() {
+<span class="nc" id="L42">		Pattern wordPattern = Pattern.compile(&quot;\\w+&quot;);</span>
+<span class="nc" id="L43">		try (InputStream resource = RandomData.class.getResourceAsStream(TEST_DATA_FILE)) {</span>
+<span class="nc" id="L44">			new BufferedReader(new InputStreamReader(resource, StandardCharsets.UTF_8))</span>
+<span class="nc" id="L45">					.lines()</span>
+<span class="nc" id="L46">					.map(wordPattern::matcher)</span>
+<span class="nc" id="L47">					.forEach(matcher -&gt; {</span>
+<span class="nc bnc" id="L48" title="All 2 branches missed.">						while (matcher.find()) {</span>
+<span class="nc" id="L49">							words.add(matcher.group());</span>
+						}
+<span class="nc" id="L51">					});</span>
+
+<span class="nc" id="L53">		} catch (IOException e) {</span>
+<span class="nc" id="L54">			LOG.warn(&quot;Load LoremIpsum failed&quot;, e);</span>
+<span class="nc" id="L55">		}</span>
+<span class="nc" id="L56">	}</span>
+
+	private LoremIpsum() {
+		// hide
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

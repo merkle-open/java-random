@@ -22,24 +22,24 @@ import java.util.*;
 
 	@Override
 	public TreeMap random() {
-<span class="fc" id="L25">		return new TreeMap();</span>
+<span class="nc" id="L25">		return new TreeMap();</span>
 	}
 
 	@Override
 	public Object random(Object... information) {
-<span class="fc" id="L30">		TreeMap result = random();</span>
-<span class="fc" id="L31">		Type[] generics = Utils.objectsOfType(Type.class, information);</span>
-<span class="fc" id="L32">		String[] fields = Utils.objectsOfType(String.class, information);</span>
-<span class="fc bfc" id="L33" title="All 2 branches covered.">		if (generics.length == 2) {</span>
-<span class="fc" id="L34">			Type keyClass =  generics[0];</span>
-<span class="fc" id="L35">			Type valueClass = generics[1];</span>
-<span class="fc bfc" id="L36" title="All 2 branches covered.">			for (int count = 0; count &lt; RandomData.randomInteger(1, 10); count++) {</span>
-<span class="fc" id="L37">				Object key = RandomData.random(keyClass, fields);</span>
-<span class="fc" id="L38">				Object value = RandomData.random(valueClass, fields);</span>
-<span class="fc" id="L39">				result.put(key, value);</span>
+<span class="nc" id="L30">		TreeMap result = random();</span>
+<span class="nc" id="L31">		Type[] generics = Utils.objectsOfType(Type.class, information);</span>
+<span class="nc" id="L32">		String[] fields = Utils.objectsOfType(String.class, information);</span>
+<span class="nc bnc" id="L33" title="All 2 branches missed.">		if (generics.length == 2) {</span>
+<span class="nc" id="L34">			Type keyClass =  generics[0];</span>
+<span class="nc" id="L35">			Type valueClass = generics[1];</span>
+<span class="nc bnc" id="L36" title="All 2 branches missed.">			for (int count = 0; count &lt; RandomData.randomInteger(1, 10); count++) {</span>
+<span class="nc" id="L37">				Object key = RandomData.random(keyClass, fields);</span>
+<span class="nc" id="L38">				Object value = RandomData.random(valueClass, fields);</span>
+<span class="nc" id="L39">				result.put(key, value);</span>
 			}
 		}
-<span class="fc" id="L42">		return result;</span>
+<span class="nc" id="L42">		return result;</span>
 	}
 
 	@Override

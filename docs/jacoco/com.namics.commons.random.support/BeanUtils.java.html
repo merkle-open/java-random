@@ -24,21 +24,21 @@ import java.util.List;
 
 
 	public static void makeAccessible(Method method) {
-<span class="pc bpc" id="L27" title="2 of 4 branches missed.">		if ((!Modifier.isPublic(method.getModifiers()) || !Modifier.isPublic(method.getDeclaringClass().getModifiers()))</span>
+<span class="nc bnc" id="L27" title="All 4 branches missed.">		if ((!Modifier.isPublic(method.getModifiers()) || !Modifier.isPublic(method.getDeclaringClass().getModifiers()))</span>
 <span class="nc bnc" id="L28" title="All 2 branches missed.">				&amp;&amp; !method.isAccessible()) {</span>
 <span class="nc" id="L29">			method.setAccessible(true);</span>
 		}
-<span class="fc" id="L31">	}</span>
+<span class="nc" id="L31">	}</span>
 
 	public static List&lt;PropertyDescriptor&gt; getPropertyDescriptors(Class beanClass) {
 		try {
-<span class="fc" id="L35">			BeanInfo beanInfo = null;</span>
+<span class="nc" id="L35">			BeanInfo beanInfo = null;</span>
 
-<span class="fc" id="L37">			beanInfo = new ExtendedBeanInfo(Introspector.getBeanInfo(beanClass));</span>
+<span class="nc" id="L37">			beanInfo = new ExtendedBeanInfo(Introspector.getBeanInfo(beanClass));</span>
 
 			// This call is slow so we do it once.
-<span class="fc" id="L40">			PropertyDescriptor[] pds = beanInfo.getPropertyDescriptors();</span>
-<span class="fc" id="L41">			return Arrays.asList(pds);</span>
+<span class="nc" id="L40">			PropertyDescriptor[] pds = beanInfo.getPropertyDescriptors();</span>
+<span class="nc" id="L41">			return Arrays.asList(pds);</span>
 <span class="nc" id="L42">		} catch (IntrospectionException e) {</span>
 <span class="nc" id="L43">			return Collections.emptyList();</span>
 		}

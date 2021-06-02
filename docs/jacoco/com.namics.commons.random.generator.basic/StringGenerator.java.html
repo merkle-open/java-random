@@ -38,151 +38,151 @@ import static com.namics.commons.random.RandomData.*;
 	 */
 	@Override
 	public String random(Object... info) {
-<span class="fc" id="L41">		String[] strings = Utils.objectsOfType(String.class, info);</span>
-<span class="fc bfc" id="L42" title="All 2 branches covered.">		if (strings.length &gt; 0) {</span>
-<span class="fc" id="L43">			StringBuilder aggregate = new StringBuilder();</span>
-<span class="fc bfc" id="L44" title="All 2 branches covered.">			for (String item : strings) {</span>
-<span class="fc" id="L45">				aggregate.append(item.toLowerCase());</span>
+<span class="nc" id="L41">		String[] strings = Utils.objectsOfType(String.class, info);</span>
+<span class="nc bnc" id="L42" title="All 2 branches missed.">		if (strings.length &gt; 0) {</span>
+<span class="nc" id="L43">			StringBuilder aggregate = new StringBuilder();</span>
+<span class="nc bnc" id="L44" title="All 2 branches missed.">			for (String item : strings) {</span>
+<span class="nc" id="L45">				aggregate.append(item.toLowerCase());</span>
 			}
-<span class="fc" id="L47">			String name = aggregate.toString();</span>
+<span class="nc" id="L47">			String name = aggregate.toString();</span>
 
-<span class="pc bpc" id="L49" title="1 of 2 branches missed.">			if (name.contains(&quot;regex&quot;)) {</span>
+<span class="nc bnc" id="L49" title="All 2 branches missed.">			if (name.contains(&quot;regex&quot;)) {</span>
 <span class="nc" id="L50">				return Pattern.quote(alphanumeric(randomInteger(0, 255)));</span>
 			}
-<span class="pc bpc" id="L52" title="1 of 2 branches missed.">			if (name.contains(&quot;guid&quot;)</span>
-<span class="fc bfc" id="L53" title="All 2 branches covered.">			    || name.contains(&quot;id&quot;)</span>
-<span class="pc bpc" id="L54" title="1 of 2 branches missed.">			    || name.contains(&quot;uuid&quot;)) {</span>
-<span class="fc" id="L55">				return UUID.randomUUID().toString();</span>
+<span class="nc bnc" id="L52" title="All 2 branches missed.">			if (name.contains(&quot;guid&quot;)</span>
+<span class="nc bnc" id="L53" title="All 2 branches missed.">			    || name.contains(&quot;id&quot;)</span>
+<span class="nc bnc" id="L54" title="All 2 branches missed.">			    || name.contains(&quot;uuid&quot;)) {</span>
+<span class="nc" id="L55">				return UUID.randomUUID().toString();</span>
 			}
-<span class="pc bpc" id="L57" title="1 of 2 branches missed.">			if (name.contains(&quot;timestamp&quot;)</span>
-<span class="pc bpc" id="L58" title="1 of 4 branches missed.">			    || (name.contains(&quot;date&quot;) &amp;&amp; name.contains(&quot;time&quot;))) {</span>
+<span class="nc bnc" id="L57" title="All 2 branches missed.">			if (name.contains(&quot;timestamp&quot;)</span>
+<span class="nc bnc" id="L58" title="All 4 branches missed.">			    || (name.contains(&quot;date&quot;) &amp;&amp; name.contains(&quot;time&quot;))) {</span>
 <span class="nc" id="L59">				return DateFormat.getDateTimeInstance().format(dateTime());</span>
 			}
-<span class="fc bfc" id="L61" title="All 2 branches covered.">			if (name.contains(&quot;date&quot;)) {</span>
-<span class="fc" id="L62">				return DateFormat.getDateInstance().format(date());</span>
+<span class="nc bnc" id="L61" title="All 2 branches missed.">			if (name.contains(&quot;date&quot;)) {</span>
+<span class="nc" id="L62">				return DateFormat.getDateInstance().format(date());</span>
 			}
-<span class="pc bpc" id="L64" title="1 of 2 branches missed.">			if (name.contains(&quot;time&quot;)) {</span>
+<span class="nc bnc" id="L64" title="All 2 branches missed.">			if (name.contains(&quot;time&quot;)) {</span>
 <span class="nc" id="L65">				return DateFormat.getTimeInstance().format(dateTime());</span>
 			}
-<span class="fc bfc" id="L67" title="All 2 branches covered.">			if (name.contains(&quot;name&quot;)) {</span>
-<span class="pc bpc" id="L68" title="1 of 2 branches missed.">				if (name.contains(&quot;user&quot;)) {</span>
+<span class="nc bnc" id="L67" title="All 2 branches missed.">			if (name.contains(&quot;name&quot;)) {</span>
+<span class="nc bnc" id="L68" title="All 2 branches missed.">				if (name.contains(&quot;user&quot;)) {</span>
 <span class="nc" id="L69">					return username();</span>
 				}
-<span class="fc bfc" id="L71" title="All 2 branches covered.">				if (name.contains(&quot;first&quot;)</span>
-<span class="pc bpc" id="L72" title="1 of 2 branches missed.">				    || name.contains(&quot;given&quot;)) {</span>
-<span class="fc" id="L73">					return firstname();</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">				if (name.contains(&quot;first&quot;)</span>
+<span class="nc bnc" id="L72" title="All 2 branches missed.">				    || name.contains(&quot;given&quot;)) {</span>
+<span class="nc" id="L73">					return firstname();</span>
 				}
-<span class="fc bfc" id="L75" title="All 2 branches covered.">				if (name.contains(&quot;last&quot;)</span>
-<span class="pc bpc" id="L76" title="1 of 2 branches missed.">				    || name.contains(&quot;sur&quot;)</span>
-<span class="pc bpc" id="L77" title="1 of 2 branches missed.">				    || name.contains(&quot;family&quot;)) {</span>
-<span class="fc" id="L78">					return lastname();</span>
+<span class="nc bnc" id="L75" title="All 2 branches missed.">				if (name.contains(&quot;last&quot;)</span>
+<span class="nc bnc" id="L76" title="All 2 branches missed.">				    || name.contains(&quot;sur&quot;)</span>
+<span class="nc bnc" id="L77" title="All 2 branches missed.">				    || name.contains(&quot;family&quot;)) {</span>
+<span class="nc" id="L78">					return lastname();</span>
 				}
-<span class="fc" id="L80">				return name();</span>
+<span class="nc" id="L80">				return name();</span>
 			}
-<span class="pc bpc" id="L82" title="1 of 2 branches missed.">			if (name.contains(&quot;author&quot;)</span>
-<span class="pc bpc" id="L83" title="1 of 2 branches missed.">			    || name.contains(&quot;writer&quot;)</span>
-<span class="pc bpc" id="L84" title="1 of 2 branches missed.">			    || name.contains(&quot;director&quot;)</span>
-<span class="pc bpc" id="L85" title="1 of 2 branches missed.">			    || name.contains(&quot;customer&quot;)</span>
-<span class="pc bpc" id="L86" title="1 of 2 branches missed.">			    || name.contains(&quot;actor&quot;)</span>
+<span class="nc bnc" id="L82" title="All 2 branches missed.">			if (name.contains(&quot;author&quot;)</span>
+<span class="nc bnc" id="L83" title="All 2 branches missed.">			    || name.contains(&quot;writer&quot;)</span>
+<span class="nc bnc" id="L84" title="All 2 branches missed.">			    || name.contains(&quot;director&quot;)</span>
+<span class="nc bnc" id="L85" title="All 2 branches missed.">			    || name.contains(&quot;customer&quot;)</span>
+<span class="nc bnc" id="L86" title="All 2 branches missed.">			    || name.contains(&quot;actor&quot;)</span>
 					) {
 <span class="nc" id="L88">				return name();</span>
 			}
-<span class="fc bfc" id="L90" title="All 2 branches covered.">			if (name.contains(&quot;mail&quot;)) {</span>
-<span class="fc" id="L91">				return email();</span>
+<span class="nc bnc" id="L90" title="All 2 branches missed.">			if (name.contains(&quot;mail&quot;)) {</span>
+<span class="nc" id="L91">				return email();</span>
 			}
-<span class="fc bfc" id="L93" title="All 2 branches covered.">			if (name.contains(&quot;lang&quot;)) {</span>
-<span class="fc" id="L94">				return lang();</span>
+<span class="nc bnc" id="L93" title="All 2 branches missed.">			if (name.contains(&quot;lang&quot;)) {</span>
+<span class="nc" id="L94">				return lang();</span>
 			}
-<span class="fc bfc" id="L96" title="All 2 branches covered.">			if (name.contains(&quot;country&quot;)) {</span>
-<span class="fc" id="L97">				return countryCode();</span>
+<span class="nc bnc" id="L96" title="All 2 branches missed.">			if (name.contains(&quot;country&quot;)) {</span>
+<span class="nc" id="L97">				return countryCode();</span>
 			}
-<span class="pc bpc" id="L99" title="1 of 2 branches missed.">			if (name.contains(&quot;title&quot;)) {</span>
+<span class="nc bnc" id="L99" title="All 2 branches missed.">			if (name.contains(&quot;title&quot;)) {</span>
 <span class="nc" id="L100">				return title(1, 5);</span>
 			}
-<span class="pc bpc" id="L102" title="1 of 2 branches missed.">			if (name.contains(&quot;content&quot;)</span>
-<span class="fc bfc" id="L103" title="All 2 branches covered.">			    || name.contains(&quot;description&quot;)</span>
-<span class="pc bpc" id="L104" title="1 of 2 branches missed.">			    || name.contains(&quot;article&quot;)</span>
-<span class="pc bpc" id="L105" title="1 of 2 branches missed.">			    || name.contains(&quot;body&quot;)</span>
-<span class="pc bpc" id="L106" title="1 of 2 branches missed.">			    || name.contains(&quot;paragraph&quot;)</span>
-<span class="pc bpc" id="L107" title="1 of 2 branches missed.">			    || name.contains(&quot;text&quot;)</span>
-<span class="pc bpc" id="L108" title="1 of 2 branches missed.">			    || name.contains(&quot;summary&quot;)) {</span>
-<span class="fc" id="L109">				return paragraphs(1, 4);</span>
+<span class="nc bnc" id="L102" title="All 2 branches missed.">			if (name.contains(&quot;content&quot;)</span>
+<span class="nc bnc" id="L103" title="All 2 branches missed.">			    || name.contains(&quot;description&quot;)</span>
+<span class="nc bnc" id="L104" title="All 2 branches missed.">			    || name.contains(&quot;article&quot;)</span>
+<span class="nc bnc" id="L105" title="All 2 branches missed.">			    || name.contains(&quot;body&quot;)</span>
+<span class="nc bnc" id="L106" title="All 2 branches missed.">			    || name.contains(&quot;paragraph&quot;)</span>
+<span class="nc bnc" id="L107" title="All 2 branches missed.">			    || name.contains(&quot;text&quot;)</span>
+<span class="nc bnc" id="L108" title="All 2 branches missed.">			    || name.contains(&quot;summary&quot;)) {</span>
+<span class="nc" id="L109">				return paragraphs(1, 4);</span>
 			}
-<span class="fc bfc" id="L111" title="All 2 branches covered.">			if (name.contains(&quot;city&quot;)</span>
-<span class="pc bpc" id="L112" title="1 of 2 branches missed.">			    || name.contains(&quot;town&quot;)</span>
-<span class="pc bpc" id="L113" title="1 of 2 branches missed.">			    || name.contains(&quot;ort&quot;)</span>
-<span class="pc bpc" id="L114" title="1 of 2 branches missed.">			    || name.contains(&quot;locality&quot;)</span>
-<span class="pc bpc" id="L115" title="1 of 2 branches missed.">			    || name.contains(&quot;dorf&quot;)</span>
-<span class="pc bpc" id="L116" title="1 of 2 branches missed.">			    || name.contains(&quot;stadt&quot;)</span>
-<span class="pc bpc" id="L117" title="1 of 2 branches missed.">			    || name.contains(&quot;localite&quot;)</span>
-<span class="pc bpc" id="L118" title="1 of 2 branches missed.">			    || name.contains(&quot;village&quot;)) {</span>
-<span class="fc" id="L119">				return city();</span>
+<span class="nc bnc" id="L111" title="All 2 branches missed.">			if (name.contains(&quot;city&quot;)</span>
+<span class="nc bnc" id="L112" title="All 2 branches missed.">			    || name.contains(&quot;town&quot;)</span>
+<span class="nc bnc" id="L113" title="All 2 branches missed.">			    || name.contains(&quot;ort&quot;)</span>
+<span class="nc bnc" id="L114" title="All 2 branches missed.">			    || name.contains(&quot;locality&quot;)</span>
+<span class="nc bnc" id="L115" title="All 2 branches missed.">			    || name.contains(&quot;dorf&quot;)</span>
+<span class="nc bnc" id="L116" title="All 2 branches missed.">			    || name.contains(&quot;stadt&quot;)</span>
+<span class="nc bnc" id="L117" title="All 2 branches missed.">			    || name.contains(&quot;localite&quot;)</span>
+<span class="nc bnc" id="L118" title="All 2 branches missed.">			    || name.contains(&quot;village&quot;)) {</span>
+<span class="nc" id="L119">				return city();</span>
 			}
-<span class="pc bpc" id="L121" title="1 of 2 branches missed.">			if (name.contains(&quot;postal&quot;)</span>
-<span class="pc bpc" id="L122" title="1 of 2 branches missed.">			    || name.contains(&quot;postcode&quot;)</span>
-<span class="fc bfc" id="L123" title="All 2 branches covered.">			    || name.contains(&quot;zip&quot;)</span>
-<span class="pc bpc" id="L124" title="1 of 2 branches missed.">			    || name.contains(&quot;plz&quot;)</span>
-<span class="pc bpc" id="L125" title="1 of 2 branches missed.">			    || name.contains(&quot;postleitzahl&quot;)</span>
+<span class="nc bnc" id="L121" title="All 2 branches missed.">			if (name.contains(&quot;postal&quot;)</span>
+<span class="nc bnc" id="L122" title="All 2 branches missed.">			    || name.contains(&quot;postcode&quot;)</span>
+<span class="nc bnc" id="L123" title="All 2 branches missed.">			    || name.contains(&quot;zip&quot;)</span>
+<span class="nc bnc" id="L124" title="All 2 branches missed.">			    || name.contains(&quot;plz&quot;)</span>
+<span class="nc bnc" id="L125" title="All 2 branches missed.">			    || name.contains(&quot;postleitzahl&quot;)</span>
 					) {
-<span class="fc" id="L127">				return zip();</span>
+<span class="nc" id="L127">				return zip();</span>
 			}
-<span class="fc bfc" id="L129" title="All 2 branches covered.">			if ((name.contains(&quot;street&quot;)</span>
-<span class="pc bpc" id="L130" title="1 of 2 branches missed.">			     || name.contains(&quot;strasse&quot;)</span>
-<span class="pc bpc" id="L131" title="1 of 2 branches missed.">			     || name.contains(&quot;rue&quot;))) {</span>
+<span class="nc bnc" id="L129" title="All 2 branches missed.">			if ((name.contains(&quot;street&quot;)</span>
+<span class="nc bnc" id="L130" title="All 2 branches missed.">			     || name.contains(&quot;strasse&quot;)</span>
+<span class="nc bnc" id="L131" title="All 2 branches missed.">			     || name.contains(&quot;rue&quot;))) {</span>
 
-<span class="pc bpc" id="L133" title="1 of 2 branches missed.">				if (!(name.contains(&quot;nr&quot;)</span>
-<span class="fc bfc" id="L134" title="All 2 branches covered.">				      || name.contains(&quot;number&quot;)</span>
-<span class="pc bpc" id="L135" title="1 of 2 branches missed.">				      || name.contains(&quot;no&quot;)</span>
-<span class="pc bpc" id="L136" title="1 of 2 branches missed.">				      || name.contains(&quot;nummer&quot;))) {</span>
-<span class="fc" id="L137">					return street();</span>
+<span class="nc bnc" id="L133" title="All 2 branches missed.">				if (!(name.contains(&quot;nr&quot;)</span>
+<span class="nc bnc" id="L134" title="All 2 branches missed.">				      || name.contains(&quot;number&quot;)</span>
+<span class="nc bnc" id="L135" title="All 2 branches missed.">				      || name.contains(&quot;no&quot;)</span>
+<span class="nc bnc" id="L136" title="All 2 branches missed.">				      || name.contains(&quot;nummer&quot;))) {</span>
+<span class="nc" id="L137">					return street();</span>
 				}
 			}
-<span class="pc bpc" id="L140" title="1 of 2 branches missed.">			if (name.contains(&quot;tel&quot;)</span>
-<span class="pc bpc" id="L141" title="1 of 2 branches missed.">			    || name.contains(&quot;phone&quot;)</span>
-<span class="pc bpc" id="L142" title="1 of 2 branches missed.">			    || name.contains(&quot;mobile&quot;)) {</span>
+<span class="nc bnc" id="L140" title="All 2 branches missed.">			if (name.contains(&quot;tel&quot;)</span>
+<span class="nc bnc" id="L141" title="All 2 branches missed.">			    || name.contains(&quot;phone&quot;)</span>
+<span class="nc bnc" id="L142" title="All 2 branches missed.">			    || name.contains(&quot;mobile&quot;)) {</span>
 <span class="nc" id="L143">				return &quot;00&quot; + RandomStringUtils.random(11, false, true);</span>
 			}
-<span class="pc bpc" id="L145" title="1 of 2 branches missed.">			if (name.contains(&quot;nr&quot;)</span>
-<span class="fc bfc" id="L146" title="All 2 branches covered.">			    || name.contains(&quot;number&quot;)</span>
-<span class="pc bpc" id="L147" title="1 of 2 branches missed.">			    || name.contains(&quot;no&quot;)</span>
-<span class="pc bpc" id="L148" title="1 of 2 branches missed.">			    || name.contains(&quot;nummer&quot;)) {</span>
-<span class="fc" id="L149">				return streetNumber();</span>
+<span class="nc bnc" id="L145" title="All 2 branches missed.">			if (name.contains(&quot;nr&quot;)</span>
+<span class="nc bnc" id="L146" title="All 2 branches missed.">			    || name.contains(&quot;number&quot;)</span>
+<span class="nc bnc" id="L147" title="All 2 branches missed.">			    || name.contains(&quot;no&quot;)</span>
+<span class="nc bnc" id="L148" title="All 2 branches missed.">			    || name.contains(&quot;nummer&quot;)) {</span>
+<span class="nc" id="L149">				return streetNumber();</span>
 			}
-<span class="pc bpc" id="L151" title="1 of 2 branches missed.">			if (name.contains(&quot;adress&quot;)</span>
-<span class="fc bfc" id="L152" title="All 2 branches covered.">			    || name.contains(&quot;address&quot;)</span>
-<span class="pc bpc" id="L153" title="1 of 2 branches missed.">			    || name.contains(&quot;adresse&quot;)</span>
-<span class="pc bpc" id="L154" title="1 of 2 branches missed.">			    || name.contains(&quot;addresse&quot;)) {</span>
-<span class="fc" id="L155">				return address();</span>
+<span class="nc bnc" id="L151" title="All 2 branches missed.">			if (name.contains(&quot;adress&quot;)</span>
+<span class="nc bnc" id="L152" title="All 2 branches missed.">			    || name.contains(&quot;address&quot;)</span>
+<span class="nc bnc" id="L153" title="All 2 branches missed.">			    || name.contains(&quot;adresse&quot;)</span>
+<span class="nc bnc" id="L154" title="All 2 branches missed.">			    || name.contains(&quot;addresse&quot;)) {</span>
+<span class="nc" id="L155">				return address();</span>
 			}
-<span class="pc bpc" id="L157" title="1 of 2 branches missed.">			if (name.contains(&quot;isbn&quot;)) {</span>
+<span class="nc bnc" id="L157" title="All 2 branches missed.">			if (name.contains(&quot;isbn&quot;)) {</span>
 <span class="nc" id="L158">				return eanIsbn();</span>
 			}
-<span class="pc bpc" id="L160" title="1 of 2 branches missed.">			if (name.contains(&quot;ean&quot;)) {</span>
+<span class="nc bnc" id="L160" title="All 2 branches missed.">			if (name.contains(&quot;ean&quot;)) {</span>
 <span class="nc" id="L161">				return ean13();</span>
 			}
-<span class="pc bpc" id="L163" title="1 of 2 branches missed.">			if (name.contains(&quot;firma&quot;)</span>
-<span class="pc bpc" id="L164" title="1 of 2 branches missed.">			    || name.contains(&quot;company&quot;)</span>
-<span class="fc bfc" id="L165" title="All 2 branches covered.">			    || name.contains(&quot;companies&quot;)</span>
-<span class="pc bpc" id="L166" title="1 of 2 branches missed.">			    || name.contains(&quot;firm&quot;)</span>
-<span class="pc bpc" id="L167" title="1 of 2 branches missed.">			    || name.contains(&quot;concern&quot;)</span>
-<span class="pc bpc" id="L168" title="1 of 2 branches missed.">			    || name.contains(&quot;unternehmen&quot;)</span>
+<span class="nc bnc" id="L163" title="All 2 branches missed.">			if (name.contains(&quot;firma&quot;)</span>
+<span class="nc bnc" id="L164" title="All 2 branches missed.">			    || name.contains(&quot;company&quot;)</span>
+<span class="nc bnc" id="L165" title="All 2 branches missed.">			    || name.contains(&quot;companies&quot;)</span>
+<span class="nc bnc" id="L166" title="All 2 branches missed.">			    || name.contains(&quot;firm&quot;)</span>
+<span class="nc bnc" id="L167" title="All 2 branches missed.">			    || name.contains(&quot;concern&quot;)</span>
+<span class="nc bnc" id="L168" title="All 2 branches missed.">			    || name.contains(&quot;unternehmen&quot;)</span>
 					) {
-<span class="fc" id="L170">				return company();</span>
+<span class="nc" id="L170">				return company();</span>
 			}
-<span class="pc bpc" id="L172" title="1 of 2 branches missed.">			if (name.contains(&quot;hersteller&quot;)</span>
-<span class="pc bpc" id="L173" title="1 of 2 branches missed.">			    || name.contains(&quot;marke&quot;)</span>
-<span class="pc bpc" id="L174" title="1 of 2 branches missed.">			    || name.contains(&quot;manufacturer&quot;)</span>
-<span class="pc bpc" id="L175" title="1 of 2 branches missed.">			    || name.contains(&quot;brand&quot;)) {</span>
+<span class="nc bnc" id="L172" title="All 2 branches missed.">			if (name.contains(&quot;hersteller&quot;)</span>
+<span class="nc bnc" id="L173" title="All 2 branches missed.">			    || name.contains(&quot;marke&quot;)</span>
+<span class="nc bnc" id="L174" title="All 2 branches missed.">			    || name.contains(&quot;manufacturer&quot;)</span>
+<span class="nc bnc" id="L175" title="All 2 branches missed.">			    || name.contains(&quot;brand&quot;)) {</span>
 <span class="nc" id="L176">				return manufacturer();</span>
 			}
-<span class="pc bpc" id="L178" title="1 of 2 branches missed.">			if (name.contains(&quot;url&quot;)) {</span>
+<span class="nc bnc" id="L178" title="All 2 branches missed.">			if (name.contains(&quot;url&quot;)) {</span>
 <span class="nc" id="L179">				return new UrlGenerator().random().toString();</span>
 			}
-<span class="pc bpc" id="L181" title="1 of 2 branches missed.">			if (name.contains(&quot;uri&quot;)) {</span>
+<span class="nc bnc" id="L181" title="All 2 branches missed.">			if (name.contains(&quot;uri&quot;)) {</span>
 <span class="nc" id="L182">				return new UriGenerator().random().toString();</span>
 			}
 		}
-<span class="fc" id="L185">		return alphanumeric(randomInteger(0, 255));</span>
+<span class="nc" id="L185">		return alphanumeric(randomInteger(0, 255));</span>
 	}
 
 

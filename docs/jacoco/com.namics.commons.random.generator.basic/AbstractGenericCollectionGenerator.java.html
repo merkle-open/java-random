@@ -24,18 +24,18 @@ import java.util.Collection;
 
 	@Override
 	public T random(Object... information) {
-<span class="fc" id="L27">		T result = random();</span>
+<span class="nc" id="L27">		T result = random();</span>
 
-<span class="fc" id="L29">		Type[] generics = Utils.objectsOfType(Type.class, information);</span>
-<span class="fc" id="L30">		String[] fields = Utils.objectsOfType(String.class, information);</span>
+<span class="nc" id="L29">		Type[] generics = Utils.objectsOfType(Type.class, information);</span>
+<span class="nc" id="L30">		String[] fields = Utils.objectsOfType(String.class, information);</span>
 
-<span class="fc bfc" id="L32" title="All 2 branches covered.">		if (generics.length == 1) {</span>
-<span class="fc" id="L33">			Type clazz =  generics[0];</span>
-<span class="fc bfc" id="L34" title="All 2 branches covered.">			for (int count = 0; count &lt; RandomData.randomInteger(1, 10); count++) {</span>
-<span class="fc" id="L35">				result.add(RandomData.random(clazz, fields));</span>
+<span class="nc bnc" id="L32" title="All 2 branches missed.">		if (generics.length == 1) {</span>
+<span class="nc" id="L33">			Type clazz =  generics[0];</span>
+<span class="nc bnc" id="L34" title="All 2 branches missed.">			for (int count = 0; count &lt; RandomData.randomInteger(1, 10); count++) {</span>
+<span class="nc" id="L35">				result.add(RandomData.random(clazz, fields));</span>
 			}
 		}
-<span class="fc" id="L38">		return result;</span>
+<span class="nc" id="L38">		return result;</span>
 	}
 
 	@Override

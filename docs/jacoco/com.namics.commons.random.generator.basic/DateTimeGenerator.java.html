@@ -21,11 +21,11 @@ import java.util.Arrays;
 
 	@Override
 	public DateTime random() {
-<span class="fc" id="L24">		DateTime now = DateTime.now();</span>
-<span class="fc" id="L25">		long min = now.minus(Years.TWO).getMillis();</span>
-<span class="fc" id="L26">		long max = now.plus(Years.TWO).getMillis();</span>
-<span class="fc" id="L27">		double random = RandomUtils.nextDouble() * (max - min) + min;</span>
-<span class="fc" id="L28">		return new DateTime(Double.valueOf(random).longValue());</span>
+<span class="nc" id="L24">		DateTime now = DateTime.now();</span>
+<span class="nc" id="L25">		long min = now.minus(Years.TWO).getMillis();</span>
+<span class="nc" id="L26">		long max = now.plus(Years.TWO).getMillis();</span>
+<span class="nc" id="L27">		double random = RandomUtils.nextDouble() * (max - min) + min;</span>
+<span class="nc" id="L28">		return new DateTime(Double.valueOf(random).longValue());</span>
 	}
 
 	@Override

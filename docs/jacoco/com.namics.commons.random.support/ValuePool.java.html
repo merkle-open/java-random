@@ -5,13 +5,20 @@
 package com.namics.commons.random.support;
 
 import com.namics.commons.random.RandomData;
-import org.apache.commons.io.IOUtils;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import static java.util.Arrays.asList;
+import static java.util.Collections.unmodifiableList;
+import static java.util.stream.Collectors.toSet;
 
 /**
  * Helper class to read name data.
@@ -19,88 +26,105 @@ import java.util.Set;
  * @author aschaefer
  * @since 21.02.14 11:00
  */
-<span class="nc" id="L22">public class ValuePool {</span>
+public final class ValuePool {
 
-	protected static Set&lt;String&gt; maleNames;
-	protected static Set&lt;String&gt; femaleNames;
-	protected static Set&lt;String&gt; surnames;
-	protected static Set&lt;String&gt; firstNames;
-	protected static Set&lt;String&gt; companies;
-	protected static Set&lt;String&gt; manufacturers;
-	protected static Set&lt;String&gt; countryTLDs;
-<span class="fc" id="L31">	protected static Set&lt;String&gt; cities = new HashSet&lt;&gt;();</span>
-<span class="fc" id="L32">	public static String[] streetSuffix = new String[] { &quot;street&quot;, &quot;place&quot;, &quot;square&quot;, &quot;lane&quot;, &quot;strasse&quot;, &quot;platz&quot;, &quot;gasse&quot;, &quot;weg&quot; };</span>
-<span class="fc" id="L33">	public static String[] streetSuffixesExtra = new String[] { &quot; Street&quot;, &quot; Place&quot;, &quot; Square&quot;, &quot; Lane&quot;, &quot; Ave.&quot;, &quot; Strasse&quot;, &quot; Platz&quot;, };</span>
+<span class="nc" id="L31">	private static final ValuePool INTERNATIONAL = new ValuePool(true);</span>
+<span class="nc" id="L32">	private static final ValuePool COMPATIBLE = new ValuePool(false);</span>
 
-	static {
-<span class="fc" id="L36">		maleNames = readLines(&quot;/testdata/male_names.txt&quot;);</span>
-<span class="fc" id="L37">		femaleNames = readLines(&quot;/testdata/female_names.txt&quot;);</span>
-<span class="fc" id="L38">		surnames = readLines(&quot;/testdata/surnames.txt&quot;);</span>
-<span class="fc" id="L39">		companies = readLines(&quot;/testdata/companies.txt&quot;);</span>
-<span class="fc" id="L40">		manufacturers = readLines(&quot;/testdata/manufacturers.txt&quot;);</span>
-<span class="fc" id="L41">		countryTLDs = readLines(&quot;/testdata/country_tld.txt&quot;);</span>
-<span class="fc" id="L42">		firstNames = new HashSet&lt;String&gt;();</span>
-<span class="fc" id="L43">		firstNames.addAll(maleNames);</span>
-<span class="fc" id="L44">		firstNames.addAll(femaleNames);</span>
-
-<span class="fc" id="L46">		Set&lt;String&gt; cityInfos = readLines(&quot;/testdata/cities.txt&quot;);</span>
-<span class="fc bfc" id="L47" title="All 2 branches covered.">		for (String cityInfo : cityInfos) {</span>
-<span class="fc" id="L48">			String[] info = cityInfo.split(&quot;;&quot;);</span>
-<span class="fc" id="L49">			cities.add(info[1]);</span>
-<span class="fc" id="L50">		}</span>
-
-<span class="fc" id="L52">	}</span>
+	private final Set&lt;String&gt; maleNames;
+	private final Set&lt;String&gt; femaleNames;
+	private final Set&lt;String&gt; surnames;
+	private final Set&lt;String&gt; firstNames;
+	private final Set&lt;String&gt; companies;
+	private final Set&lt;String&gt; manufacturers;
+	private final Set&lt;String&gt; countryTLDs;
+	private final Set&lt;String&gt; cities;
+<span class="nc" id="L42">	private final List&lt;String&gt; streetSuffix = unmodifiableList(asList(&quot;street&quot;, &quot;place&quot;, &quot;square&quot;, &quot;lane&quot;, &quot;strasse&quot;, &quot;platz&quot;, &quot;gasse&quot;, &quot;weg&quot;));</span>
+<span class="nc" id="L43">	private final List&lt;String&gt; streetSuffixesExtra = unmodifiableList(asList(&quot; Street&quot;, &quot; Place&quot;, &quot; Square&quot;, &quot; Lane&quot;, &quot; Ave.&quot;, &quot; Strasse&quot;, &quot; Platz&quot;));</span>
 
 
-	protected static Set&lt;String&gt; readLines(String name) {
-		try {
-<span class="fc" id="L57">			List&lt;String&gt; strings = IOUtils.readLines(RandomData.class.getResourceAsStream(name));</span>
-<span class="fc" id="L58">			HashSet&lt;String&gt; result = new HashSet&lt;String&gt;();</span>
-<span class="fc" id="L59">			result.addAll(strings);</span>
-<span class="fc" id="L60">			return result;</span>
-<span class="nc" id="L61">		} catch (IOException e) {</span>
-<span class="nc" id="L62">			return Collections.emptySet();</span>
+<span class="nc" id="L46">	private ValuePool(boolean international) {</span>
+<span class="nc bnc" id="L47" title="All 2 branches missed.">		if (international) {</span>
+<span class="nc" id="L48">			maleNames = readLines(&quot;/testdata/male_names_international.txt&quot;);</span>
+<span class="nc" id="L49">			femaleNames = readLines(&quot;/testdata/female_names_international.txt&quot;);</span>
+<span class="nc" id="L50">			surnames = readLines(&quot;/testdata/surnames_international.txt&quot;);</span>
+		} else {
+<span class="nc" id="L52">			maleNames = readLines(&quot;/testdata/male_names.txt&quot;);</span>
+<span class="nc" id="L53">			femaleNames = readLines(&quot;/testdata/female_names.txt&quot;);</span>
+<span class="nc" id="L54">			surnames = readLines(&quot;/testdata/surnames.txt&quot;);</span>
+		}
+<span class="nc" id="L56">		companies = readLines(&quot;/testdata/companies.txt&quot;);</span>
+<span class="nc" id="L57">		manufacturers = readLines(&quot;/testdata/manufacturers.txt&quot;);</span>
+<span class="nc" id="L58">		countryTLDs = readLines(&quot;/testdata/country_tld.txt&quot;);</span>
+<span class="nc" id="L59">		firstNames = new HashSet&lt;&gt;();</span>
+<span class="nc" id="L60">		firstNames.addAll(maleNames);</span>
+<span class="nc" id="L61">		firstNames.addAll(femaleNames);</span>
+
+<span class="nc" id="L63">		Set&lt;String&gt; cityValues = new HashSet&lt;&gt;();</span>
+<span class="nc" id="L64">		Set&lt;String&gt; cityInfos = readLines(&quot;/testdata/cities.txt&quot;);</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">		for (String cityInfo : cityInfos) {</span>
+<span class="nc" id="L66">			String[] info = cityInfo.split(&quot;;&quot;);</span>
+<span class="nc" id="L67">			cityValues.add(info[1]);</span>
+<span class="nc" id="L68">		}</span>
+<span class="nc" id="L69">		cities = Collections.unmodifiableSet(cityValues);</span>
+
+<span class="nc" id="L71">	}</span>
+
+	private static Set&lt;String&gt; readLines(String name) {
+<span class="nc" id="L74">		try (InputStream resource = RandomData.class.getResourceAsStream(name)) {</span>
+<span class="nc" id="L75">			return new BufferedReader(new InputStreamReader(resource, StandardCharsets.UTF_8)).lines().collect(toSet());</span>
+<span class="nc" id="L76">		} catch (IOException e) {</span>
+<span class="nc" id="L77">			return Collections.emptySet();</span>
 		}
 	}
 
 	public static Set&lt;String&gt; getMaleNames() {
-<span class="nc" id="L67">		return maleNames;</span>
+<span class="nc" id="L82">		return pool().maleNames;</span>
 	}
 
 	public static Set&lt;String&gt; getFemaleNames() {
-<span class="nc" id="L71">		return femaleNames;</span>
+<span class="nc" id="L86">		return pool().femaleNames;</span>
 	}
 
 	public static Set&lt;String&gt; getSurnames() {
-<span class="fc" id="L75">		return surnames;</span>
+<span class="nc" id="L90">		return pool().surnames;</span>
 	}
 
 	public static Set&lt;String&gt; getFirstNames() {
-<span class="fc" id="L79">		return firstNames;</span>
+<span class="nc" id="L94">		return pool().firstNames;</span>
 	}
 
 	public static Set&lt;String&gt; getCities() {
-<span class="fc" id="L83">		return cities;</span>
+<span class="nc" id="L98">		return pool().cities;</span>
 	}
 
 	public static Set&lt;String&gt; getCompanies() {
-<span class="fc" id="L87">		return companies;</span>
+<span class="nc" id="L102">		return pool().companies;</span>
 	}
 
 	public static Set&lt;String&gt; getManufacturers() {
-<span class="nc" id="L91">		return manufacturers;</span>
+<span class="nc" id="L106">		return pool().manufacturers;</span>
 	}
 
 	public static Set&lt;String&gt; getCountryTLDs() {
-<span class="fc" id="L95">		return countryTLDs;</span>
+<span class="nc" id="L110">		return pool().countryTLDs;</span>
 	}
 
-	public static String[] getStreetSuffix() {
-<span class="nc" id="L99">		return streetSuffix;</span>
+	public static List&lt;String&gt; getStreetSuffix() {
+<span class="nc" id="L114">		return pool().streetSuffix;</span>
 	}
 
-	public static String[] getStreetSuffixesExtra() {
-<span class="fc" id="L103">		return streetSuffixesExtra;</span>
+	public static List&lt;String&gt; getStreetSuffixesExtra() {
+<span class="nc" id="L118">		return pool().streetSuffixesExtra;</span>
+	}
+
+	private static ValuePool pool() {
+<span class="nc bnc" id="L122" title="All 2 branches missed.">		if (&quot;true&quot;.equalsIgnoreCase(System.getProperty(&quot;random.names.international&quot;, &quot;false&quot;))</span>
+<span class="nc bnc" id="L123" title="All 2 branches missed.">		    || &quot;true&quot;.equalsIgnoreCase(System.getenv(&quot;RANDOM_NAMES_INTERNATIONAL&quot;))) {</span>
+<span class="nc" id="L124">			return INTERNATIONAL;</span>
+		} else {
+<span class="nc" id="L126">			return COMPATIBLE;</span>
+		}
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

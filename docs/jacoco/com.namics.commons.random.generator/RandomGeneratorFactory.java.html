@@ -97,12 +97,12 @@ import java.util.TreeMap;
 	public static &lt;SupportedType&gt; RandomGenerator&lt;SupportedType&gt; generator(Class&lt;SupportedType&gt; supportedType) {
 <span class="fc" id="L98">		RandomGenerator resolved = generators.get(supportedType);</span>
 
-<span class="pc bpc" id="L100" title="2 of 8 branches missed.">		if (resolved == null &amp;&amp; supportedType != null &amp;&amp; Class.class != supportedType &amp;&amp; supportedType.getPackage() != null) {</span>
-<span class="fc" id="L101">			String supportedTypePackage = supportedType.getPackage().getName();</span>
-<span class="fc bfc" id="L102" title="All 2 branches covered.">			if (!PACKAGE_REFLECTIONS.containsKey(supportedTypePackage)) {</span>
-<span class="fc" id="L103">				LOG.debug(&quot;No generator for class {}, scan its package {} for generator&quot;, supportedType, supportedTypePackage);</span>
-<span class="fc" id="L104">				addRandomGenerators(supportedTypePackage);</span>
-<span class="fc" id="L105">				resolved = generators.get(supportedType);</span>
+<span class="pc bpc" id="L100" title="7 of 8 branches missed.">		if (resolved == null &amp;&amp; supportedType != null &amp;&amp; Class.class != supportedType &amp;&amp; supportedType.getPackage() != null) {</span>
+<span class="nc" id="L101">			String supportedTypePackage = supportedType.getPackage().getName();</span>
+<span class="nc bnc" id="L102" title="All 2 branches missed.">			if (!PACKAGE_REFLECTIONS.containsKey(supportedTypePackage)) {</span>
+<span class="nc" id="L103">				LOG.debug(&quot;No generator for class {}, scan its package {} for generator&quot;, supportedType, supportedTypePackage);</span>
+<span class="nc" id="L104">				addRandomGenerators(supportedTypePackage);</span>
+<span class="nc" id="L105">				resolved = generators.get(supportedType);</span>
 			}
 		}
 <span class="fc" id="L108">		return resolved;</span>
@@ -122,9 +122,9 @@ import java.util.TreeMap;
 	 */
 	public static &lt;SupportedType&gt; RandomGenerator&lt;SupportedType&gt; generator(String supportedType) {
 		try {
-<span class="fc" id="L125">			return (RandomGenerator&lt;SupportedType&gt;) generator(Class.forName(supportedType));</span>
-<span class="fc" id="L126">		} catch (ClassNotFoundException e) {</span>
-<span class="fc" id="L127">			return null;</span>
+<span class="nc" id="L125">			return (RandomGenerator&lt;SupportedType&gt;) generator(Class.forName(supportedType));</span>
+<span class="nc" id="L126">		} catch (ClassNotFoundException e) {</span>
+<span class="nc" id="L127">			return null;</span>
 		}
 	}
 }

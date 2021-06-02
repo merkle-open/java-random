@@ -24,16 +24,16 @@ import java.util.ArrayList;
 	 * @return array with type and objects of T
 	 */
 	public static &lt;T&gt; T[] objectsOfType(Class&lt;T&gt; clazz, Object... information) {
-<span class="fc" id="L27">		ArrayList&lt;T&gt; items = new ArrayList&lt;&gt;();</span>
-<span class="pc bpc" id="L28" title="1 of 4 branches missed.">		if (information != null &amp;&amp; information.length &gt; 0) {</span>
-<span class="fc bfc" id="L29" title="All 2 branches covered.">			for (Object info : information) {</span>
-<span class="pc bpc" id="L30" title="1 of 4 branches missed.">				if (info != null &amp;&amp; clazz.isAssignableFrom(info.getClass())) {</span>
-<span class="fc" id="L31">					items.add((T) info);</span>
+<span class="nc" id="L27">		ArrayList&lt;T&gt; items = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L28" title="All 4 branches missed.">		if (information != null &amp;&amp; information.length &gt; 0) {</span>
+<span class="nc bnc" id="L29" title="All 2 branches missed.">			for (Object info : information) {</span>
+<span class="nc bnc" id="L30" title="All 4 branches missed.">				if (info != null &amp;&amp; clazz.isAssignableFrom(info.getClass())) {</span>
+<span class="nc" id="L31">					items.add((T) info);</span>
 				}
 			}
 		}
-<span class="fc" id="L35">		T[] result = (T[]) Array.newInstance(clazz, items.size());</span>
-<span class="fc" id="L36">		return items.toArray(result);</span>
+<span class="nc" id="L35">		T[] result = (T[]) Array.newInstance(clazz, items.size());</span>
+<span class="nc" id="L36">		return items.toArray(result);</span>
 	}
 
 }

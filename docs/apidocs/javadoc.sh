@@ -1,0 +1,1 @@
+/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64/jre/../bin/javadoc @options @packages

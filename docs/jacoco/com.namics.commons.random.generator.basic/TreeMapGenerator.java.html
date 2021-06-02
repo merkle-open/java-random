@@ -22,15 +22,15 @@ import java.util.*;
 
 	@Override
 	public TreeMap random() {
-<span class="fc" id="L25">		return new TreeMap();</span>
+<span class="nc" id="L25">		return new TreeMap();</span>
 	}
 
 	@Override
 	public Object random(Object... information) {
-<span class="fc" id="L30">		TreeMap result = random();</span>
-<span class="fc" id="L31">		Type[] generics = Utils.objectsOfType(Type.class, information);</span>
-<span class="fc" id="L32">		String[] fields = Utils.objectsOfType(String.class, information);</span>
-<span class="pc bpc" id="L33" title="1 of 2 branches missed.">		if (generics.length == 2) {</span>
+<span class="nc" id="L30">		TreeMap result = random();</span>
+<span class="nc" id="L31">		Type[] generics = Utils.objectsOfType(Type.class, information);</span>
+<span class="nc" id="L32">		String[] fields = Utils.objectsOfType(String.class, information);</span>
+<span class="nc bnc" id="L33" title="All 2 branches missed.">		if (generics.length == 2) {</span>
 <span class="nc" id="L34">			Type keyClass =  generics[0];</span>
 <span class="nc" id="L35">			Type valueClass = generics[1];</span>
 <span class="nc bnc" id="L36" title="All 2 branches missed.">			for (int count = 0; count &lt; RandomData.randomInteger(1, 10); count++) {</span>
@@ -39,7 +39,7 @@ import java.util.*;
 <span class="nc" id="L39">				result.put(key, value);</span>
 			}
 		}
-<span class="fc" id="L42">		return result;</span>
+<span class="nc" id="L42">		return result;</span>
 	}
 
 	@Override
