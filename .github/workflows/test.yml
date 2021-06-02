@@ -17,7 +17,7 @@ jobs:
           gpg-passphrase: MAVEN_GPG_PASSPHRASE # env variable for GPG private key passphrase
 
       - name: Verify and Sign
-        run: mvn verify -P release
+        run: mvn --no-transfer-progress -B verify -P release
         env:
           MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
 

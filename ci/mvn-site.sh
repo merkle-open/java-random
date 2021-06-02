@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 
-mvn clean site:site site -DtestFailureIgnore=true --fail-never -DskipITs=false -P site
-mvn site:stage -DtestFailureIgnore=true --fail-never  -P site
+mvn -B clean site:site site -DtestFailureIgnore=true --fail-never -DskipITs=false -P site
+mvn -B site:stage -DtestFailureIgnore=true --fail-never  -P site
 
 echo "Clean old docs folder"
 rm -rf docs/*
 
 echo "Deploy new site"
-mvn site:deploy -DtestFailureIgnore=true --fail-never  -P site
+mvn -B site:deploy -DtestFailureIgnore=true --fail-never  -P site
 
 git add docs
 

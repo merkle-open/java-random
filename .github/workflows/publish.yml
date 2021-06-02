@@ -16,7 +16,7 @@ jobs:
           java-version: '11'
 
       - name: Build with Maven
-        run: mvn -B package --file pom.xml
+        run: mvn --no-transfer-progress -B  package --file pom.xml
 
       - name: Publish to GitHub Packages Apache Maven
         run: mvn deploy
@@ -35,7 +35,7 @@ jobs:
           gpg-passphrase: MAVEN_GPG_PASSPHRASE # env variable for GPG private key passphrase
 
       - name: Publish to Apache Maven Central
-        run: mvn deploy -P release
+        run: mvn --no-transfer-progress -B deploy -P release
         env:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           MAVEN_CENTRAL_TOKEN: ${{ secrets.OSSRH_PASSWORD }}
