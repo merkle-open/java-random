@@ -13,5 +13,5 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: '11'
-      - run: mvn package -P release
+      - run: mvn verify -P release
 
