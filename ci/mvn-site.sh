@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 
-mvn clean site:site site -DtestFailureIgnore=true --fail-never -DskipITs=false -P site --settings ci/mvnsettings.xml
+mvn clean site:site site -DtestFailureIgnore=true --fail-never -DskipITs=false -P site
 mvn site:stage -DtestFailureIgnore=true --fail-never  -P site
 
 echo "Clean old docs folder"
