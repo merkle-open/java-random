@@ -14,9 +14,7 @@ jobs:
           distribution: 'adopt'
           java-version: '8'
       - name: Install package
-        run: |
-          sudo apt-get -y install libxml2-utils
-          which libxml2-utils
+        run: sudo apt-get -y install libxml2-utils
       - name: Release
         run: ci/mvn-release.sh
 
