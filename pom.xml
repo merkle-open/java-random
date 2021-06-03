@@ -9,7 +9,7 @@
 
 	<name>${project.artifactId}</name>
 	<description>This modules aims to provide a universal mechanism to create random test dummies of java objects.</description>
-	<url>https://github.com/namics/java-random</url>
+	<url>https://github.com/merkle-open/java-random</url>
 	<licenses>
 		<license>
 			<name>MIT License 2.0</name>
@@ -21,9 +21,9 @@
 	<developers>
 		<developer>
 			<name>André Schäfer</name>
-			<email>andre.schaefer@anmcis.com</email>
-			<organization>Namics AG</organization>
-			<organizationUrl>http://www.namics.com</organizationUrl>
+			<email>andre.schaefer@emea.merkleinc.com</email>
+			<organization>Merkle Inc.</organization>
+			<organizationUrl>https://merkleinc.ch/</organizationUrl>
 		</developer>
 	</developers>
 
@@ -43,9 +43,9 @@
 	</distributionManagement>
 
 	<scm>
-		<url>https://github.com/namics/java-random</url>
-		<connection>scm:git:git@github.com:namics/java-random.git</connection>
-		<developerConnection>scm:git:git@github.com:namics/java-random.git</developerConnection>
+		<url>https://github.com/merkle-open/java-random</url>
+		<connection>scm:git:git@github.com:merkle-open/java-random.git</connection>
+		<developerConnection>scm:git:git@github.com:merkle-open/java-random.git</developerConnection>
 	</scm>
 
 	<properties>

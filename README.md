@@ -1,11 +1,9 @@
 # Advanced Random Test Data Utils
 
-[Project Documentation](http://namics.github.io/java-random)
+[Project Documentation](http://merkle-open.github.io/java-random)
 
 System        | Status
 --------------|------------------------------------------------        
-CI master     | [![Build Status][travis-master]][travis-url]
-CI develop    | [![Build Status][travis-develop]][travis-url]
 Dependency    | [![Maven Central][maven-central-version]][maven-central]
 
 This modules aims to provide a universal mechanism to create random test dummies of java objects.
@@ -94,8 +92,5 @@ You may enable international names by setting either
 
 if not enabled, only names without accents are used.
 
-[travis-master]: https://travis-ci.org/namics/java-random.svg?branch=master
-[travis-develop]: https://travis-ci.org/namics/java-random.svg?branch=develop
-[travis-url]: https://travis-ci.org/namics/java-random
 [maven-central-version]: https://maven-badges.herokuapp.com/maven-central/com.namics.oss/java-random/badge.svg
 [maven-central]: https://maven-badges.herokuapp.com/maven-central/com.namics.oss/java-random

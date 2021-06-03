@@ -16,7 +16,7 @@
 	</custom>
 
 	<bannerLeft>
-		<name>Namics OSS</name>
+		<name>Merkle Inc.</name>
 		<src>/images/logo.png</src>
 		<href>http://www.namics.com</href>
 	</bannerLeft>
@@ -25,7 +25,7 @@
 	<body>
 		<menu name="Project" inherit="top">
 			<item name="Home" href="/index.html"/>
-			<item name="Github" href="https://github.com/namics/java-random"/>
+			<item name="Github" href="https://github.com/merkle-open/java-random"/>
 		</menu>
 		<menu ref="parent" inherit="top"/>
 
