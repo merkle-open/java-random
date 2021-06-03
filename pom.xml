@@ -49,7 +49,7 @@
 	</scm>
 
 	<properties>
-		<java.version>11</java.version>
+		<java.version>1.8</java.version>
 		<java.source.version>${java.version}</java.source.version>
 		<java.target.version>${java.version}</java.target.version>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
