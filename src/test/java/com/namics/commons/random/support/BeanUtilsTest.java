@@ -41,19 +41,19 @@ class BeanUtilsTest {
 		private String standard;
 		private String extended;
 
-		String getStandard() {
+		public String getStandard() {
 			return standard;
 		}
 
-		void setStandard(String standard) {
+		public void setStandard(String standard) {
 			this.standard = standard;
 		}
 
-		String getExtended() {
+		public String getExtended() {
 			return extended;
 		}
 
-		TestBean setExtended(String extended) {
+		public TestBean setExtended(String extended) {
 			this.extended = extended;
 			return this;
 		}
