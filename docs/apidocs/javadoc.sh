@@ -1,1 +1,1 @@
-/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64/jre/../bin/javadoc @options @packages
+/opt/hostedtoolcache/Java_Adopt_jdk/8.0.382-5/x64/jre/../bin/javadoc @options @packages
